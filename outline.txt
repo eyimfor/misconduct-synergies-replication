@@ -3,7 +3,7 @@
 **************************************************************************
 ** Everything starts from the BrokerCheck and IAPD scrapes: one JSON document per adviser
 ** CRD, 7.6 million of them across the 2020, 2022 and 2024 scrapes, plus the SEC Form ADV
-** bulk files and two hand-collected merger lists.
+** bulk files and one hand-collected merger list.
 
 ** CollectData/run_collect.sh builds the foundational datasets from raw/. run_all.sh then goes
 ** from those datasets to every exhibit in one pass, running its steps in the order listed.
@@ -36,7 +36,7 @@
 **                           repeating a restriction, so a definition has one home.
 **     _helpers/             small shared restriction files the producers call directly
 **
-**     2023/data/input/      the two hand-collected inputs; everything else here is built
+**     2023/data/input/      the hand-collected merger list; everything else here is built
 **     2023/data/output/     every dataset the pipeline builds
 **     2023/data/output_robust/  the adviser-level event panels
 **     2023/tables/          .tex tables, as the manuscript inputs them
@@ -57,8 +57,6 @@
 ** The merger list is in the package as 2023/data/input/new_mergers_raw.csv. It is
 ** ../raw/mergers_final_09_19_2026.csv under the name the code expects (md5
 ** 2da7b32b2ceb0e6ba3d4f3d8f44020e7). _config.do uses it to recognise the package root.
-** 2023/data/input/mergerlist12192022.csv lists the same 485 deals as the estimation sample;
-** the separation producers (Table X, Figure 5) read the deal list from it.
 ** The python producers read PKG for the package root and, where they need them, RAW for the
 ** unpacked raw/ folder, WORK for scratch space and OUT for where exhibits are written.
 ** run_all.sh sets each one; the defaults are relative to the package root.

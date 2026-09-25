@@ -1,4 +1,4 @@
-# Code, the pinned ado files and the two hand-collected merger lists are tracked.
+# Code, the pinned ado files and the hand-collected merger list are tracked.
 # Everything the pipeline builds or collects is not.
 .DS_Store
 __pycache__/
@@ -9,7 +9,6 @@ SecIAPD/output/*
 upstream_inputs/*
 2023/data/input/*
 !2023/data/input/new_mergers_raw.csv
-!2023/data/input/mergerlist12192022.csv
 
 # built datasets, exhibits and logs
 2023/data/output/*

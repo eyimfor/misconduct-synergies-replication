@@ -10,9 +10,10 @@ clear
 * Import and clean data
 ********************************************************************************
 
-* Load the merger list, one row per target-acquirer pair
-    import delimited data/input/mergerlist12192022, clear // the 485 deals of merger_sample.dta
-    ren (crd acquirercrds mergeryear) (target_crd acquirer_crd acquired_year)
+* Load the merger sample, one row per target-acquirer pair
+    use target_crd acquirercrds mergeryear using data/output/merger_sample, clear
+    ren (acquirercrds mergeryear) (acquirer_crd acquired_year)
+    recast int acquired_year
     keep acquirer_crd target_crd acquired_year
     bys target_crd acquirer_crd (acquired_year): keep if _n == 1
     do "$PKG/_helpers/restrict_acquired_year.do"
