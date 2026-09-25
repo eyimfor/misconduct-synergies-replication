@@ -1,6 +1,6 @@
 # Replication package: Misconduct Synergies
 
-Code that reproduces the 34 code-produced tables and figures in the paper, from the
+Code that reproduces the 34 tables and figures in the paper, from the
 BrokerCheck and IAPD adviser records, the SEC Form ADV filings and a hand-collected
 merger list.
 
