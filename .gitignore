@@ -1,0 +1,31 @@
+# Code, the pinned ado files and the two hand-collected merger lists are tracked.
+# Everything the pipeline builds or collects is not.
+.DS_Store
+__pycache__/
+*.pyc
+
+# foundational files, written by CollectData/run_collect.sh from ../raw/
+SecIAPD/output/*
+upstream_inputs/*
+2023/data/input/*
+!2023/data/input/new_mergers_raw.csv
+!2023/data/input/mergerlist12192022.csv
+
+# built datasets, exhibits and logs
+2023/data/output/*
+2023/data/output_robust/*
+2023/tables/*
+2023/tables_producer/
+2023/figures/*
+logs/**/*.log
+figA2_work/
+figA3_work/
+fig_work/
+CreateTables/BrokerRegistrationRobustness/data/*
+CreateTables/BrokerRegistrationRobustness/logs/*
+CreateTables/BrokerRegistrationRobustness/*.tex
+CreateTables/BrokerRegistrationRobustness/*.csv
+CreateTables/BrokerRegistrationRobustness/*.log
+
+# keep the empty folders the pipeline writes into
+!**/.gitkeep

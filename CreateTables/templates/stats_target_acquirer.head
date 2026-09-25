@@ -1,0 +1,17 @@
+	\scalebox{0.95}
+{
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}\hspace*{-0.8cm}	
+	{\begin{tabular}{llccccc}
+			\toprule
+			&\multicolumn{2}{c}{\textbf{Target}}&\multicolumn{2}{c}{\textbf{Acquirer}}&\multicolumn{2}{c}{\textbf{Tests}}\\ 
+			\cmidrule(r){2 - 3}
+			\cmidrule(r){4 - 5}
+			\cmidrule(r){6 - 7}
+		&\multicolumn{2}{c}{\textbf{N = @N1@}}&\multicolumn{2}{c}{\textbf{N = @N2@}}&\multicolumn{2}{c}{\textbf{}}\\
+\cmidrule(r){2 - 3}
+\cmidrule(r){4 - 5}
+\cmidrule(r){6 - 7}
+			\vspace*{-0.2cm}
+			{}&    &  Std.&     &  Std.&   & \\
+			{} &  Mean  &  Dev. & Mean & Dev. &Diff&  T-stat \\
+			\midrule

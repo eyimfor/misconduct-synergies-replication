@@ -1,0 +1,136 @@
+**************************************************************************
+*This document outlines the steps that take the raw data to the exhibits
+**************************************************************************
+** Everything starts from the BrokerCheck and IAPD scrapes: one JSON document per adviser
+** CRD, 7.6 million of them across the 2020, 2022 and 2024 scrapes, plus the SEC Form ADV
+** bulk files and two hand-collected merger lists.
+
+** CollectData/run_collect.sh builds the foundational datasets from raw/. run_all.sh then goes
+** from those datasets to every exhibit in one pass, running its steps in the order listed.
+
+** The folder structure. Code folders are named for the job they do and are listed in the
+** order the pipeline runs them. Code folders hold code only. Built data lives under 2023/,
+** except the CollectData outputs (SecIAPD/output/, upstream_inputs/), the figure scratch
+** folders figA2_work/ and figA3_work/, and CreateTables/BrokerRegistrationRobustness/data/.
+**
+**   replication_pipeline/
+**     run_all.sh            one-pass driver: foundational datasets -> every exhibit
+**     outline.txt           this file
+**     lineage.html          the same map as a clickable picture
+**     data_dictionary.md    every dataset: rows, columns, what writes it, what reads it
+**     _config.do            finds the package root and the ado folders in environment/; every
+**                           runner calls it
+**
+**     CollectData/          raw/ -> the foundational files run_all.sh starts from
+**     BuildPanels/          those CSVs -> adviser-year and firm-year panels
+**     CreateSample/         the merger list -> the 485-deal estimation sample
+**     CreateTables/         one producer per table
+**       BrokerRegistrationRobustness/   the broker-qualification robustness appendix
+**       templates/                      table headers and footers
+**     CreateFigures/        one producer per figure
+**       figA3_estimation/               estimates Figure A.3 from the built panels
+**
+**     _runners/             one numbered runner per step; run_all.sh calls them in order
+**     _rules/              sample definitions shared across producers (windows, filters,
+**                           winsorizing, clustering). Producers call these rather than
+**                           repeating a restriction, so a definition has one home.
+**     _helpers/             small shared restriction files the producers call directly
+**
+**     2023/data/input/      the two hand-collected inputs; everything else here is built
+**     2023/data/output/     every dataset the pipeline builds
+**     2023/data/output_robust/  the adviser-level event panels
+**     2023/tables/          .tex tables, as the manuscript inputs them
+**     2023/figures/         .png and .pdf figures
+**     SecIAPD/output/       where CollectData writes the foundational CSVs
+**     upstream_inputs/      where CollectData writes all_withdrawals.csv (Form ADV-W)
+**     manuscript/           the published Table IX, read by BrokerRegistrationRobustness as
+**                           its comparison target
+**     environment/          the ado packages the code needs, included so versions are pinned
+**     logs/                 one log per step, written as it runs
+
+** PKG is the package root. run_all.sh defaults it to the directory run_all.sh sits in, and
+** exports it, so the Stata runners (through _config.do) and the python producers all agree.
+** Set it only to run from elsewhere:
+**     PKG=/path/to/replication_pipeline bash run_all.sh
+** _config.do resolves PKG on its own if you run a single runner by hand: the environment
+** variable first, then "..", the package root as seen from _runners/, then ".".
+** The merger list is in the package as 2023/data/input/new_mergers_raw.csv. It is
+** ../raw/mergers_final_09_19_2026.csv under the name the code expects (md5
+** 2da7b32b2ceb0e6ba3d4f3d8f44020e7). _config.do uses it to recognise the package root.
+** 2023/data/input/mergerlist12192022.csv lists the same 485 deals as the estimation sample;
+** the separation producers (Table X, Figure 5) read the deal list from it.
+** The python producers read PKG for the package root and, where they need them, RAW for the
+** unpacked raw/ folder, WORK for scratch space and OUT for where exhibits are written.
+** run_all.sh sets each one; the defaults are relative to the package root.
+
+** CollectData: raw/ to the foundational files. Run once, before run_all.sh:
+**     bash CollectData/run_collect.sh
+** It writes SecIAPD/output/, 2023/data/input/ and upstream_inputs/, where BuildPanels reads.
+** _0_onepass_extract.py reads each adviser JSON once and writes all six extracts from it:
+** current and previous employment for BrokerCheck and IAPD, exams, and nine disclosure types.
+** _0_shard_one.sh runs the extractor on one archive; run_collect.sh reads the four scrape
+** archives in parallel, one shard each, which keeps archive order. About 12 minutes.
+** _1_assemble_extracts.py puts the extracts where the _1_ scripts read them.
+** _1_combine_employment.py, _1_combine_exams.py and _1_consolidate_disclosures.py then union
+** the scrape years into employmentdataall, exams_all and disclosures.
+** _1_combine_employment.py unions the three scrape years because BrokerCheck drops anyone
+** unregistered for ten years; the 2024 scrape alone loses 282,911 advisers who left between
+** 2009 and 2014. Spells still open are closed at 2024-03-31, set in the script.
+** _1_registration_states.py unions each adviser's state registrations across the scrape years.
+** disclosure_extractors.py holds the disclosure parsing that _0_onepass_extract.py and
+** _1_consolidate_disclosures.py share.
+** _2_adv_controls.py and _2_adv_filing_dates.py do the same job
+** for the Form ADV bulk files, and _2_adv_withdrawals.py for Form ADV-W.
+
+** BuildPanels: the CSVs to adviser-year and firm-year panels
+** build_employment_panel.do    gives adviser_registration_spells, adviser_year, adviser_firm_year
+** build_exam_panel.do          gives exam_qualifications; process_exams.do gives exam_summary
+** build_disclosure_panel.do    gives adviser_disclosures
+** build_fiscal_year_filings.do gives adv_filing_dates; build_firm_controls_data.do gives
+**                              firm_adv_controls
+** firm_misconduct_levels.do    gives firm_year_panel
+
+** CreateSample: the merger list to the estimation sample
+** _rules/merger_list.do reads the merger list from 2023/data/input/new_mergers_raw.csv
+** (that is ../raw/mergers_final_09_19_2026.csv under the name the code expects), 714 deals,
+** keeps 2011 to 2020 and takes the earliest merger per target. That leaves 626.
+** merger_summary_stats.do then requires both firms to have Form ADV data in the year before
+** the merger, which leaves 485. Those 485 are Table I and the sample for everything after.
+
+** CreateTables and CreateFigures hold the producers. Each is named for what it makes.
+
+***Table I         _8_summary_statistics.py, over the merger_summary_stats.do sample
+***Table II        _8_summary_statistics.py
+***Tables III, IV  target_regression_build.do and acquirer_regression_build.do build the samples;
+***                target_regression_table.do and acquirer_regression_table.do estimate and
+***                write the tables
+***Tables V, VI    matching_baseline.do and matching_time_window.do
+***Tables VII,VIII _8_tables7and8.py
+***Table IX        pseudo_real_merger_test.do, over the panels from post_merger_misconduct_real.do
+***                and post_merger_misconduct_pseudo.do
+***Table X         separations_target.do and separations_acquirer.do, stitched into one
+***                two-panel float by _9_port_tables.py
+***Table XI        misconduct_drop_employee.do
+***Table XII       aum_per_employee.do for Panel A, firm_closure.do for Panel B
+***Tables A.2, A.3 appendix_industry_controls.do
+***Table A.4       appendix_industry_controls.do
+***Table A.5       _8_frequent_acquirers.py
+***Table A.6       appendix_industry_controls.do
+***Table A.7       BrokerRegistrationRobustness/05_appendix_exam_table.do
+***Table A.8       labor_outcomes_table.do
+***Table A.9       ma_employee_misconduct.do
+***Figure 1        figure_disclosures.do, drawn by _0_figure1_disclosures.py
+***Figure 2        _0_figure2_assortative.py
+***Figure 3        _0_figure3_matching_within_state.py
+***Figure 4        _1_figure4_combined_disclosures.py
+***Figure 5        separations_target.do (Panel A) and separations_acquirer.do (Panel B),
+***                720 x 432 px
+***Figure 6        counterfactual_no_separation.do and misconduct_drop_counterfactual.do,
+***                720 x 432 px
+***Figure A.1      fines_per_year.do, drawn by _1_fines_per_year.py
+***Figure A.2      _2_figA2_extract_employment.py, _2_figA2_compute_metrics.py and
+***                _2_figA2_panels.py, over adviser_firm_year
+***Figure A.3      figA3_estimation/run_figA3.py estimates it, _3_figA3_plot.py draws it
+
+** lineage.html is the same map as a picture: click any input and its whole path to the
+** exhibits lights up.

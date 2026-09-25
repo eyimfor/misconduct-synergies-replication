@@ -1,0 +1,160 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Misconduct Synergies: the path from each raw input to every table and figure in the paper.">
+<title>Misconduct Synergies Lineage</title>
+<style>
+:root{
+  color-scheme: light dark;
+  --bg:#f1f3ef; --surface:#ffffff; --surface2:#e7eae3; --surface3:#dde1d8;
+  --ink:#1c2321; --ink2:#5d6663; --ink3:#8b938f;
+  --rule:#c9cfc6; --rule2:#b3bbaf;
+  --accent:#2f5d8a; --accent2:#2f8f5b;
+  --raw:#8a6d3b; --ext:#2f5d8a; --pan:#3f7d52; --frm:#7a5a8f; --exh:#b5566f;
+  --shadow:0 1px 2px rgba(20,30,26,.07), 0 6px 18px rgba(20,30,26,.06);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#121617; --surface:#1a1f21; --surface2:#222a2d; --surface3:#2b3438;
+  --ink:#e7ebe8; --ink2:#99a3a0; --ink3:#6f7a77;
+  --rule:#313b3e; --rule2:#43504f;
+  --accent:#84b6e0; --accent2:#4fbe86;
+  --raw:#d3ab6a; --ext:#84b6e0; --pan:#6fae7c; --frm:#b08ddb; --exh:#e08298;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.3);
+}}
+:root[data-theme="dark"]{
+  --bg:#121617; --surface:#1a1f21; --surface2:#222a2d; --surface3:#2b3438;
+  --ink:#e7ebe8; --ink2:#99a3a0; --ink3:#6f7a77;
+  --rule:#313b3e; --rule2:#43504f;
+  --accent:#84b6e0; --accent2:#4fbe86;
+  --raw:#d3ab6a; --ext:#84b6e0; --pan:#6fae7c; --frm:#b08ddb; --exh:#e08298;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg); color:var(--ink);
+  font:14px/1.45 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1500px; margin:0 auto; padding-inline:18px; padding-block:26px 56px;}
+code,.mono{font-family:ui-monospace,"SF Mono",Consolas,"Liberation Mono",monospace;}
+header.top{display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 16px;
+  border-bottom:1px solid var(--rule); padding-bottom:14px;}
+h1{font-size:19px; font-weight:650; letter-spacing:-.01em; margin:0;}
+.sub{color:var(--ink2); font-size:12.5px; margin:0;}
+.hint{margin:14px 0 18px; color:var(--ink2); font-size:12.5px;}
+.hint b{color:var(--ink);}
+.board{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:14px; align-items:start;}
+.col{min-width:0;}
+.colhead{font-size:11px; text-transform:uppercase; letter-spacing:.09em; color:var(--ink3);
+  padding:0 2px 8px; border-bottom:1px solid var(--rule); margin-bottom:10px;}
+.node{background:var(--surface); border:1px solid var(--rule); border-left:3px solid var(--c);
+  border-radius:3px; padding:9px 11px; margin-bottom:8px; cursor:pointer;
+  box-shadow:var(--shadow); transition:border-color .12s, opacity .12s;}
+.node:hover{border-color:var(--rule2);}
+.node .nm{font-weight:600; font-size:12.5px; line-height:1.3;}
+.node .ln{font-size:11px; color:var(--ink2); margin-top:3px; line-height:1.4;
+  font-family:ui-monospace,"SF Mono",Consolas,monospace; word-break:break-word;}
+.node .ln.note{font-family:inherit; font-style:italic;}
+.node .ln.num{color:var(--ink); font-weight:600;}
+.node .ln.code{color:var(--accent);}
+.c-raw{--c:var(--raw)} .c-ext{--c:var(--ext)} .c-pan{--c:var(--pan)}
+.c-frm{--c:var(--frm)} .c-exh{--c:var(--exh)}
+.exh .nm{display:flex; gap:7px; align-items:baseline;}
+.exh .num{color:var(--exh); font-weight:700; white-space:nowrap;}
+.exh .ttl{font-weight:500; color:var(--ink);}
+body.sel .node{opacity:.24;}
+body.sel .node.on{opacity:1; border-color:var(--accent);}
+body.sel .node.pick{opacity:1; border-color:var(--accent); background:var(--surface2);}
+.bar{display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center;
+  margin:16px 0 4px; padding:10px 12px; background:var(--surface); border:1px solid var(--rule);
+  border-radius:3px; font-size:12.5px; min-height:42px;}
+.bar .lbl{color:var(--ink3); font-size:11px; text-transform:uppercase; letter-spacing:.08em;}
+.bar button{font:inherit; font-size:12px; padding:3px 10px; border:1px solid var(--rule2);
+  background:var(--surface2); color:var(--ink); border-radius:3px; cursor:pointer;}
+.key{display:flex; flex-wrap:wrap; gap:14px; margin:18px 0 0; font-size:11.5px; color:var(--ink2);}
+.key span{display:flex; align-items:center; gap:6px;}
+.key i{width:11px; height:11px; border-radius:2px; display:inline-block;}
+footer{margin-top:26px; padding-top:14px; border-top:1px solid var(--rule);
+  color:var(--ink3); font-size:11.5px;}
+@media(max-width:1100px){ .board{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media(max-width:620px){ .board{grid-template-columns:1fr;} }
+</style></head><body>
+<div class="wrap">
+<header class="top">
+  <h1>Misconduct Synergies &mdash; replication lineage</h1>
+  <p class="sub">Every raw input, and the path it takes to each table and figure in the paper.</p>
+</header>
+<p class="hint">Reads left to right: <b>raw input</b> to <b>extracted files</b> to <b>panels</b> to
+<b>estimation frames</b> to <b>exhibits</b>. Click any box to light up its whole path, both directions.
+Click it again, or press Escape, to clear.</p>
+<div class="bar" id="bar"><span class="lbl">Selected</span><span id="selname">nothing &mdash; click a box</span>
+  <button id="clear" hidden>Clear</button></div>
+<div class="board" id="board"></div>
+<div class="key">
+  <span><i style="background:var(--raw)"></i>raw input</span>
+  <span><i style="background:var(--ext)"></i>extracted</span>
+  <span><i style="background:var(--pan)"></i>panel</span>
+  <span><i style="background:var(--frm)"></i>estimation frame</span>
+  <span><i style="background:var(--exh)"></i>exhibit</span>
+</div>
+<footer id="foot"></footer>
+</div>
+<script id="DATA" type="application/json">{"layers": [{"title": "Raw input", "nodes": [{"id": "R_scr", "name": "BrokerCheck / IAPD JSON scrapes", "lines": [{"t": "raw/", "c": "sub"}, {"t": "RawData2020 / 2022 / 2024.tar.zst", "c": "sub"}, {"t": "MissingJsons2024.tar.zst", "c": "sub"}, {"t": "raw/ also holds 2025 archives, which are not read", "c": "note"}, {"t": "7.6M documents read, one JSON per adviser CRD", "c": "note"}, {"t": "CollectData/_0_onepass_extract.py", "c": "code"}, {"t": "CollectData/_1_registration_states.py", "c": "code"}]}, {"id": "R_adv", "name": "SEC Form ADV Complete (FOIA bulk)", "lines": [{"t": "raw/form_adv_complete/ria2023_subset", "c": "sub"}, {"t": "ADV_Base_A_* \u00b7 ADV_Base_B_* \u00b7 ADV_A_B_*", "c": "sub"}, {"t": "CollectData/_2_adv_controls.py", "c": "code"}, {"t": "CollectData/_2_adv_filing_dates.py", "c": "code"}]}, {"id": "R_advw", "name": "SEC Form ADV-W (FOIA)", "lines": [{"t": "raw/form_adv_w/adv_withdrawals/", "c": "sub"}, {"t": "quarterly filings 2001-2023", "c": "sub"}, {"t": "CollectData/_2_adv_withdrawals.py", "c": "code"}]}, {"id": "R_mrg", "name": "Cleaned merger list", "lines": [{"t": "raw/mergers_final_09_19_2026.csv", "c": "sub"}, {"t": "714 deals, the merger input", "c": "note"}, {"t": "2023/data/input/mergerlist12192022.csv: the same 485 deals, read by Table X and Figure 5", "c": "note"}, {"t": "_rules/merger_list.do", "c": "code"}]}]}, {"title": "Extracted", "nodes": [{"id": "X_emp", "name": "employmentdataall_2024.csv", "lines": [{"t": "5,375,675 spells", "c": "num"}, {"t": "union of the 2020, 2022 and 2024 scrapes", "c": "note"}, {"t": "ongoing spells closed at 2024-03-31", "c": "note"}, {"t": "CollectData/_1_combine_employment.py", "c": "code"}]}, {"id": "X_exam", "name": "exams_all2024.csv", "lines": [{"t": "10,348,710 rows", "c": "num"}, {"t": "CollectData/_1_combine_exams.py", "c": "code"}]}, {"id": "X_disc", "name": "disclosures_2024.csv", "lines": [{"t": "446,245 rows, nine disclosure types", "c": "num"}, {"t": "CollectData/_1_consolidate_disclosures.py", "c": "code"}]}, {"id": "X_ctrl", "name": "all_controls_2023.csv", "lines": [{"t": "one row per Form ADV filing", "c": "note"}, {"t": "CollectData/_2_adv_controls.py", "c": "code"}]}, {"id": "X_fdate", "name": "fiscal_month2023.dta", "lines": [{"t": "filing dates and fiscal calendar", "c": "note"}, {"t": "CollectData/_2_adv_filing_dates.py", "c": "code"}]}, {"id": "X_reg", "name": "registration_states_all.csv", "lines": [{"t": "11,417,447 rows", "c": "num"}, {"t": "state registrations, union of the 2020, 2022 and 2024 scrapes", "c": "note"}, {"t": "CollectData/_1_registration_states.py", "c": "code"}]}, {"id": "X_advw", "name": "all_withdrawals.csv", "lines": [{"t": "ADV-W quarterly filings, appended", "c": "note"}, {"t": "CollectData/_2_adv_withdrawals.py", "c": "code"}]}]}, {"title": "Panels", "nodes": [{"id": "B_reg", "name": "adviser_registration_spells", "lines": [{"t": "5,375,675", "c": "num"}, {"t": "BuildPanels/build_employment_panel.do", "c": "code"}]}, {"id": "B_by", "name": "adviser_year", "lines": [{"t": "21,001,910", "c": "num"}, {"t": "BuildPanels/build_employment_panel.do", "c": "code"}]}, {"id": "B_bye", "name": "adviser_firm_year", "lines": [{"t": "34,257,343 adviser-firm-years", "c": "num"}, {"t": "BuildPanels/build_employment_panel.do", "c": "code"}]}, {"id": "B_exam", "name": "exam_qualifications \u00b7 exam_summary", "lines": [{"t": "25,729,846", "c": "num"}, {"t": "BuildPanels/build_exam_panel.do", "c": "code"}, {"t": "BuildPanels/process_exams.do", "c": "code"}]}, {"id": "B_disc", "name": "adviser_disclosures", "lines": [{"t": "445,759", "c": "num"}, {"t": "BuildPanels/build_disclosure_panel.do", "c": "code"}]}, {"id": "B_ctrl", "name": "firm_adv_controls \u00b7 adv_filing_dates", "lines": [{"t": "188,990 filings", "c": "num"}, {"t": "BuildPanels/build_fiscal_year_filings.do", "c": "code"}, {"t": "BuildPanels/build_firm_controls_data.do", "c": "code"}]}, {"id": "B_ffp", "name": "firm_year_panel", "lines": [{"t": "1,507,996", "c": "num"}, {"t": "BuildPanels/firm_misconduct_levels.do", "c": "code"}]}]}, {"title": "Sample and estimation frames", "nodes": [{"id": "I_entry", "name": "new_mergers_entry", "lines": [{"t": "626 deals", "c": "num"}, {"t": "2011-2020, earliest merger per target", "c": "note"}]}, {"id": "I_msamp", "name": "merger_sample", "lines": [{"t": "485 mergers", "c": "num"}, {"t": "both firms have ADV data at t-1", "c": "note"}]}, {"id": "I_stats", "name": "target_stats \u00b7 acquirer_stats \u00b7 both", "lines": [{"t": "514 \u00b7 578 \u00b7 485", "c": "num"}]}, {"id": "I_t7", "name": "matching_frame_full \u00b7 matching_frame", "lines": [{"t": "matching frames", "c": "note"}]}, {"id": "I_t7tw", "name": "matching_frame_timewin \u00b7 matching_frame_tw", "lines": [{"t": "employee-location variant; matching_frame_tw feeds Figure 3", "c": "note"}]}, {"id": "I_mdt", "name": "adviser_event_panel", "lines": [{"t": "5,506", "c": "num"}]}, {"id": "I_mdl", "name": "merger_pairs_long \u00b7 pseudo_merger_pairs", "lines": [{"t": "real and pseudo pairs", "c": "note"}]}, {"id": "I_plot", "name": "event_panel_real \u00b7 event_panel_pseudo", "lines": [{"t": "6,863,854 \u00b7 6,296,342", "c": "num"}]}, {"id": "I_sep", "name": "separation event panels", "lines": [{"t": "target and acquirer", "c": "note"}]}, {"id": "I_brok", "name": "broker registration status panels", "lines": [{"t": "CreateTables/BrokerRegistrationRobustness", "c": "code"}]}]}], "items": [{"id": "t_I", "num": "Table I", "title": "Mergers by year", "code": "_8_summary_statistics.py"}, {"id": "t_II", "num": "Table II", "title": "Target and acquirer characteristics", "code": "_8_summary_statistics.py + _9_port_stats_tables.py"}, {"id": "t_III", "num": "Table III", "title": "Which targets are acquired", "code": "target_regression_build.do + target_regression_table.do"}, {"id": "t_IV", "num": "Table IV", "title": "Which acquirers buy", "code": "acquirer_regression_build.do + acquirer_regression_table.do"}, {"id": "t_V", "num": "Table V", "title": "Do targets and acquirers match on misconduct", "code": "matching_baseline.do"}, {"id": "t_VI", "num": "Table VI", "title": "Matching, employee location and time window", "code": "matching_time_window.do"}, {"id": "t_VII", "num": "Table VII", "title": "Pre and post merger, real mergers", "code": "_8_tables7and8.py + _9_port_stats_tables.py"}, {"id": "t_VIII", "num": "Table VIII", "title": "Pre and post merger, pseudo mergers", "code": "_8_tables7and8.py + _9_port_stats_tables.py"}, {"id": "t_IX", "num": "Table IX", "title": "Misconduct after the merger", "code": "pseudo_real_merger_test.do"}, {"id": "t_X", "num": "Table X", "title": "Separations of target and acquirer employees", "code": "separations_target.do + separations_acquirer.do"}, {"id": "t_XI", "num": "Table XI", "title": "New disclosures of target advisers", "code": "misconduct_drop_employee.do"}, {"id": "t_XIIa", "num": "Table XII A", "title": "AUM per employee within firm", "code": "aum_per_employee.do"}, {"id": "t_XIIb", "num": "Table XII B", "title": "Firm closure", "code": "firm_closure.do"}, {"id": "t_A2", "num": "Table A.2", "title": "Target regressions, industry controls", "code": "appendix_industry_controls.do"}, {"id": "t_A3", "num": "Table A.3", "title": "Acquirer regressions, industry controls", "code": "appendix_industry_controls.do"}, {"id": "t_A4", "num": "Table A.4", "title": "Matching, industry controls", "code": "appendix_industry_controls.do"}, {"id": "t_A5", "num": "Table A.5", "title": "Frequent acquirers", "code": "_8_frequent_acquirers.py"}, {"id": "t_A6", "num": "Table A.6", "title": "Misconduct after merger, frequent acquirers", "code": "appendix_industry_controls.do"}, {"id": "t_A7", "num": "Table A.7", "title": "Misconduct after merger, exam qualified", "code": "BrokerRegistrationRobustness/05_appendix_exam_table.do"}, {"id": "t_A8", "num": "Table A.8", "title": "Where separated advisers go", "code": "labor_outcomes_table.do"}, {"id": "t_A9", "num": "Table A.9", "title": "M&A employees and misconduct", "code": "ma_employee_misconduct.do"}, {"id": "f_1", "num": "Figure 1", "title": "Disclosures over time", "code": "figure_disclosures.do + CreateFigures/_0_figure1_disclosures.py"}, {"id": "f_2", "num": "Figure 2", "title": "Assortative matching on misconduct", "code": "CreateFigures/_0_figure2_assortative.py"}, {"id": "f_2r", "num": "Figure 3", "title": "Matching within state, one-year window", "code": "CreateFigures/_0_figure3_matching_within_state.py"}, {"id": "f_5t", "num": "Figure 5 (target)", "title": "Target DiD event study", "code": "separations_target.do"}, {"id": "f_5a", "num": "Figure 5 (acquirer)", "title": "Acquirer DiD event study", "code": "separations_acquirer.do"}, {"id": "f_6", "num": "Figure 6", "title": "Pure-separation counterfactual", "code": "counterfactual_no_separation.do + misconduct_drop_counterfactual.do"}, {"id": "f_trend", "num": "Figure A.1", "title": "Aggregate settlements", "code": "fines_per_year.do + CreateFigures/_1_fines_per_year.py"}, {"id": "f_p11", "num": "Figure 4", "title": "Combined-firm disclosures, DiD", "code": "CreateFigures/_1_figure4_combined_disclosures.py"}, {"id": "f_A2a", "num": "Figure A.2 (a)", "title": "Adviser transfer share", "code": "CreateFigures/_2_figA2_panels.py"}, {"id": "f_A2b", "num": "Figure A.2 (b)", "title": "Combined headcount", "code": "CreateFigures/_2_figA2_panels.py"}, {"id": "f_A2c", "num": "Figure A.2 (c)", "title": "Target deregistration", "code": "CreateFigures/_2_figA2_panels.py"}, {"id": "f_A3a", "num": "Figure A.3 (a)", "title": "DiD dynamic path", "code": "figA3_estimation/run_figA3.py + _3_figA3_plot.py"}, {"id": "f_A3b", "num": "Figure A.3 (b)", "title": "DiD robustness", "code": "figA3_estimation/run_figA3.py + _3_figA3_plot.py"}], "edges": [["R_scr", "X_emp"], ["R_scr", "X_exam"], ["R_scr", "X_disc"], ["R_scr", "X_reg"], ["R_adv", "X_ctrl"], ["R_adv", "X_fdate"], ["R_advw", "X_advw"], ["X_emp", "B_reg"], ["B_reg", "B_by"], ["B_reg", "B_bye"], ["B_by", "B_bye"], ["X_exam", "B_exam"], ["X_disc", "B_disc"], ["X_ctrl", "B_ctrl"], ["X_fdate", "B_ctrl"], ["B_disc", "B_ffp"], ["B_bye", "B_ffp"], ["R_mrg", "I_entry"], ["I_entry", "I_msamp"], ["B_ctrl", "I_msamp"], ["B_ffp", "I_msamp"], ["I_msamp", "I_stats"], ["B_ffp", "I_stats"], ["I_msamp", "I_t7"], ["B_bye", "I_t7"], ["B_disc", "I_t7"], ["I_msamp", "I_t7tw"], ["B_bye", "I_t7tw"], ["I_msamp", "I_mdt"], ["B_disc", "I_mdt"], ["B_bye", "I_mdt"], ["I_msamp", "I_mdl"], ["I_mdt", "I_plot"], ["B_bye", "I_plot"], ["B_bye", "I_sep"], ["I_msamp", "I_sep"], ["B_exam", "I_sep"], ["B_exam", "I_brok"], ["B_bye", "I_brok"], ["I_msamp", "I_brok"], ["I_msamp", "t_I"], ["I_stats", "t_II"], ["I_msamp", "t_II"], ["I_t7", "t_III"], ["B_ctrl", "t_III"], ["I_t7", "t_IV"], ["B_ctrl", "t_IV"], ["I_t7", "t_V"], ["I_msamp", "t_V"], ["I_t7tw", "t_VI"], ["I_msamp", "t_VI"], ["I_mdl", "t_VII"], ["I_mdt", "t_VII"], ["I_mdl", "t_VIII"], ["I_mdt", "t_VIII"], ["I_plot", "t_IX"], ["I_mdt", "t_IX"], ["I_sep", "t_X"], ["I_sep", "f_5t"], ["I_sep", "f_5a"], ["R_mrg", "t_X"], ["R_mrg", "f_5t"], ["R_mrg", "f_5a"], ["I_mdl", "t_XI"], ["B_bye", "t_XI"], ["B_exam", "t_XI"], ["B_disc", "t_XI"], ["B_ffp", "t_XIIa"], ["I_msamp", "t_XIIa"], ["B_ctrl", "t_XIIb"], ["X_advw", "t_XIIb"], ["I_t7", "t_A2"], ["I_t7", "t_A3"], ["I_t7", "t_A4"], ["I_msamp", "t_A5"], ["I_plot", "t_A6"], ["I_brok", "t_A7"], ["I_sep", "t_A8"], ["B_bye", "t_A9"], ["B_disc", "t_A9"], ["I_msamp", "t_A9"], ["X_reg", "t_A9"], ["B_disc", "f_1"], ["I_t7", "f_2"], ["I_t7tw", "f_2r"], ["I_plot", "f_6"], ["I_mdt", "f_6"], ["B_ffp", "f_trend"], ["I_mdt", "f_p11"], ["B_bye", "f_A2a"], ["I_msamp", "f_A2a"], ["B_bye", "f_A2b"], ["I_msamp", "f_A2b"], ["B_bye", "f_A2c"], ["I_msamp", "f_A2c"], ["I_plot", "f_A3a"], ["I_mdt", "f_A3a"], ["B_disc", "f_A3a"], ["I_t7", "f_A3a"], ["I_plot", "f_A3b"], ["I_mdt", "f_A3b"], ["I_mdl", "f_A3b"], ["I_msamp", "f_A3b"]]}</script>
+<script>
+const D = JSON.parse(document.getElementById("DATA").textContent);
+const CLS = ["c-raw","c-ext","c-pan","c-frm"];
+const board = document.getElementById("board");
+const up = {}, down = {};
+for (const [a,b] of D.edges){ (down[a] ||= []).push(b); (up[b] ||= []).push(a); }
+
+D.layers.forEach((L,i)=>{
+  const col = document.createElement("div"); col.className = "col";
+  col.innerHTML = `<div class="colhead">${L.title}</div>`;
+  L.nodes.forEach(n=>{
+    const d = document.createElement("div");
+    d.className = `node ${CLS[i]}`; d.dataset.id = n.id;
+    d.innerHTML = `<div class="nm">${n.name}</div>` +
+      n.lines.map(l=>`<div class="ln ${l.c}">${l.t}</div>`).join("");
+    col.appendChild(d);
+  });
+  board.appendChild(col);
+});
+const col = document.createElement("div"); col.className="col";
+col.innerHTML = `<div class="colhead">Exhibits in the paper</div>`;
+D.items.forEach(it=>{
+  const d=document.createElement("div");
+  d.className="node c-exh exh"; d.dataset.id=it.id;
+  d.innerHTML = `<div class="nm"><span class="num">${it.num}</span><span class="ttl">${it.title}</span></div>`+
+                `<div class="ln code">${it.code}</div>`;
+  col.appendChild(d);
+});
+board.appendChild(col);
+
+function walk(id, map, seen){ (map[id]||[]).forEach(n=>{ if(!seen.has(n)){ seen.add(n); walk(n,map,seen); } }); }
+let cur = null;
+function select(id){
+  if (cur === id){ clear(); return; }
+  cur = id;
+  const s = new Set([id]); walk(id, up, s); walk(id, down, s);
+  document.body.classList.add("sel");
+  document.querySelectorAll(".node").forEach(n=>{
+    n.classList.toggle("on", s.has(n.dataset.id));
+    n.classList.toggle("pick", n.dataset.id === id);
+  });
+  const el = document.querySelector(`.node[data-id="${id}"] .nm`);
+  document.getElementById("selname").textContent =
+    `${el.textContent.trim()} — ${s.size - 1} connected`;
+  document.getElementById("clear").hidden = false;
+}
+function clear(){
+  cur = null; document.body.classList.remove("sel");
+  document.querySelectorAll(".node").forEach(n=>n.classList.remove("on","pick"));
+  document.getElementById("selname").textContent = "nothing — click a box";
+  document.getElementById("clear").hidden = true;
+}
+board.addEventListener("click", e=>{ const n = e.target.closest(".node"); if(n) select(n.dataset.id); });
+document.getElementById("clear").addEventListener("click", clear);
+document.addEventListener("keydown", e=>{ if(e.key === "Escape") clear(); });
+const nN = D.layers.reduce((a,l)=>a+l.nodes.length,0) + D.items.length;
+document.getElementById("foot").textContent =
+  `${nN} nodes, ${D.edges.length} edges. Generated from the replication pipeline; ` +
+  `CollectData/run_collect.sh turns the raw inputs on the left into the foundational files; run_all.sh then builds every exhibit shown here in one pass.`;
+</script></body></html>
