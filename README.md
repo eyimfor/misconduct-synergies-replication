@@ -33,7 +33,23 @@ To use a different interpreter or Stata executable, set `PY` and `STATA`, for ex
 
 ## Where to look
 
+- `paper/Misconduct_Synergies.md`: the paper as Markdown: the full text, the notes of every
+  exhibit, the variable glossary and the references. Each exhibit names the file the pipeline
+  writes, the scripts that produce it and the section that discusses it.
+- `exhibits.json`: the same exhibit-to-code map as data.
 - `outline.txt`: the steps from raw data to exhibits, and which script makes each table
   and figure.
 - `lineage.html`: the same map as a clickable picture.
 - `data_dictionary.md`: the main datasets, with what writes and reads each one.
+
+## Using the package with an LLM
+
+`AGENTS.md` (the same text as `llms.txt`) is written for coding assistants such as Claude Code,
+Codex or Cursor. It gives the paper's abstract, what to read first, how the pipeline runs, the
+map from every exhibit to its code, and the mistakes that are easy to make here. Open the
+package folder in the assistant and start with a prompt such as:
+
+    Read AGENTS.md and paper/Misconduct_Synergies.md. Then tell me which scripts produce
+    Table IX, what sample it uses, and where that sample is defined.
+
+For a chat assistant without file access, attach `llms.txt` and the paper Markdown.

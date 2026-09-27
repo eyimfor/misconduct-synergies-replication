@@ -18,6 +18,10 @@
 **     outline.txt           this file
 **     lineage.html          the same map as a clickable picture
 **     data_dictionary.md    every dataset: rows, columns, what writes it, what reads it
+**     exhibits.json         every exhibit: its files, the scripts and steps that make them
+**     EXHIBITS.txt          the exhibit files run_all.sh checks for at the end
+**     paper/                the paper as Markdown: text, exhibit notes, glossary, references
+**     AGENTS.md, llms.txt   a guide to the package for coding assistants and LLMs
 **     _config.do            finds the package root and the ado folders in environment/; every
 **                           runner calls it
 **

@@ -1,0 +1,835 @@
+# Misconduct Synergies
+
+Heather Tookes and Emmanuel Yimfor
+
+*Author manuscript, converted from the LaTeX source for the replication package. The text and the exhibit notes are complete; the numbers in the tables and the figures are produced by the pipeline (`run_all.sh`) and are not reproduced here. Section and exhibit numbers match the paper.*
+
+## Abstract
+
+Do corporate control transactions discipline the labor force? We find that new disclosures of employee misconduct in the investment advisory industry drop by between 19 and 23 percent following mergers. Consistent with synergies due to business model or asset complementarities, targets and acquirers have better pre-merger misconduct records compared to peers and, within the subsample of merging firms, there is assortative matching on misconduct. Mergers facilitate further reductions in misconduct through separations of target firm employees with high misconduct. Many separated employees remain in the industry, suggesting that mergers play a role in the redistribution of misconduct across firms.
+
+**JEL:** G24, G30, G34, M14. **Keywords:** Investment Advisers, M&A, Synergies, Broker Misconduct, BrokerCheck.
+
+**Authors and acknowledgments.** Heather Tookes, Yale School of Management, PO Box 208200, New Haven, CT 06520; Email: heather.tookes@yale.edu. Emmanuel Yimfor, Columbia University, 665 W 130<sup>th</sup> Street, New York, NY 10027; Email: emmanuel.yimfor@columbia.edu.
+
+We thank Johan Hombert, Shan Ge, Wenyu Wang, James Weston and seminar participants at the University of Pennsylvania (Wharton), Indiana University (Kelley), the University of Michigan (Ross, CFLP Blue Bag Lunches Gerald R. Ford School of Public Policy), the University of North Carolina (Kenan-Flagler), University of London (Cass), University of Texas (McCombs), and Copenhagen Business School for helpful comments. We also thank Will Gerken and Stephen Dimmock for sharing their broker-dealer merger sample and conference attendees at the 2021 EFA and 2022 AFA for helpful comments and suggestions. We are grateful to Maya Aidlin-Perlman, George Hua, Roma Pandey, and Chijioke Ukwuegbu for excellent research assistance.
+
+## I. Introduction
+
+Do corporate control transactions discipline the labor force? We use the investment advisory industry as a laboratory to test for evidence of “misconduct synergies” (i.e., reductions in disclosures of employee misconduct) following M&A transactions. The investment advisory industry is of particular interest because it has seen rapid consolidation in the past decade and because there is strong evidence that misconduct persists in the industry: some firms specializing in misconduct, while others do not (Egan et al. (2019)). Although the patterns are robust in the data, we still do not fully understand the underlying mechanisms driving the persistence and clustering of misconduct across firms. Our main goal is to examine whether industry consolidation can help explain both the level of misconduct in merging firms and the distribution of misconduct across the industry.
+
+Consistent with misconduct synergies, we find that disclosures of new disciplinary events in the combined firm drop by between 19 and 23 percent following mergers that occurred during the 2011 through 2020 sample period. This reduction is driven mainly by separations of high misconduct employees at the target firm. Layoffs following mergers are a well-documented source of cost savings in M&A (e.g., Bhagat et al. (1990); Haleblian et al. (2009); Lee et al. (2018)); however, the question of whether the “right” employees leave is an open and important question on which this paper sheds light.
+
+Why should we expect misconduct to be relevant in M&A? And why would industry consolidation change the level of misconduct within merging firms? The model in Rhodes-Kropf and Robinson (2008), in which firms merge to take advantage of synergies that come from complementary assets, provides a motivating framework for our tests. They develop a search-theoretic model where productivity gains from merging are highest when similar, high-valuation firms combine. This framework departs from the traditional view of mergers articulated by Manne (1965), in which gains from merging arise from substitution (“good” buys “bad”). Even though Rhodes-Kropf and Robinson (2008) focus on total factor productivity (TFP) and market-to-book values, productivity is multidimensional and the basic idea that mergers can be driven by complementarities has relevance for quality productivity as well.[^1] In our setting, an advisory firm’s ability to deliver high-quality services to its customers (e.g., through compliance, discipline, and/or technology) is fundamental to the business and potentially relevant in M&A.
+
+We extend the intuition behind complementarity and assortative matching from Rhodes-Kropf and Robinson (2008) to design our empirical tests. We assume that firm-level adviser misconduct is an indicator of quality. We then apply the basic framework of complementarities from Rhodes-Kropf and Robinson (2008) to examine four testable predictions: (1) higher quality (low misconduct) firms are more likely to merge; (2) merging firms will match on misconduct; (3) matching will be stronger when search frictions are low, making it easier for similar targets and acquirers to find one another; and (4) misconduct in the merged firm will drop following mergers. Of course, the question of whether M&A produces gains from substitution or complementarities is an empirical one, about which our analysis sheds light.
+
+Throughout the paper, we use the term “Employee Disclosure (All)” to describe any disclosure across the 23 categories of disciplinary events in the FINRA BrokerCheck and the SEC’s IAPD data. These include customer disputes, regulatory investigations and actions, certain criminal and civil proceedings, and bankruptcy filings.[^2] Not all of these disclosures are evidence of employee wrongdoing. To account for this, we separately analyze the six categories of disclosures that Egan et al. (2019) consider to be most indicative of employee misconduct. We use “Employee Misconduct (EMS)” to describe this subset of less ambiguous disclosures. Even though the strict definition helps to clarify the overall interpretation, Egan et al. (2019) report that the advisors with disclosures outside of the six categories that they identify are also more likely to have engaged in misconduct under the stricter “Employee Misconduct (EMS)” definition when compared to advisors without such disclosures. Therefore, we present our findings using both measures and we interpret changes in either “Employee Disclosure (All)” or “Employee Misconduct (EMS)” as indicative of changes in employee misconduct.
+
+We begin by examining whether misconduct is relevant in M&A. The analysis reveals two interesting patterns. First, both targets and acquirers have lower levels of pre-merger employee misconduct relative to firms that do not engage in M&A. Second, within the sample of targets and acquirers, we find evidence of assortative matching where high misconduct acquirers tend to purchase high misconduct targets. This is consistent with a “like buys like” view of mergers where complementarities in human capital are important.[^3] These results are even stronger when we use geographic proximity as a proxy for low search frictions and condition the analysis on same-state pairs.
+
+We then turn to an examination of changes in firm-level misconduct post-merger. Our main finding is that new disclosures of misconduct fall significantly post-merger. To help interpret this, we compare each true merged firm to a matched pseudo-merged firm based on pre-event disclosures, recent growth in disclosures, the number of registered employees, and the lines of business in which the advisory firm operates (i.e., a difference-in-differences approach). We find a large post-event reduction in misconduct in the true merged firm relative to the control.
+
+Of course, there are several alternative mechanisms that have their own distinct predictions about whether matching on misconduct will occur and whether misconduct will rise or fall following mergers. Theories based on culture (e.g., Gorton and Zentefis (2024)) predict matching on misconduct but do not have clear predictions regarding the types of firms that merge nor about the expected post-merger change in misconduct. Assortative matching could also reflect strategies to manage the spread of misconduct among employees of the combining firms (Dimmock et al. (2018); Easley and O’Hara (2023)), but the contagion mechanism would predict increases in misconduct post-merger, not a reduction.[^4] We assess the evidence in light of each of these potential alternative mechanisms and conclude that the results are most consistent with complementarities in the quality of services.
+
+What are the mechanisms driving the substantial decline in employee misconduct following M&A transactions that we observe? Are there more post-merger layoffs and separations among employees with disciplinary disclosures? Or, do the improvements occur through better employee behavior following the merger? Beyond synergies from asset complementarities, the Rhodes-Kropf and Robinson (2008) framework does not include predictions regarding the mechanisms through which post-merger improvements occur. We use our setting to shed light on this question. When we examine separation patterns following M&A transactions, we find that pre-merger employees of target firms are more likely than acquiring firm employees to separate from the combined firm. Moreover, we find that target employees with misconduct histories are especially likely to depart following a merger. Pre-merger, we observe lower sensitivities of separations to misconduct at the target firm relative to what we observe at the acquirer. Although all sensitivities increase post-merger, the increase ranges from 56% to 106% for target firm employees (depending on the misconduct measure used), while for acquiring firm employees we fail to find evidence of a differential effect. Thus, a tightening in the disciplinary environment for target firm employees can explain the improvements in misconduct that we observe following the merger. We find only weak evidence of a reduction in new disclosures post-event for target firm employees remaining with the firm. In other words, employee turnover drives the main results, not changes in the behavior of remaining employees.
+
+Most departing employees join different firms after separation. We use this fact to undertake counterfactual analysis, in which we track the misconduct disclosures of departed employees to help understand what misconduct patterns we would have observed had they stayed at the combined firm post-merger. When we compare the hypothetical firm to the actual combined firm, we see that we would have observed much flatter variation in misconduct had the departing employees remained. High misconduct employees continue to have high levels of disclosures after separation. Egan et al. (2019) report that some firms “specialize” in misconduct and others do not. Our findings show that mergers are an important driver of the redistribution of misconduct across firms in the investment advisory industry.
+
+The remainder of the paper is organized as follows. In Section II, we discuss related literature and a framework for examining the role of consolidations in employee misconduct. In Section III, we describe the source of data on registered investment advisors, the sample of merger events, and measures of misconduct. We provide descriptive statistics in Section IV. In Section V, we report results of the main regression analyses. Section VI concludes.
+
+## II. Related Literature and Framework
+
+### II.A Literature
+
+Existing work on M&A as a potential disciplinary mechanism focuses mainly on the departures of top managers (Martin and McConnell 1991; Agrawal and Walkling 1994; Hartzell et al. 2004; Wulf and Singh 2011). Ours is one of the few papers in the empirical finance literature to ask whether M&A brings improvements among rank-and-file employees and how departures of employees near merger events are distributed. The investment advisory industry is particularly useful because firms must report disciplinary and regulatory events, along with general information about business operations, to the SEC. In addition, because investment advisors are registered and licensed, information regarding advisors’ individual employment histories and disciplinary events is reported to regulators and made available to the public via FINRA’s BrokerCheck and the SEC’s IAPD system.
+
+Wu and Zang (2009) and Lee et al. (2018) are the closest papers to our work in that both are interested in changes in human capital near merger events. Wu and Zang (2009) document high turnover of sell-side financial analysts near mergers. Unlike our paper, they find that departures from the analyst ranks are concentrated among top performers; however, more consistent with our paper, they find that top performers are more likely to be promoted internally post-merger. Lee et al. (2018) is motivated by some of the same ideas on complementarities that our paper draws on (Rhodes-Kropf and Robinson (2008)), but they are not able to follow individual employees. Instead, their paper is an examination of cost savings from mergers when firms have more and less similarly skilled workforces. They find that merging firms with more similar workforces see increased valuations following mergers.
+
+Like our paper, recent papers in the labor economics literature use worker-level data following acquisitions, but they focus primarily on employee wages (e.g., Prager and Schmitt (2021); Arnold (2021); Arnold et al. (2023)). For example, Arnold et al. (2023) use Canadian data to examine target firm turnover and worker wage dynamics following acquisitions. They report high worker turnover and lower wages (by 8% relative to the control firm) post-merger.[^5]
+
+Our paper is also related to the growing literature on fraud and misconduct by financial advisers. Several studies show that brokers and advisers respond to commissions and other incentives that are unrelated to the welfare of their clients (Bergstresser et al. 2008; Mullainathan et al. 2012; Christoffersen et al. 2013; Guercio and Reuter 2014; Anagol et al. 2017; Guiso et al. 2018; Robles-Garcia 2019; Charoenwong et al. 2019; Garrett 2020). Egan et al. (2019) document widespread misconduct in the financial advisory industry. Although they report evidence of some discipline following misconduct events, they find that approximately half of all advisors who commit misconduct remain employed at the same firm following misconduct. Of those who depart, just under half find jobs at other firms (the rest leave the industry). Our finding that targets and acquirers tend to match on misconduct is consistent with the conclusion in Egan et al. (2019) that some firms “specialize” in misconduct and others do not. Our paper further shows that M&A is an important mechanism through which this specialization occurs.
+
+Egan et al. (2022) also report widespread and persistent misconduct in the advisory industry. We use the framework in Egan et al. (2022), in which the authors report increased sensitivity of separations to misconduct for female advisers, to conduct adviser-level analysis of the sensitivity of separations to misconduct of target and acquirer firm employees. Similar to Egan et al. (2022), we interpret sensitivities to indicate the strength of discipline following misconduct.
+
+Like our paper, Dimmock et al. (2018) also study advisory firm mergers. They exploit variation in the location of firm branches to identify misconduct spillovers across employees. They report that the probability of a new instance of misconduct increases if a new coworker has a history of misconduct. On the surface, the negative spillovers in Dimmock et al. (2018) may seem inconsistent with evidence of large improvements in misconduct following acquisitions that we report in this paper.[^6] However, separations can create a setting in which misconduct spreads among employees while overall firm-level misconduct declines. If the employees who remain at the firm post-merger tend to be those with cleaner records (which we find), this can reduce the future spread of misconduct. Moreover, if the firms engaging in M&A are the types of firms for which low misconduct is desirable, the evidence in Dimmock et al. (2018) that misconduct is contagious can explain why many combining firms may choose to accelerate separations of high-misconduct employees.[^7]
+
+Finally, our paper is related to the corporate governance literature that relates shareholder returns in mergers to differences in governance between the target and acquirer. One general finding is that, when acquirers have stronger shareholder rights relative to targets, the gains to M&A are higher (e.g., Wang and Xie (2009)). Martynova and Renneboog (2008) and Bris and Cabolis (2008) both report evidence that improved governance from acquirers is associated with increases in value in cross-border deals.[^8] These findings all support the idea that governance mechanisms can drive variation in returns to M&A, but the data do not allow the authors to observe the effects of governance improvements within the combined firm following transactions. By contrast, our paper uses employee-level data on allegations of wrongdoing, which allows for a close-up view of a mechanism through which improvements in governance (in the form of employee monitoring and discipline) might impact firm outcomes.
+
+We focus our work on the investment advisory industry, but the challenge of managing corporate fraud and misconduct is a broad one (Dyck et al. (2010)). Employee wrongdoing exposes corporations to legal and regulatory risk and can damage firms’ reputations. The changes in misconduct that we document here can increase our broader understanding of the distribution of wrongdoing within an industry, and of the sources of synergies in M&A.
+
+### II.B Framework
+
+We base our analysis on the intuition from Rhodes-Kropf and Robinson (2008), who develop a search-theoretic model of M&A based on asset complementarity. Their framework departs from the traditional view of mergers articulated by Manne (1965), in which gains from merging arise from substitution. Manne (1965) implies that good management acquires poorly performing firms and redeploys their assets. By contrast, in Rhodes-Kropf and Robinson (2008), merger gains arise from placing complementary assets under common control, not from substituting “good” for “bad.” In that case, complementary assets should be contained in a single firm because spillovers create opportunities for rent-seeking that come from allocating decision rights to a single party. Whether M&A produces gains from substitution or complementarity is an empirical question, and the distinction between the two generates a sharp empirical prediction: if complementarity drives mergers, we expect positive assortative matching. Rhodes-Kropf and Robinson (2008) focus on TFP, but productivity is multi-dimensional. The intuition in Rhodes-Kropf and Robinson (2008) can be extended to include quality productivity. In our setting, complementarity would imply that high-quality firms (i.e., those that produce high-quality advice with a given set of inputs) merge with other high-quality firms, and low with low.[^9]
+
+#### Application to the Investment Advisory Industry
+
+In the Rhodes-Kropf and Robinson (2008) model, firms vary according to type (high and low productive efficiency), and the type of merged firm is a function of the pre-merger types of the individual firms.[^10] This idea can be applied to help us think about the quality of advice in the investment advisory industry, where firm-level quality of services is a function of adviser quality and the systems that support them in providing advice.
+
+We assume that misconduct (per employee) is a proxy for firm “quality” (where high misconduct indicates low quality).[^11] Variation in misconduct across firms can be viewed as differences in the costs of supplying high-quality advice: some firms maintain systems that allow them to provide advice that meets individual customers’ needs with minimal risk of error, while others do not. Mechanisms can include strong compliance systems, employee discipline, and technology. Misconduct is a noisy measure of advice quality $`z_i`$ that is observable to customers and to firms (through BrokerCheck/IAPD) looking for potential partners, even before the formal due diligence process in M&A begins.
+
+#### Hypotheses
+
+The following hypotheses are based on the assumption M&A produces gains from complementarities as in Rhodes-Kropf and Robinson (2008). They allow us to conduct a set of empirical tests that distinguish complementarity from substitution effects, as well as other alternative mechanisms.
+
+#### H1: Assortative Matching on Misconduct
+
+#### Prediction 1a:
+
+*Low-misconduct acquirers merge with low-misconduct targets, and high-misconduct acquirers merge with high-misconduct targets.*
+
+#### Discussion:
+
+In Rhodes-Kropf and Robinson (2008), firm type is captured by a firm-specific parameter $`z_i`$, where higher values increase firm value. Complementarities come from a functional form where the $`z_i`$ of the merged firm is a function of the qualities of the stand-alone target and stand-alone acquirer: $`z_M = z_T \cdot z_A`$ (and $`z_i > 1`$).[^12] This form implies that mergers between two high-type firms generate more total surplus than a high-type firm merging with a low-type firm. Importantly, firm type defines its outside options, and a high-type firm will benefit most from identifying a partner that is also high-type. We extend this intuition and apply it to the quality of financial advice. In the advisory firm setting, one can think of $`z_i`$ as a firm-level measure of quality, which could be driven by employee quality, discipline, compliance processes, or technology. All else equal, higher $`z_i`$ maps to fewer misconduct events. We assume that firm-level employee misconduct (measured per employee) is an observable proxy for (low) quality and test the hypothesis of positive assortative matching on misconduct.
+
+#### Prediction 1b:
+
+*Positive assortative matching is higher when search frictions are low.*
+
+#### Discussion:
+
+Rhodes-Kropf and Robinson (2008) show that assortative matching depends on search frictions. When search is costly, firms may accept imperfect matches rather than continuing to look. When search is cheap, firms can afford to wait for a complementary partner, and the highest quality firms will want to match with one another. In empirical terms, the strength of assortative matching should be greater when search frictions are lower. In our analysis, we consider search frictions as the cost of locating feasible potential matches, due diligence costs, and regulatory costs. We use same-state as a proxy for reduced search frictions. Same-state firms are close in proximity to one another and are also governed by the same state laws, which may reduce regulatory frictions that might be relevant in determining match feasibility.
+
+#### Prediction 1c:
+
+*The quality gains from combining are higher when both firms are of high-quality (i.e., low misconduct). Therefore, we expect to observe more mergers among lower-misconduct firms.*
+
+#### Discussion:
+
+The idea underlying this prediction is that, all else equal, the joint surplus from matching may be more common for high-quality firms than low quality ones. To illustrate, consider again the simple complementarity specification. There, we assume the quality of the merged firm’s services is $`z_M = z_T \cdot z_A`$. Each firm’s quality amplifies that of the other and high-quality/high-quality matches are most valuable.
+
+#### Discussion of Alternative Mechanisms:
+
+There are other mechanisms in the literature that provide economic rationale for *Prediction 1a*. In Gorton and Zentefis (2024), mergers fail if the improved production due to synergies is outweighed by the cost of culture clashes. The implication is that we should expect positive assortative matching on misconduct due to similarity in culture. Misconduct contagion (Dimmock et al. (2018)) implies that mixing clean and problematic employees spreads misconduct, lowering average quality (in the Rhodes-Kropf and Robinson (2008) framework, this would map to $`z_i < 1`$ for some firms). Thus, consistent with *Prediction 1a*, firms adopting low-misconduct business models would want to avoid merging with high-misconduct firms in order to reduce contagion. More generally, Easley and O’Hara (2023) show that in tightly connected markets, unethical behavior can spread, but ethical behavior can persist when there are dense clusters of individuals who behave ethically. Low-misconduct targets are therefore desirable to acquirers wishing to maintain their cultures of low misconduct. All of these mechanisms predict positive assortative matching; however, there are no sharp predictions about how the strength of matching varies with search frictions (*Prediction 1b*) or differential synergies (*Prediction 1c*) from mergers between high-quality firms versus low-quality ones. Thus, analyses that shed empirical light on *Predictions* *1a*, *1b*, and *1c* will help us distinguish the Rhodes-Kropf and Robinson (2008) ideas about complementarities from alternative mechanisms.
+
+#### H2: Post-Merger Reduction in Misconduct
+
+#### Prediction 2:
+
+*Misconduct in the combined firm is expected to decline following the merger, relative to what we would have expected in the stand-alone firms.*
+
+#### Discussion
+
+Whether misconduct synergies exist is an empirical question, but the setup described earlier illustrates why we might expect misconduct improvement. Specifically, complementarity logic implies that mergers can create gains under common control. In our setting, one channel through which these gains can appear is through improved compliance or discipline, which would manifest as reduced future disclosures. We can test whether firm-level “quality” changes post-merger, and also uncover how changes occur (e.g., through new employees or through changing behavior of existing employees). Our empirical analysis proceeds in three parts. First, we test H1 by examining whether targets and acquirers have lower misconduct than non-merging firms (Prediction 1c) and whether merging pairs match on misconduct (Prediction 1a). We also test whether matching is stronger when search frictions are lower (Prediction 1b). Second, we test H2 by comparing post-merger changes in misconduct in merged firms and matched controls. Finally, we examine potential mechanisms through which post-merger changes in misconduct occur. Specifically, we test whether changes occur through separations of employees with histories of misconduct or through behavioral changes among retained employees.
+
+#### Interpretation and limitations:
+
+Although our setting aligns with some key components of the Rhodes-Kropf and Robinson (2008) model of complementarities, there are important differences. The Rhodes-Kropf and Robinson (2008) model features two distinct industries (A and B) with specialized assets that cannot be converted from one type to another. Mergers occur across industries to combine complementary productive assets. In our setting, targets and acquirers operate in the same industry. The “complementarity” we have in mind is not about combining different asset types, but about combining organizational structures in a way that results in improved mechanisms for providing high-quality financial advice. The logic of complementarities Rhodes-Kropf and Robinson (2008) still applies: when the gains from merger are greater for firms that are of a high type, mergers should occur between firms that are alike along that dimension. Still, we emphasize that we are testing for assortative matching on a single dimension (misconduct, a quality proxy) within one industry, not across industries with different asset specializations.
+
+In addition, their model assumes that firm type $`z_i`$ is a fixed firm-specific productivity parameter and that it can increase in the combined firm through M&A. Their model does not speak to how the “synergies” (i.e., $`z_M = z_T \cdot z_A`$; with $`z_i > 1`$) are achieved. Our paper retains the complementarities logic for the matching analysis, extends it to consider the quality of financial advice, and further contributes to the literature through our study of how complementarity is achieved post-deal. What is most relevant to us is the idea of complementarities in Rhodes-Kropf and Robinson (2008) model and the evidence that they drive gains from M&A.
+
+## III. Data
+
+We combine several data sources to construct the database of advisory-firm characteristics, mergers, employee disclosures, and misconduct measures. Below, we describe each of these databases along with the various filters that we impose.
+
+### III.A Advisory Firm-level data
+
+The Investment Advisers Act of 1940 requires all advisers managing more than \$25 million or that have 15 or more U.S. clients to register with the SEC.[^13] These firms must file a Form ADV at least annually. We download from the SEC’s website all Form ADVs filed since 2009. We extract information on the investment adviser’s business lines, type of clients, and total assets under management from Part I of the form.[^14] There are 28,090 unique investment advisory firms in the data. The analysis includes all investment advisory firms that filed a Form ADV between 2009 and 2022 and that have data on employee employment history (which we describe below).
+
+We establish the data coverage period using the date a company submits its Form ADV and the month they report as their fiscal month. Because fiscal year is not included in the data, we infer it. If a company submits a Form ADV between the end of its fiscal month and December, we consider the submission year as the fiscal year. If not, we use the previous year.[^15]
+
+### III.B Merger Events
+
+We combine four data sources to construct the most comprehensive sample (to our knowledge) of mergers in the investment advisory industry. The data are from: Pitchbook, Securities Data Corporation (SDC), Investment News, and Form ADV-W.
+
+We begin with the Pitchbook and SDC databases. We search Pitchbook for all mergers of asset managers operating in the financial services sector. We require that both the target and acquirer are located in the United States, that the merger date is available, and that the deal status is complete. We search SDC for U.S. targets in the Investment & Commodities Firms, Dealers, Exchanges sector with non-missing deal effective dates. We add to the combined Pitchbook and SDC data using two additional sources.
+
+We use Investment News, a website covering news events in the investment advisory industry, as a third data source.[^16] We search for all Investment News articles about mergers and acquisitions activity during the sample period. We then confirm the merger events based on a search of Factiva and company websites. We require a second information source for all Investment News mergers.
+
+Our final source of merger data is the SEC’s Form ADV-W. This form is filed by advisory firms when they withdraw their registrations with the SEC.[^17] Form ADV-W data include flags to indicate that a firm is closing for merger-related reasons. However, it does not identify the acquirer, nor does it indicate the date of the merger. We identify target-acquirer pairs by identifying targets as those firms that report merger-related reasons in the “Reasons for closure” field of Form ADV-W and where we are able to identify an acquiring firm based on either employee movements or web searches using the target name (or both).[^18] We take the merger year from the hand-collected deal record.
+
+Table I shows the sample of 485 merger events by year for the period beginning January 2011 and ending December 2020. We choose this sample period to ensure at least two years of pre-merger and post-merger data for the combining firms. There are a total of 485 events involving 485 distinct target CRDs and 263 distinct acquirer CRDs.[^19] Table I shows a general increase in merger activity over the sample period, with a peak in 2019. This pattern is generally consistent with the broad trend in global M&A activity.
+
+*\[Table I about here; see Exhibits below.\]*
+
+Appendix Figure A2 shows that these deals consolidate the adviser workforce: the median merger moves 66.7% of the target’s advisers onto the acquirer’s CRD, the combined headcount grows at the median, and 87% of targets have no registered advisers two years later.
+
+We then combine the ADV data with merger information, defining the year before a merger (year *t-1*) as the last data coverage period that ended prior to the merger year.
+
+### III.C Misconduct at the Adviser Level
+
+We use adviser-level data to track the total number of registered employees and employees with misconduct records. The main explanatory variable of interest is the number of recent disclosures by employees of each investment advisory firm. These disclosures include customer complaints, allegations of fraud and negligence, excessive fees and commissions, regulatory actions, civil and criminal proceedings, and employment separations after allegations. The adviser-level disclosure data are from the SEC’s IAPD (<https://adviserinfo.sec.gov/>) and FINRA’s BrokerCheck (<https://brokercheck.finra.org/>) websites. To construct the misconduct measures, we use a Python script to scrape employment and misconduct histories of 1.4 million current and previously registered investment advisers and brokers (to which we collectively refer as “advisers”).
+
+We create an adviser-year panel of employment and disclosures from 2009 through 2022 (or the year of the adviser’s last employment record, whichever is earlier). We begin the sample in 2009 to ensure full coverage of brokers.[^20] The unit of observation in the adviser data is an adviser-firm-year.[^21] We code disclosures using FINRA’s 23 categories of disclosures. We also separately track the six FINRA categories of disclosures that Egan et al. (2019) consider to be the most indicative of adviser misconduct. For each adviser, we first sum the number of new disclosure events in each category and year. When there are no disclosures, the values are equal to zero. “All” is the cumulative sum of all 23 disclosures, and “EMS” is the sum of 6 less ambiguous misconduct disclosures (from Egan et al. (2019)). Both “All” and “EMS” measure recent disclosures, defined as all those made over the current year and the previous two years. We analyze both measures since Egan et al. (2019) report that the advisors with disclosures in some of the 17 categories outside of their strict misconduct definition are also more likely to have engaged in misconduct under the stricter 6-category definition when compared to advisors without such disclosures. We interpret changes in either *All* or *EMS* as indicative of changes in employee misconduct.
+
+### III.D Firm-Level Employee Misconduct
+
+We calculate employee misconduct at the advisory-firm level by summing new disclosures for individual advisers within the firm in each fiscal year.[^22] For each advisory firm, we divide this raw count by the number of all registered employees working at the advisory firm during year *t*. We create two measures of misconduct at the firm level. *Employee Disclosure (All)* is the count of disclosures based on the 23 FINRA categories for each registered representative over the current year and previous two years, divided by the total number of registered employees working for the advisory firm in that year. *Employee Misconduct (EMS)* includes only six (of the 23) categories of disclosures that Egan et al. (2019) consider most indicative of misconduct. Both *Employee Disclosure (All)* and *Employee Misconduct (EMS)* are measured over periods *t-2*, *t-1*, and *t* so that they capture only recent employee disclosures. We merge the firm-level employee disclosure data to our panel of advisory-firm characteristics and merger events to create the final sample.
+
+## IV. Descriptive Statistics
+
+Table II presents summary statistics for the sample of targets and acquirers as of year *t-1* relative to the merger. The right-hand-side columns show the standardized mean difference between targets and acquirers to allow for meaningful comparisons of differences across rows. Not surprisingly, we find that acquirers are larger than target firms, with more employees, clients, and assets under management (AUM). We also observe that acquirers have experienced more recent growth in AUM and clients compared to targets. We also find that, while acquirers have employees with more disclosures and more misconduct than their targets, they have also experienced significantly greater recent growth in employee misconduct.
+
+*\[Table II about here; see Exhibits below.\]*
+
+## V. Empirical Analysis
+
+### V.A Is misconduct relevant in M&A?
+
+To motivate our focus on potential changes in employee misconduct following M&A, we begin the analysis by asking whether misconduct is relevant in the M&A market. As discussed in Section II.B, Rhodes-Kropf and Robinson (2008) assume that potential synergies are higher when firms are of higher quality (Prediction 1c). If so, then we would expect higher-quality firms to be the ones that engage in M&A. By contrast, under the traditional view of market discipline based on substitution, we would instead expect acquirers to purchase firms with different levels of misconduct than their own business models dictate. They would then make changes that result in moving target firm employees closer to their own models. In that case, acquirers could be of high or low quality, and target firms’ quality would be different from what we observe for acquirers. To shed light on these two alternative predictions, we conduct descriptive tests that document the relationship between employee misconduct and the probability that a firm is a target or an acquirer. We use the full sample of investment advisors to estimate the following reduced-form model by pooled OLS:
+
+``` math
+\begin{align}
+\mathbb{1}{\text{(Target)}}_{i(t+1)} = \quad &\beta_{1}\text{Misconduct}_{it} + \beta_{2}\text{Retail clients}_{it}  \\  &+ \beta_{3}\text{Ln(Assets under management)}_{it} + \beta_{4}\text{Ln(Firm Age)}_{it} \\  &+ \beta_{5}\text{Ln(Number of employees)}_{it} \\  &+\lambda_{j} + \eta_{t} + \epsilon_{it}.
+ \tag{1}
+\end{align}
+```
+
+The unit of observation is an advisory-firm year. The dependent variable is an indicator that equals one if an advisory firm is acquired in the year following its current Form ADV filing, $`\mathbb{1}{\text{(Target)}}_{i(t+1)}`$. The primary independent variable is employee $`\textit{Misconduct}_{it}`$, which we define in two ways, as described in the previous section. In the full sample, the mean *Employee Disclosure (All)* measure is 3.22 percentage points, and the standard deviation is 11.09 percentage points. The mean *Employee Misconduct (EMS)* is 1.54 percentage points, and the standard deviation is 6.78 percentage points.
+
+We include line of business and time fixed effects in all specifications.[^23] Other controls comprise: $`\textit{Retail clients}_{it}`$, a dummy equal to one if the firm serves retail clients; $`\textit{Ln(Assets under management)}_{it}`$, the natural log of assets under management; $`\textit{Ln(Firm Age)}_{it}`$ the natural log of firm age; and $`\textit{Ln(Number of employees)}_{it}`$, the natural log of the number of registered employees. The sample period for *t* runs from 2011 to 2019 to match the merger data (we are predicting year-ahead mergers, which end in 2020).
+
+Table III presents results of estimating Equation 1. Columns (1) and (2) show results for the *Employee Disclosure (All)* measure, and Columns (3) and (4) show results for the *Employee Misconduct (EMS)* measure. We standardize all continuous covariates to have a mean of zero and a standard deviation of one to ease the comparison of relative effects.
+
+*\[Table III about here; see Exhibits below.\]*
+
+It is clear from Table III that firms with more disclosures per employee are significantly *less* likely to be acquisition targets. For example, estimates in Column (1) imply that a one-standard deviation increase in the number of disclosures of employee disciplinary events (this maps to a 11.09 percentage point increase) is associated with a 0.109 percentage point reduction in the probability that an advisory firm is acquired. Relative to the unconditional mean rate of acquisitions of 0.678 percentage points, this represents a 16.1% decrease in the probability that a firm is acquired in the following year. The coefficient estimate of 0.093 in the column 2 specification that includes all control variables, implies a 13.7% decrease in the probability that a firm is acquired (relative to the unconditional mean) following a one standard deviation increase in the misconduct measure. When we consider the stricter definition of misconduct in columns 3 and 4, we find that a one standard deviation increase in the *EMS* measure (this maps to a 6.78 percentage point increase) is followed by a decrease of between 9.9 and 12.2% in the probability that a firm is acquired, relative to the unconditional mean.
+
+In Table IV we focus on acquirers. We change the dependent variable in Equation 1 to an indicator that equals one if a firm makes an acquisition in the year following their year *t* ADV filing ($`\mathbb{1}{\text{(Acquirer)}}_{i(t+1)}`$). From Table IV, we find that firms with more disclosures per employee are less likely to be acquirers. The estimated coefficients on the misconduct variables are all significant, negative, and similar in economic magnitude to Table III. For example, the estimated coefficient of −0.055 on the *Employee Disclosure (All)* measure in column 2 implies that a one standard deviation increase in *Employee Disclosure (All)* is followed by a 0.055 percentage point decrease in the probability that the firm makes an acquisition in the next year. This represents a decline of 10.8% relative to the mean probability of making an acquisition of 0.510%. The estimated coefficient of −0.044 on the *Employee Misconduct (EMS)* measure in column 4 implies that a one standard deviation increase in *EMS* is followed by a 0.044 percentage point decrease in the probability that the firm makes an acquisition in the next year. This represents a decline of 8.6% relative to the mean.
+
+Overall, the findings in Table III and Table IV suggest that both targets and acquirers have business models that result in employees with fewer disclosures than the average firm in the industry. This is consistent with the quality-based selection mechanism in Prediction 1c and inconsistent with the traditional view based on substitution. These findings provide some initial evidence that allows us to distinguish the Rhodes-Kropf and Robinson (2008) framework from other interpretations. For example, consider geographic clustering: firms in the same city might merge more frequently due to lower integration costs, but this would not imply that firms in cities characterized by high or low misconduct should be more active in the M&A market. Similarly, if firms with common cultures are more likely to merge, we might observe similar levels of misconduct among combining pairs, but *low* misconduct should not predict M&A participation. The fact that low-misconduct firms are systematically more likely to be both targets and acquirers suggests that there is much more to the story than common culture or geography.
+
+*\[Table IV about here; see Exhibits below.\]*
+
+Table III and Table IV show that both targets and acquirers have employees with cleaner-than-average records. Within the sample of merging firms, Table II shows that the unconditional means of misconduct per employee are higher for acquirers than for targets. Why might this be the case? Easley and O’Hara (2023) show that, in tightly connected markets, unethical behavior can spread. Moreover, Dimmock et al. (2018) show that misconduct in the investment advisory industry spills over from one advisor to another when they are in close proximity. If the managers of low-misconduct acquirers wish to maintain cultures of low misconduct, acquiring a firm that already has low-misconduct employees can be a way to limit the spread of misconduct.[^24] In the framework of Rhodes-Kropf and Robinson (2008), acquiring low misconduct targets can be a way to maintain and improve already high quality.
+
+Tables III and IV also reveal that younger firms are more likely to make acquisitions, while older firms are more likely to be acquired. This could be driven partly by founders’ retirement.[^25] We also find that both acquirers and targets are less likely to serve retail clients than other firms. We control for retail clients in the analysis that follows.[^26]
+
+In sum, the evidence suggests that misconduct is relevant in M&A and that firms with lower levels of misconduct are more likely to be acquired. This is clear in Figure 1, which shows the fraction of employees with any history of disclosures as a function of whether the firm is a target, acquirer, or other firm (where “other firm” is defined as any firm that has not participated in a merger during the sample period). The figure shows that both acquirers and targets have lower levels of misconduct than the average firm. This pattern is consistent with Prediction 1c: mergers are more likely among higher-quality (low-misconduct) firms. It is also consistent with potential complementarities in business models, where combining people, monitoring and disciplinary mechanisms can be beneficial (i.e., the asset complementarity mechanism in Prediction 1a). We investigate this idea more formally in the next section.
+
+### V.B Matching on Misconduct (Sample of Targets and Acquirers)
+
+In this section, we test the hypothesis that there is positive assortative matching on misconduct. In an ideal test of whether acquirers and targets with similar employee misconduct levels merge, we would collect data on all the different targets that a given acquirer considers. We would then test whether the selected target has a level of misconduct-related disclosures that is more similar to the acquirer’s compared to the other potential targets that were considered but not selected. Because we only observe equilibrium matches, we approximate the ideal test by adopting an approach similar in spirit to Rhodes-Kropf and Robinson (2008). We create counterfactual mergers that pair every potential target and acquirer pair in the merger year. We define potential acquirers as all those firms that acquired another asset management firm during year *t*. The idea is that these firms are most likely to be the ones considering acquisitions at *t*.
+
+Figure 2 provides some visual evidence. The figure plots the probability that a potential target and acquirer pair merge, as a function of whether the potential acquirer or target has any disclosure of a disciplinary event. *Some Disclosure* is an indicator that equals one if any employee of the target or acquirer has one of the 23 categories of FINRA disclosures over the past two years (including the current year). *Probability of Merger (%)* is the fraction of pseudo plus real target-acquirer pairs in each quadrant that are true merging firms. The evidence in Figure 2 is suggestive of positive assortative matching on misconduct, especially in situations in which the acquiring firm has employees with prior disclosures. For example, 4.47 percent of all pairs in the *Some Disclosure* for the acquirer and *Some Disclosure* for the target quadrant are real matches. This value is 95% greater than the unconditional merger rate of 2.29 percent and suggests matching on misconduct.
+
+*\[Figure 2 about here; see Exhibits below.\]*
+
+For a more rigorous test, we estimate the following linear probability model, in which we test the hypothesis that targets and acquirers with similar misconduct records are more likely to pair:
+
+``` math
+\begin{align}
+\mathbb{1}{\text{(Merged)}}_{i(t+1)} = \quad &\beta_{1}\text{Acq \& Target Disclosure}_{it} + \beta_{2}\text{Retail clients}_{it}  \\  &+ \beta_{3}|\text{Ln(AUM Acq)}- \text{Ln(AUM Tar)}|_{it} + \beta_{4}|\text{Ln(Age Acq)}- \text{Ln(Age Tar)}|_{it}  \\ 
+&+ \beta_{5}|\text{Ln(Emp Acq)} - \text{Ln(Emp Tar)}|_{it} \\  
+&+\beta_{6}\text{Same state} + \lambda_{j} +\eta_{t} + \epsilon_{it}.
+ \tag{2}
+\end{align}
+```
+
+The unit of observation is a target-acquirer pair, where pairs include both true merging firms and pseudo-pairs. Recall that pseudo-pairs are formed by pairing all targets in a given year with all acquirers making acquisitions in the same year. The dependent variable ($`\mathbb{1}{\text{(Merged)}}`$) is an indicator that equals one if the target-acquiring firm pair actually merge, and zero otherwise. The explanatory variables of interest are the measures of disclosure and misconduct similarity within each pair. We calculate dummy variables *Acq & Tar Employee Disclosure (All)* and *(EMS)* to equal one if the acquirer and the target both have employees with recent disclosures (i.e., in years *t-2*, *t-1* or *t*). If there is assortative matching on misconduct, we expect that this similarity measure between target and acquirer employee misconduct will make a match more likely. Similar to the misconduct similarity variable, *Retail Clients* is a dummy equal to one if both firms serve retail clients. We express the other control variables in terms of acquirer-target similarity by taking the absolute difference of acquirer to target values for AUM, Age, and number of registered advisers. Finally, we define *Same State* as an indicator that equals one if a target and acquirer pair is located in the same state because firms sharing geographic markets might be more likely to merge, and because of the Parsons et al. (2018) finding that there is a geographic component to misconduct. As in previous specifications, $`\eta_{t}`$ are year fixed effects and $`\lambda_{j}`$ are matching line of business fixed effects, indicators that equal one when the target-acquirer pair is in the same line of business.
+
+Results are in Table V. Columns (1) and (2) present results using the “All” measure, and Columns (5) and (6) show results using the “EMS” measure. As in the earlier tables, we standardize all continuous covariates to have a zero mean and a standard deviation of one to ease comparisons of magnitudes across covariates. In extended specifications (Columns 3 and 7), we add controls to account for whether both the target and acquirer are small or large. We do this to address any potential concerns that the *Acq & Tar Employee Disclosure/Misconduct* dummy variables are capturing similarity in size. We further extend the specifications in Columns (4) and (8) to include indicators for whether both firms have been involved in regulatory, civil, or criminal events. We expect these variables to capture additional factors related to potential matching on misconduct.
+
+*\[Table V about here; see Exhibits below.\]*
+
+Consistent with Prediction 1a, we find strong evidence of assortative matching on misconduct. For example, the estimates using the “All” measure in Column (1) imply that, if both firms have instances of recent employee disclosures, a potential acquirer-target pair is 1.750 percentage points more likely to be a true pair. Once we add control variables in Column (2), the estimate is 1.829 percentage points and it is also statistically significant. Relative to the unconditional merger rate of 2.29 percentage points within the sample, these estimates represent an increase of between 76 and 80 percent in the probability of a match when levels of employee misconduct between target and acquiring firms are similar. The estimated coefficients on the control variables are also informative. They show that pairs serving similar clientele and those headquartered in the same state are more likely to merge. Firms with more similar sizes (as captured by AUM and employees) are less likely to merge.[^27] The estimated coefficients using the “EMS” measure in Columns (5) and (6) are larger but very consistent with what we observe in Columns (1) and (2).
+
+When we extend the specifications in Columns (3) and (7) to include controls to account for whether both the target and acquirer are small or large, the estimated coefficients on *Acq & Target Disclosure* remain stable, and we do not find an independent effect of “both small” or “both large” beyond what is captured in the size similarity measures using the absolute differences in AUM and Employees. When we include additional regulatory and legal events in Columns (4) and (8), the main effects remain; however, we also find that mergers are more likely if both firms report recent regulatory or civil events.
+
+#### Within-State Matching and Search Frictions:
+
+Prediction 1b from Section II.B says that assortative matching should be stronger when search frictions are lower. We cannot observe search frictions directly, but if we assume that they are lower when firms are in close geographical proximity, we can test the hypothesis that the matching on misconduct is stronger for this subsample of firms. To conduct our tests, we restrict the sample to mergers where the target and acquirer have employees in at least one common state prior to the merger. We define counterfactual mergers based on potential pairs that share a common state.
+
+Figure 3 is analogous to Figure 2 but contains only the same-state pairs and pseudo-pairs. Once we focus on this within-state subsample (69 percent of mergers), the “like buys like” pattern is even stronger than in the main tests. Interpreting geographic proximity as a proxy for lower search frictions, this result confirms Prediction 1b: assortative matching intensifies when search costs are low.
+
+*\[Figure 3 about here; see Exhibits below.\]*
+
+Table VI presents the corresponding regression analysis. When we require potential acquirers to have employees in a common state and restrict to a one-year acquisition window, the estimated coefficients on misconduct similarity are positive and statistically significant in all eight regression specifications. This finding helps distinguish the complementarity mechanism from alternative explanations based solely on culture (see e.g., Gorton and Zentefis (2024), Datta (1991), and Teerikangas and Very (2006)) or contagion (see Easley and O’Hara (2023) and Dimmock et al. (2018)), which do not generate clear predictions about the role of search frictions.
+
+*\[Table VI about here; see Exhibits below.\]*
+
+Taken together, the results in Tables III through Table VI provide strong support for Predictions 1a, 1b and 1c and suggest that the complementarity mechanism is a relevant driver of M&A in the investment advisory industry. But are the complementarities in quality realized, as Prediction 2 suggests? And if so, how? The next section presents results of analyses that help answer those questions.
+
+### V.C Does M&A Discipline employee behavior?
+
+We now turn to the main economic question in the paper: Is there evidence of “misconduct synergies” in M&A (i.e. Prediction 2 from Section II.B )? We refer to “misconduct synergies” as post-merger reductions in misconduct.[^28] These can come from improvements in employee behavior, the shedding of employees with misconduct records, or the transfer systems that help curb future misconduct. This channel is much more specific than across-the-board layoffs to reduce costs and eliminate redundancies.
+
+To examine the misconduct synergies hypothesis, we compare the disclosure measures in the 3 years before the merger to disclosures in the 3 years following the merger. We calculate pre-merger variables by taking the weighted average of misconduct measures for the target and acquiring firm, where the weights are based on the number of advisers at each firm. This creates a pseudo-merged firm. We keep only target-acquiring firm pairs with the requisite data in each pre-merger year and where we have at least one year of post-merger data for the combined firm (this leaves 423 target-acquirer pairs). We then average each characteristic over the three years preceding the merger and the three years following the merger.
+
+Table VII reveals a substantial decline in disclosures following merger events. For example, if we focus on *Employee Disclosure (All)* in Row (2) of Table VII, the average recent disclosures (per employee) of the combined firm drops from 2.29 percentage points in the years before the merger to 1.85 percentage points in the years following the merger. This represents a 19 percent decline. The *Employee Misconduct (EMS)* measure in Row (3) shows a similar decline of 23%, from 0.91 to 0.70 percent. Table VII also shows a significant increase in the number of registered employees following the merger, along with an increase in AUM.
+
+*\[Table VII about here; see Exhibits below.\]*
+
+To improve the interpretation of the post-merger declines in new disclosures that we observe in Table VII, we construct a placebo merged firm. This allows us to check whether we are simply picking up market-wide trends in disclosures following merger events. Each placebo firm consists of two non-merging firms, one matched to the target and the other matched to the acquiring firm. To construct matches, we rely on the entire database of ADV firms. We create the following variables: an indicator that equals one for firms with above median employee disclosures (*Misconduct*); an indicator equal to one for firms with above median change in employee disclosures (*Misconduct Change*); ten bins based on the number of employees at the firm (*Employee Decile*); and line of business category.[^29] We then match each target and acquirer to the sample of non-merging advisory firms that share the same values of *Misconduct, Misconduct Change, Employee Decile, and Line of Business Category*, as of the year of the merger. Within the set of potential matches for each target and acquirer, we create a final match with the firm that has the closest level of employee disclosures.
+
+The pre- and post-event characteristics of the pseudo merged firms are in Table VIII. Unlike in the case of true mergers, we observe small increases in employee disclosures (using both the “All” and “EMS” measures). Like our treated sample, we also observe increases in the number of registered employees and AUM. It will be important to control for each of these in the regression analysis. Of course, matches are not perfect. For example, the pseudo merged firms are smaller with fewer employees, AUM and fewer clients than the true merged firms. These differences in characteristics should not impact the overall interpretation. Moreover, we control for these size differences in regressions.
+
+*\[Table VIII about here; see Exhibits below.\]*
+
+In Table IX, we conduct difference-in-differences analysis in which we compare post-merger changes in disclosures in the true merged firm to that of the pseudo-merged firm. We use annual data for the three years prior through three years following the mergers. The dependent variables are *Employee Disclosure (All)* and *Employee misconduct (EMS)*, defined as in previous tests. We introduce *Merged*, a dummy equal to one if the firm is the true combined firm. The coefficient of interest is on the *Merged X Post* interaction, which estimates the difference in the post-event change in misconduct between the real and pseudo merged firms. The estimated coefficient on this interaction is negative and statistically significant in all four regression specifications shown in Table IX, implying a significant post-event reduction in new employee disclosures in the true merged firm relative to the control.[^30] As in Table VII, the magnitudes are economically significant as well. For example, in column 2, the estimated coefficient of −1.006 on *Merged X Post* implies a 43% decline in misconduct in the merged firm (relative to the sample mean of 2.35 percentage points) in the years following the merger.[^31]
+
+*\[Table IX about here; see Exhibits below.\]*
+
+To provide a closer look at the evolution of disclosures following merger events, in Figure 4 we present the coefficients from a regression of *Employee Disclosure (All)* against an indicator variable (*Merged*) interacted with event time dummies for t-3, t-2, t, t+1, t+2, and t+3. The coefficients are calculated relative to t-1, where t represents the merger year. We observe a clear decline in disclosures beginning in year 0 and extending to at least 3 years following the merger. The pre-merger coefficients ($`t = -3, -2, -1`$) are statistically indistinguishable from zero and show no differential trend. These are consistent with the parallel trends assumption required for our difference-in-differences approach.[^32]
+
+*\[Figure 4 about here; see Exhibits below.\]*
+
+Consistent with the Rhodes-Kropf and Robinson (2008) intuition, the results thus far provide strong support for all of Predictions 1a, 1b, 1c and 2. While some of the matching on misconduct findings are also consistent with explanations based on culture or contagion, neither would predict that matching is stronger when search frictions are low or that misconduct would drop in the combined firm post-merger.
+
+What is the mechanism through which “misconduct synergies” are achieved? Although the complementarity mechanism suggested by Rhodes-Kropf and Robinson (2008) does not provide specific predictions into how synergies are realized, our empirical setting allows us to examine potential channels. At the intensive margin, it may be that average employee disclosures decline after the merger because target and/or acquiring firm employees reduce their misconduct following the merger. This could happen if, for example, the firm adopts the monitoring practices or systems of the firm with the better record (in our setting, this would be the target firm since we find that acquirers tend to have higher recent growth in disclosures than targets). Incentives for employees to reduce their misconduct might be particularly strong in M&A settings when the acquiring firm’s business model involves a low level of employee misconduct and potential redundancies cause increased competition among employees who wish to keep their jobs (Fulghieri and Sevilir (2021)).
+
+The drop in misconduct that we observe could be due to changes at the extensive margin: separations among employees with misconduct records. If misconduct is a relevant variable that new owners consider when reducing redundancies, misconduct can improve post-merger through exits of high-misconduct employees (rather than a change in the behavior of existing employees).
+
+In the next section, we consider how the probability of adviser job separation changes after mergers, as a function of recent disclosures. We interpret increased sensitivity of separation to disclosures as increased monitoring and discipline. We interpret no change in the sensitivity of separations to misconduct as evidence that the average disclosure declines that we observe at the firm level are a result of existing employees improving their behavior. To help with the overall interpretation, we also examine annual changes in disclosures among employees who remain with the combined firm post-merger.
+
+### V.D What drives the decrease in adviser misconduct following M&A?
+
+In this section, we test whether advisers with disclosures are more likely to separate from the merged firm following the merger. Thus far, we have focused the analysis at the firm level. Here, we examine data at the adviser-year level. We estimate the following linear probability model:
+
+``` math
+\begin{align}
+\mathbb{1}{\text{(Separation)}}_{if(t+1)} = \quad &\beta_{1}\text{Misconduct}_{ift}\times\text{Post} + \beta_{2}\text{Misconduct}_{ift}  \\  &+ \beta_{3}\text{Post}_{f} + \beta_{4}\text{Ln(experience)}_{ift} \\  &+\beta_{5}\text{Ln(\# Qualifications)} +\eta_{ft} + \epsilon_{ift}.
+\tag{3}
+\end{align}
+```
+
+In Equation 3, we predict year-ahead separations at the individual adviser level as a function of adviser misconduct, timing relative to the merger event, and control variables. Each observation is an adviser-year. We include annual data for years from *t-3* through *t+3* relative to the merger year, and we focus the analysis on all employees who are working either at the target or acquiring firm (f) at any time during the three years (t) preceding (and including) the year of the merger. The dependent variable ($`\mathbb{1}{\text{(Separation)}}`$) is an indicator that equals one if an adviser that worked for the target or acquirer in year $`t`$ no longer works for either the target or acquirer in year $`t+1`$. The primary explanatory variables of interest are the *Employee Disclosure (All) X Post* and *Employee Misconduct (EMS) X Post* interactions. *Employee Disclosure (All)* and *Employee Misconduct (EMS)* are dummies equal to one if the adviser has a disclosure in the current year. *Post* is an indicator that equals one for the year of the merger and the years following the merger. We also control for the experience and qualifications of the adviser by including *Ln(experience)*, the natural log number of years of experience in the advisory industry, and *Ln(# Qualifications)* the adviser’s total number of certifications. $`\eta_{ft}`$ are advisory firm by year fixed effects, which control for differences in separations across firms and time.
+
+Table X presents results from estimating Equation 3, which we estimate separately for target and acquiring firm employees. Doing so helps us understand potential changes in the disciplinary environments for each of these firm types. Columns (1) and (2) show the estimated coefficients using the *Employee Disclosure (All)* measure, and Columns (3) and (4) show results for *Employee Misconduct (EMS)*. For target firm employees (Panel A), we observe large increases in merger sensitivity of separations to employee misconduct following the merger. The estimated coefficients of 4.630 and 4.278 (Columns 1 and 2) on the *Employee Disclosure (All) X Post* and *Employee Misconduct (EMS) X Post* interaction variables suggest large increases in sensitivities of separations to misconduct relative to the mean pre-event sensitivities of 6.599 and 7.597 percentage points, respectively. Thus, we observe increases in separation sensitivities to misconduct of between 56 and 70 percent. Those employees with disclosures in one of the six Egan et al. (2019) misconduct categories become between 11.544 and 12.079 percentage points more likely to separate (Columns 4 and 3, respectively) than employees without such disclosures. These are increases of roughly 90 to 106% relative to the mean pre-event sensitivities of 12.758 and 11.346, respectively.[^33]
+
+In the case of acquiring firms (Panel B), the pre-merger sensitivities of separations to misconduct are higher. However, unlike for target-firm employees, we do not observe any post-merger increases in sensitivities. In fact, under the EMS measure, sensitivities decline somewhat following the merger (so that the total sensitivities are similar for employees previously employed by the target and those previously employed by the acquirer).
+
+Our primary focus in Table X is on the change in the sensitivity of separation to misconduct post-merger. However, we also note that the baseline effects (i.e., coefficients on the *Employee misconduct* variables in Table X) are smaller than those reported in Egan et al. (2019). There are at least two reasons for this. First, in M&A settings, the base rate of separation is high, with all employees departing for a variety of reasons unrelated to employee misconduct. This can lead the marginal likelihood that an employee with misconduct is terminated to appear lower than in more ordinary times.
+
+The estimated coefficients on the other control variables in Table X are consistent with intuition. For example, more experienced and qualified advisers are less likely to leave.
+
+*\[Table X about here; see Exhibits below.\]*
+
+The findings in Table X reveal that the decline in employee misconduct that we observe following merger events is driven by separations of high misconduct employees, particularly at the target firm. In line with the results in Table X, Figure 5 presents the difference-in-differences event study. The figure plots the differential separation effect (Has Misconduct $`\times`$ Event Time) with coefficients normalized to $`t=-1`$. Panel A shows that target firm employees with misconduct records have significantly higher separation rates in the post-merger period relative to employees without misconduct. The estimated treatment effects are consistent with the regression results in Table X. In Panel B, we fail to find evidence of a differential effect for acquiring firm employees, consistent with the mechanism operating through increased discipline of target employees. Among acquiring firm employees, we again fail to find evidence of a differential effect.[^34] Our findings reveal that, even though target employees have slightly better records than the employees of acquiring firms, those target employees with disclosure histories are more likely to separate post-merger. Thus, it appears that mergers tighten the disciplinary environment and can improve misconduct through the accelerated shedding of any high misconduct employees within the already low misconduct target firms.
+
+*\[Figure 5 about here; see Exhibits below.\]*
+
+We observe clear increases in separations by employees with disclosures of disciplinary events. How much does this contribute to the total decline in firm-wide misconduct? To help answer this question, Figure 6 conducts counterfactual analysis in which we show the time series of new disclosures by all employees of the combined firm, under the assumption that separated employees who remained in the industry also remain employed by the target and acquirer. We then compare this time series to the actual new disclosure events at the target, acquirer and combined firm, with a baseline normalization of the misconduct variable at $`t=-1`$. The negative and significant coefficients in the years following the merger indicate that separations reduced firm-level misconduct. That is, the “Actual” series (tracking disclosures from employees who remain) diverges from the “Counterfactual” series (including disclosures from separated employees as if they had stayed). This approach isolates directly the contribution of employee turnover to the misconduct decline. We emphasize that the figure represents a conservative lower bound, as employees who exit the industry entirely (plausibly those with the most severe records) cannot be tracked.[^35] Overall, our findings suggest that mergers accelerate the shedding of high-misconduct employees and facilitate the redistribution of misconduct across firms in the advisory industry.
+
+The results from the counterfactual analysis are in line with the finding in Egan et al. (2019) that one quarter of advisors with misconduct records are repeat offenders and suggests that the shedding of target firm employees with misconduct records is a significant driver of the post-merger decline in misconduct that we observe. In the Appendix Table A.8, we tabulate job transitions among target and acquiring firm advisers following the merger. There are two primary observations. First, advisors with misconduct are less likely to remain with the firm. Second, of those advisors who leave the firm, target firm employees with misconduct are actually more likely than those without misconduct records to join a different firm in the year following departure.
+
+*\[Figure 6 about here; see Exhibits below.\]*
+
+It is clear from the analysis in Table X and Figure 6 that separations of target firm employees contribute significantly to the decline in employee misconduct that we observe post-merger. What about those target firm employees that remain at the combined firm? Table XI shows results of difference-in-differences regressions where we condition the sample on all employees of the target firm or the pseudo target in at least one of the five years leading up to the merger. We then examine annual new disclosures (*Flow Misconduct*) in the real and pseudo target firms during the post-merger period. The unit of observation is the adviser-year. Table XI shows small reductions in misconduct among existing employees that are not statistically significant. Thus, the Table IX results are not driven by changes among existing employees. Instead, they are driven by changes due primarily to employee turnover.[^36]
+
+*\[Table XI about here; see Exhibits below.\]*
+
+### V.E Is misconduct value-relevant in the investment advisory industry?
+
+In interpreting this paper’s main findings that misconduct declines substantially post-merger, it is natural to ask whether misconduct is value-relevant in the advisory industry. Following the intuition in Rhodes-Kropf and Robinson (2008), we have assumed that low misconduct maps to higher quality advice for clients, but does it have implications for advisory firm value? Our results show that both targets and acquirers have better misconduct records than the average firm in the industry. Moreover, within the subsample of merging firms, we find evidence of assortative matching. This is consistent with the argument in Egan et al. (2019) that some firms “specialize” in misconduct and others do not. Firms’ business models and incentives that result in either low or high misconduct are likely chosen because they are value-enhancing, given other characteristics of the firm.
+
+We start with the observation that regulatory and civil fines paid by firms are a direct cost of employee misconduct. Appendix Figure A1 plots the aggregate regulatory and civil fines paid in each year by firms with at least one employee disclosure. Among firm-years with a positive fine, the average fine is approximately \$1,912,466.
+
+Outside of fines, the relationship between misconduct and advisory firm value is not obvious. We provide descriptive analysis below using data from the full sample of advisory firms and with a focus on assets under management (AUM) per employee and firm closure.
+
+Raw AUM is an incomplete measure of firm value. Huberman (2007) shows that asset management firms trade at only 2-4 percent of their AUM despite profit margins of roughly 20 percent, highlighting that what matters for valuation is not asset size but the efficiency with which firms extract value from those assets. In the advisory industry, where labor is the primary operating cost, AUM per employee serves as a direct proxy for labor productivity. A one standard deviation increase in misconduct could reduce productivity through several channels: misconduct disclosures might cause clients to withdraw funds, reducing AUM per employee, or might signal lower managerial skill. We therefore examine whether misconduct predicts next-period AUM per employee. We also examine firm closure, which represents an extreme value outcome with adjustment costs for customers and employees.[^37]
+
+As in the earlier analysis, we can only capture detected misconduct, not misconduct that goes undetected. The underlying assumptions are that detected misconduct is proportional to undetected misconduct and that there is no systematic relationship between undetected misconduct and the performance variable of interest, beyond what is captured in detected misconduct, which is what we observe.
+
+We estimate the following reduced-form model by pooled OLS:
+``` math
+\begin{align}
+ \textit{Outcome}_{i(t+1)} = \quad &\beta_{1}\text{Misconduct}_{it} + \beta_{2}\text{Retail Clients}_{it} \\  &+ \beta_{3}\text{Ln(Firm Age)}_{it} + \beta_{4}\text{Ln(Number of employees)}_{it} \\ 
+ &+ \lambda_{j} + \eta_{t} + \epsilon_{it}.
+ \tag{4}
+\end{align}
+```
+
+The unit of observation is an investment advisory firm-year. The main dependent variables (*Outcome*) are: *Ln($`\frac{\text{AUM}}{\text{Employees}}`$)*, the natural log of next year’s assets under management per registered adviser, and *(Failed)*$`_{i(t+1)}`$, an indicator that equals one if the advisory firm closes in the year following its period *t* Form ADV filing. We obtain data on advisory-firm closures from a FOIA request to the SEC for all Form ADV-W’s. Form ADV-W is a notice of withdrawal from registration filed by investment advisers. On this form, firms list the reason for their de-registration. We define a firm as *Failed* if the reason for withdrawal is business closure.[^38]
+
+In the AUM per employee regression (Panel A of Table XII), we include firm fixed effects to absorb unobservables at the firm level. We also include time fixed effects. Other controls are: $`\textit{Ln(Number of employees)}_{it}`$, the natural log of the number of registered advisers; $`\textit{Retail clients}`$, a dummy equal to one if the firm serves retail clients; and $`\textit{Ln(Firm Age)}_{it}`$ the natural log of firm age. We standardize all continuous covariates to have a mean of zero and standard deviation of one.
+
+From Panel A of Table XII, we observe a negative relationship between employee misconduct and next-period AUM per employee. The estimated coefficient of −0.011 on *Employee Disclosure (All)* in column 2 of Panel A implies a 1.1 percent reduction in next-period AUM per employee following a one standard deviation increase in employee misconduct. These estimates are attenuated by the firm fixed effects. AUM per employee is highly persistent within a firm, so little within-firm variation remains to identify the relationship, and the corresponding *Employee Misconduct (EMS)* estimate in column 4 is not statistically significant. We therefore read Panel A as suggestive and rest the value-relevance argument on the closure results in Panel B.[^39][^40] The firm closure findings in Panel B of Table XII are considerably stronger. The estimated coefficient of 0.271 in column 2 of Panel B implies a 0.271 percentage point increase in closure probability following a one standard deviation increase in the misconduct measure, and the *Employee Misconduct (EMS)* estimate of 0.238 in column 4 is of similar magnitude. This is meaningful economically, given that the mean annual closure rate in the sample is 1.00 percentage points. Panel B shows costs that extend beyond those incurred at the individual adviser level. Firms with high levels of employee misconduct are much more likely to close their doors.
+
+*\[Table XII about here; see Exhibits below.\]*
+
+The results in this section reveal strong links between misconduct and proxies for value in the investment advisory industry. Firms with more disclosures have lower levels of assets under management, and they pay more regulatory and civil fines and are more likely to close. Given this, it is not surprising that some firms choose to follow low misconduct business strategies and that further reductions in misconduct follow mergers.
+
+## VI. Conclusion
+
+Using the investment advisory industry as a laboratory, we test the hypothesis that corporate control transactions discipline the labor force. Consistent with misconduct synergies, we find substantial declines in new disclosures following mergers. Disclosures in the combined firm drop by between 19 and 23 percent during the first three years following the merger. Our findings shed light on a role for consolidation in both the level of misconduct in merging firms and in the distribution of misconduct across the industry. Egan et al. (2019) present striking evidence that misconduct persists in the investment advisory industry, with some firms specializing in misconduct. Using the intuition of assortative matching and asset complementarity from Rhodes-Kropf and Robinson (2008), we provide strong evidence that M&A plays a role in driving the clustering of misconduct across firms.
+
+We find that both targets and acquirers have somewhat better misconduct records than the average firm in the industry. Moreover, within the subsample of merging firms, we find evidence of assortative matching on misconduct, consistent with complementary business models where misconduct plays an important role. We also find that assortative matching is stronger in settings where search frictions are low. Merger events facilitate further reductions in misconduct through separations of target firm employees with high misconduct. These separations are more likely when target firm owners and top managers leave the combined firm, paving the way for increased discipline of target firm employees. Many of the departing employees remain in the industry and continue to have more disclosures than employees that remain with the combined firm. Thus, mergers serve to redistribute misconduct across firms. Within merged firms, mergers discipline rather than transmit misconduct. Already low misconduct firms see further improvements following the transactions, while high misconduct employees often leave to join other firms.
+
+## Exhibits
+
+Each exhibit below gives the paper's title and notes, then the file the pipeline writes (under the package root) and the scripts that produce it. `exhibits.json` has the same map in machine-readable form.
+
+### Figure 1. Employee disclosure events and advisory firm mergers
+
+This figure plots the average percentage of employees with any disclosure of a past disciplinary event. The unit of observation is an advisory firm-year and the sample covers U.S. registered investment advisers from 2009 to 2020. Advisory firms are classified once, using the earliest merger event in which they appear in the data: firms that were acquired in that event are labeled *Target*, firms whose earliest merger event was as an acquirer are labeled *Acquirer*, and firms with no observed merger event in our sample are labeled *Other*. In the figure, the classification is fixed for each firm’s entire history in the panel. The outcome is *Any Employee Disclosure (All)* (Appendix Table A.1): the percentage of a firm’s registered employees with at least one disclosure, across the 23 categories of disciplinary events in Egan et al. (2019), filed at any point up to and including year $`t`$; bars report the equal-weighted average of this percentage across firm-years within each of three four-year periods (2009–2012, 2013–2016, 2017–2020), separately for Target, Acquirer, and Other firms, with 95% confidence intervals.
+
+- `2023/figures/DisclosuresAll.png` from `CreateFigures/figure_disclosures.do`, `CreateFigures/_0_figure1_disclosures.py`
+- Discussed in Section V.A
+
+### Figure 2. Matching on misconduct
+
+This figure plots the probability that a candidate target–acquirer pair is a true merging pair, by whether the acquirer and the target have recent employee disclosures. The unit of observation is a candidate target–acquirer pair. For each merger year $`t`$ from 2011 to 2020, we pair every acquired target with every firm that acquired an investment advisory firm in year $`t`$, keeping pairs in which both firms report employee counts on Form ADV in year $`t-1`$; the sample contains 19,829 candidate pairs, of which 451 (2.27%) are true merging pairs. *Some Disclosure* equals one if at least one of the firm’s registered employees has a disclosure in any of the 23 categories of disciplinary events in Egan et al. (2019) during the three fiscal years ending in year $`t-1`$. Each bar reports the percentage of candidate pairs in that cell that are true merging pairs, with each candidate pair receiving equal weight; under random pairing, every cell would equal the unconditional merger rate of 2.27%. All other variables are defined in Appendix Table A.1.
+
+- `2023/figures/assortative_matching.png` from `CreateFigures/_0_figure2_assortative.py`
+- Discussed in Section V.B
+
+### Figure 3. Matching on misconduct within state (one-year window)
+
+This figure plots the probability that a candidate target–acquirer pair is a true merging pair, by whether the acquirer and the target have recent employee disclosures. The unit of observation is a candidate target–acquirer pair. For each target acquired between 2011 and 2020, candidate acquirers are firms that completed an acquisition of another advisory firm within one calendar year of the target’s acquisition and that have registered employees in at least one state in common with the target in the year before the acquisition; these restrictions cover 337 of the 485 mergers in our sample. The sample contains 15,408 candidate pairs, of which 337 (2.2%) are true merging pairs. *Some Disclosure* equals one if at least one of the firm’s registered employees has a disclosure in any of the 23 categories of disciplinary events in Egan et al. (2019) during the three fiscal years ending in the year before the acquisition. Each bar reports the percentage of candidate pairs in that cell that are true merging pairs, with each candidate pair receiving equal weight. All other variables are defined in Appendix Table A.1.
+
+- `2023/figures/assortative_matching_emploc_robust.png` from `CreateFigures/_0_figure3_matching_within_state.py`
+- Discussed in Section V.B
+
+### Figure 4. Employee disclosures at the combined firm: difference-in-differences estimates
+
+This figure plots difference-in-differences estimates of employee disclosures at the merged firm relative to a pseudo-merged control, in event time. The unit of observation is a merged or pseudo-merged target–acquirer pair in event year $`t`$, from $`t=-3`$ to $`t=+3`$ around mergers completed between 2011 and 2020. The dependent variable, *Employee Disclosures (All)*, is the number of new disclosure events initiated in years $`t-2`$ through $`t`$ by advisers registered with either firm of the pair in year $`t`$, divided by the number of registered advisers in year $`t`$ and multiplied by 100; the measure is winsorized at the 1% and 99% levels. The disclosure events are based on the 23 categories of disciplinary events in Egan et al. (2019). The pseudo-merged control combines a matched non-merging target–acquirer pair: in the year before the merger, we match each real target and acquirer exactly on line of business, employee-count decile, and indicators for an above-median employee disclosure rate in that year and in each of the three prior years. We select pseudo-merged matches among candidates never involved in a merger. For each real target and acquirer, we choose the pseudo target or pseudo acquirer with the closest disclosure-rate history. We then aggregate the matched pair’s outcomes exactly as we do for the true merged firm. The plot shows the coefficients on *Merged* $`\times`$ event-time indicators from a regression of the dependent variable on event-time indicators and these interactions; the $`t=-1`$ interaction and the *Merged* main effect are omitted, so each point is the merged minus pseudo-merged difference normalized to zero at $`t=-1`$. Coefficients are in percentage points. Bars show 95% confidence intervals. All other variables are defined in Appendix Table A.1.
+
+- `2023/figures/plottable11.png` from `CreateFigures/_1_figure4_combined_disclosures.py`
+- Discussed in Section V.C
+
+### Figure 5. Employee separations by misconduct status: difference-in-differences estimates
+
+This figure plots difference-in-differences estimates of the difference in separation rates between advisers with and without misconduct records around mergers. Panel A covers target firm employees and Panel B covers acquiring firm employees. The unit of observation is an adviser-year. The sample follows all advisers employed at the target (Panel A) and/or the acquirer (Panel B) at least one year before mergers completed between 2011 and 2020, over event years $`t=-3`$ to $`t=+3`$ relative to the merger. Each adviser exits the panel after a first separation. *Separation* equals 100 if an adviser employed at the firm in year $`t`$ is not registered with the combined firm in year $`t+1`$, and zero otherwise; moves between the target and the acquirer at or after the merger are not counted as separations. The plot shows coefficients on event-time indicators interacted with *Has Misconduct (EMS)*, an indicator equal to one if the adviser has at least one disclosure during years $`t-2`$ through $`t`$ in the 6 of the 23 categories that (Egan et al. 2019) classify as most indicative of misconduct ; the $`t=-1`$ interaction is omitted, so all estimates are relative to the year before the merger. Coefficients are in percentage points. Each regression includes the *Has Misconduct (EMS)* main effect, standardized Ln(Experience) and Ln(# Qualifications), and target firm $`\times`$ year (Panel A) or acquiring firm $`\times`$ year (Panel B) fixed effects. We cluster standard errors by target firm in Panel A and by acquiring firm in Panel B; error bars show 95% confidence intervals. All other variables are defined in Appendix Table A.1.
+
+- Panel A, target firm employees: `2023/figures/Figure5_Target_DiD.png` from `CreateTables/separations_target.do`
+- Panel B, acquiring firm employees: `2023/figures/Figure5_Acquirer_DiD.png` from `CreateTables/separations_acquirer.do`
+- Discussed in Section V.D
+
+### Figure 6. Combined-firm disclosures, actual versus no-separation counterfactual: difference-in-differences estimates
+
+This figure plots difference-in-differences estimates comparing employee disclosure rates at the actual combined firm to a counterfactual in which advisers who separate after the merger, but remain registered in the industry, are treated as if they had stayed. The unit of observation is a merger by event year, with two series (*Actual* and *Counterfactual*) per merger. The sample covers mergers of investment advisory firms completed between 2011 and 2020, over event years $`t-3`$ through $`t+3`$. Both series are computed over the same fixed cohort: advisers employed at the target or the acquirer before the merger year, excluding advisers hired after the merger. For each merger and event year $`t`$, *Actual* is the percentage of cohort advisers registered with the combined firm in year $`t`$ who have at least one disclosure event initiated in years $`t-2`$ through $`t`$, in any of the 23 categories of disciplinary events in Egan et al. (2019); *Counterfactual* is the same percentage computed over all cohort advisers still registered in the industry in year $`t`$, wherever they work, so that separated advisers’ disclosures at their new firms are attributed to the merged firm. Advisers who leave the industry exit both series. Disclosure rates are winsorized at the 1% and 99% levels. We stack the two series and regress the disclosure rate on the *Actual* main effect and *Actual* $`\times`$ event-year indicators, omitting the $`t-1`$ interaction, with merger, calendar-year, and merger-by-calendar-year fixed effects; each plotted point is the *Actual* minus *Counterfactual* difference at that event year relative to $`t=-1`$, which is normalized to zero. Coefficients are in percentage points. We cluster standard errors by merger; bars show 95% confidence intervals. All other variables are defined in Appendix Table A.1.
+
+- `2023/figures/Figure6_PureSeparation_DiD.png` from `CreateFigures/counterfactual_no_separation.do`, `CreateFigures/misconduct_drop_counterfactual.do`
+- Discussed in Section V.D
+
+### Table I. Sample of merger events by year
+
+This table reports the number of merger events, unique target firms, and unique acquiring firms in each year of our sample. The unit of observation is a merger event. The sample is our hand-collected list of mergers among U.S. registered investment advisory firms completed between 2011 and 2020. We retain each target’s first merger and we restrict to target–acquirer pairs with non-missing assets under management, number of clients, and employee-level data in year $`t-1`$ relative to the merger. Because each target appears in only one merger year, the number of unique targets equals the number of mergers in every year. The number of unique acquirers can be lower when an acquirer completes more than one deal in a given year. We identify target and acquirer firms at the registered-adviser entity level using SEC CRD numbers; distinct CRDs are treated as separate firms, including when they may share a common parent company. The annual acquirer counts are distinct acquirer CRDs within each year. The total of 375 is the sum of these annual counts; because an acquirer CRD can appear in multiple years, it is not the number of distinct acquirer CRDs over the full period. The 485 mergers involve 263 distinct acquirer CRDs over 2011–2020.
+
+- `2023/tables/count_mergers.tex` from `CreateTables/_8_summary_statistics.py`, `CreateTables/_9_port_tables.py`
+- Discussed in Section III.B, V.C
+
+### Table II. Characteristics of targets and acquirers
+
+This table compares target and acquiring investment advisory firms in the year before the merger. The unit of observation is an advisory firm within a merger event. The sample comprises targets and acquirers in mergers completed between 2011 and 2020 with non-missing assets under management, number of clients, and employee-level data in year $`t-1`$ relative to the merger. An acquirer completing multiple deals appears once per deal. Each characteristic is measured as of year $`t-1`$ relative to the merger. *Employee Disclosure (All)* is the number of disclosures across the 23 categories of disciplinary events in (Egan et al. 2019) reported by the firm’s registered employees over years $`t-2`$ through $`t`$ (a trailing three-year stock), divided by the number of registered employees in year $`t`$. *Employee Misconduct (EMS)* is constructed identically using only the 6 of the 23 categories that (Egan et al. 2019) classify as most indicative of misconduct . *Disclosure growth (All)* and *Misconduct growth (EMS)* are the mean annual count of new disclosures of the relevant type over years $`t-3`$ through $`t-1`$, scaled by the number of registered employees in year $`t-1`$. *Any Employee Disclosure (All)* and *Any Employee Misconduct (EMS)* are the number of employees with at least one disclosure of the relevant type recorded at any point through year $`t-1`$, divided by the number of registered employees. *Any Employee Disclosure (All)*, *Any Employee Misconduct (EMS)*, *AUM growth*, and *Client growth* are winsorized at the 1% and 99% levels. All other variables are defined in Appendix Table A.1. *Diff* is the standardized difference in means (acquirer minus target); *T-stat* is the t-statistic from a regression of each characteristic on an acquirer indicator, with heteroskedasticity-robust standard errors. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+em
+
+- `2023/tables/stats_target_acquirer.tex` from `CreateSample/stats_target_firm.do`, `CreateSample/stats_acquirer_firm.do`, `CreateSample/stats_target_acquirer_firm.do`, `CreateTables/_8_summary_statistics.py`, `CreateTables/_9_port_stats_tables.py`
+- Discussed in Section IV, V.A
+
+### Table III. Is misconduct relevant in M&A? Predicting targets
+
+This table reports estimates from a linear probability model predicting whether an advisory firm is acquired in the following year. The unit of observation is an advisory firm-year. The sample includes all U.S. registered investment advisers with fiscal years from 2010 through 2019 with non-missing Form ADV and employment data. The dependent variable, *Target*, is an indicator, multiplied by 100, that equals one if the firm is acquired by another advisory firm in year $`t+1`$. Coefficients are in percentage points. *Employee Disclosure (All)* is the number of disclosures across the 23 categories of disciplinary events in (Egan et al. 2019) reported by the firm’s registered employees over years $`t-2`$ through $`t`$ (a trailing three-year stock), divided by the number of registered employees in year $`t`$. *Employee Misconduct (EMS)* is constructed identically using only the 6 of the 23 categories that (Egan et al. 2019) classify as most indicative of misconduct . Both disclosure measures are winsorized at the 1% and 99% levels and standardized. $`\textit{Retail clients}_{it}`$ is an indicator equal to one if the firm serves retail clients; $`\textit{Ln(Assets under management)}_{it}`$, $`\textit{Ln(Firm Age)}_{it}`$, and $`\textit{Ln(Number of employees)}_{it}`$ are natural logs, each standardized. *Line-of-business FE* are indicators for the advisory firm’s lines of business, as reported on Form ADV. All other variables are defined in Appendix Table A.1. We cluster standard errors, which we report in parentheses, by advisory firm. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+- `2023/tables/target_regression_fraction_bad_three_z.tex` from `CreateTables/target_regression_build.do`, `CreateTables/target_regression_table.do`, `CreateTables/_9_port_tables.py`
+- Discussed in Section V.A, V.B
+
+### Table IV. Is misconduct relevant in M&A? Predicting acquirers
+
+This table reports estimates from a linear probability model predicting whether an advisory firm makes an acquisition in the following year. The unit of observation is an advisory firm-year, for U.S. registered investment advisers with fiscal years from 2010 through 2019 and the required Form ADV and employment data. The dependent variable, *Acquirer*, is an indicator, multiplied by 100, that equals one if the firm acquires another advisory firm in year $`t+1`$. Coefficients are in percentage points. *Employee Disclosure (All)* is the number of disclosures across the 23 categories of disciplinary events in (Egan et al. 2019) reported by the firm’s registered employees over years $`t-2`$ through $`t`$ (a trailing three-year stock), divided by the number of registered employees in year $`t`$. *Employee Misconduct (EMS)* is constructed identically using only the 6 of the 23 categories that (Egan et al. 2019) classify as most indicative of misconduct . Both measures are winsorized at the 1% and 99% levels and standardized. $`\textit{Retail clients}_{it}`$ is an indicator equal to one if the firm serves retail clients; $`\textit{Ln(Assets under management)}_{it}`$, $`\textit{Ln(Firm Age)}_{it}`$, and $`\textit{Ln(Number of employees)}_{it}`$ are natural logs, each standardized. *Line of business FE* are indicators for the advisory firm’s lines of business, as reported on Form ADV. All other variables are defined in Appendix Table A.1. We cluster standard errors, which we report in parentheses, by advisory firm. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+- `2023/tables/acquirer_regression_fraction_bad_three_z.tex` from `CreateTables/acquirer_regression_build.do`, `CreateTables/acquirer_regression_table.do`, `CreateTables/_9_port_tables.py`
+- Discussed in Section V.A
+
+### Table V. Do targets and acquirers match on misconduct?
+
+This table reports estimates from a linear probability model of the probability that a candidate target–acquirer pair merges. The unit of observation is a candidate target–acquirer pair. For each merger year from 2011 to 2020, we pair every acquired target with every firm that completes an acquisition in that year. All columns use the common sample of 19,321 candidate pairs with non-missing controls. Each pair receives equal weight. The dependent variable, $`\mathbb{1}(\text{Merged})\times100`$, equals 100 for the pair that actually merged and zero otherwise. Coefficients are in percentage points. *Acq & Tar Employee Disclosure (All)* equals one when the target and the acquirer each have at least one employee disclosure, across the 23 categories of disciplinary events in Egan et al. (2019), over the three fiscal years ending in the year before the merger; *Acq & Tar Employee Misconduct (EMS)* is defined the same way using only the 6 of the 23 categories that (Egan et al. 2019) classify as most indicative of misconduct . All firm characteristics are measured in the fiscal year before the merger. The absolute differences in the natural logs of AUM, firm age, and number of employees are winsorized at the 1% and 99% levels and standardized. *Same state* equals one when the two firms report main offices in the same state on Form ADV, and *Retail clients* equals one when they have the same retail-client status. *Target & Acquirer Small* (*Large*) equals one when both the target’s and the acquirer’s AUM fall in the bottom (top) quintile of the within-year AUM distribution. *Regulatory Events Both*, *Civil Events Both*, *Criminal Misdemeanor Both*, and *Criminal Felony Both* equal one when the two firms report the same status (both, or neither, report the item) for the corresponding firm-level Form ADV disciplinary item. *Matching line-of-business FE* are indicators that equal one when both firms report the same status for each Form ADV line-of-business category. All other variables are defined in Appendix Table A.1. We cluster standard errors, which we report in parentheses, by acquiring firm. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+- `2023/tables/matching_regression.tex` from `CreateTables/matching_baseline.do`, `CreateTables/_9_port_tables.py`
+- Discussed in Section V.B
+
+### Table VI. Do targets and acquirers match on misconduct? Within-state, one-year window
+
+This table reports estimates from a linear probability model of the probability that a candidate target–acquirer pair merges. The unit of observation is a candidate target–acquirer pair. For each target acquired between 2011 and 2020, candidate acquirers are firms that completed an acquisition of another advisory firm within one calendar year of the target’s acquisition and that have registered employees in at least one state in common with the target in the year before the deal, based on employees’ registered work locations. We drop events where there are no pseudo matches. All columns use the common sample of 14,833 candidate pairs. Each pair receives equal weight. The dependent variable, $`\mathbb{1}(\textit{Merged})\times100`$, equals 100 if the pair actually merged and zero otherwise. Coefficients are in percentage points. *Acq & Tar Employee Disclosure (All)* equals one when the acquirer and target have the same disclosure status: both, or neither, employ at least one adviser with a disclosure, across the 23 categories of disciplinary events in Egan et al. (2019), over the three fiscal years ending in the year before the deal. *Acq & Tar Employee Misconduct (EMS)* is defined the same way using only the 6 of the 23 categories that (Egan et al. 2019) classify as most indicative of misconduct . *Regulatory Events Both*, *Civil Events Both*, *Criminal Misdemeanor Both*, and *Criminal Felony Both* equal one when the two firms report the same status for the corresponding firm-level Form ADV item, and *Retail clients* equals one when they have the same retail-client status. The absolute differences in the natural logs of AUM, firm age, and number of employees are winsorized at the 1% and 99% levels and standardized. *Target & Acquirer Small* (*Large*) equals one when both the target’s and the acquirer’s AUM fall in the bottom (top) quintile of the acquisition-year AUM distribution. *Matching Line-of-business FE* are indicators that equal one when the two firms report the same status for each Form ADV line-of-business category. All other variables are defined in Appendix Table A.1. We cluster standard errors, which we report in parentheses, by acquiring firm. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+- `2023/tables/matching_regression_TimeWindow2023.tex` from `CreateTables/matching_time_window.do`, `CreateTables/_9_port_tables.py`
+- Discussed in Section V.B
+
+### Table VII. Characteristics of the combined target and acquirer, pre- and post-merger
+
+This table reports summary statistics for the combined target and acquirer three years before and three years after the merger, for mergers of investment advisory firms completed between 2011 and 2020. The unit of observation is a merged firm-event year, with event time measured relative to the merger year ($`t=0`$) and restricted to $`t\in[-3,3]`$, requiring at least one pre-merger and one post-merger observation per merger. *Employees* is the number of advisers registered with the target or acquirer (after the merger, the combined firm) in year $`t`$, including advisers hired after the merger; *AUM (\$ Billions)* and *\# Clients (000s)* sum the target’s and acquirer’s own Form ADV-reported values in that year. *Employee Disclosure (All)* is the number of disclosures by these advisers over years $`t-2`$ through $`t`$, across the 23 categories of disciplinary events in Egan et al. (2019), divided by the number of registered advisers in year $`t`$ and multiplied by 100; *Employee Misconduct (EMS)* is constructed identically using only the 6 of the 23 categories that (Egan et al. 2019) classify as most indicative of misconduct . *Misconduct growth (All)* and *Misconduct growth (EMS)* are the corresponding counts of new disclosures initiated in year $`t`$ alone, divided by registered advisers in year $`t`$ and multiplied by 100. *AUM growth* and *Client growth* are the average of the target’s and acquirer’s own trailing three-year average annual percentage growth in AUM and in the number of clients. *Employee Disclosure (All)*, *Employee Misconduct (EMS)*, *AUM growth*, and *Client growth* are winsorized at the 1% and 99% levels. All other variables are defined in Appendix Table A.1. *Diff* is the standardized mean difference between the post- and pre-merger value of each variable; *T-statistic* is the t-statistic on a post-merger indicator from a regression of each variable on that indicator, with standard errors clustered by merger pair. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+em
+
+- `2023/tables/stats_target_acquirerpp.tex` from `CreateTables/_8_tables7and8.py`, `CreateTables/_9_port_stats_tables.py`
+- Discussed in Section V.C, V.D
+
+### Table VIII. Characteristics of the combined pseudo target and acquirer, pre- and post-merger
+
+This table reports summary statistics for the combined pseudo target and pseudo acquirer three years before and three years after the matched merger date. The unit of observation is a pseudo-merged pair-event year, with event time measured relative to the matched merger year and restricted to $`t\in[-3,3]`$, requiring at least one pre-merger and one post-merger observation per pair. The pseudo pairs are matched one-to-one to mergers completed between 2011 and 2020. The pseudo-merged control combines a matched non-merging target–acquirer pair: in the year before the merger, we match each real target and acquirer exactly on line of business, employee-count decile, and indicators for an above-median employee disclosure rate in that year and in each of the three prior years. We select pseudo-merged matches among candidates never involved in a merger. For each real target and acquirer, we choose the pseudo target or pseudo acquirer with the closest disclosure-rate history. We then aggregate the matched pair’s outcomes exactly as we do for the true merged firm. The pseudo target and pseudo acquirer are combined, and all variables are constructed, exactly as for the real merged firms in Table VII. Because the pseudo firms do not merge, post-period employee counts can include advisers who join after the match date. All other variables are defined in Appendix Table A.1. *Diff* is the standardized mean difference between the post- and pre-merger value of each variable; *T-statistic* is the t-statistic on the difference in means. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+em
+
+- `2023/tables/stats_target_acquirerppf.tex` from `CreateTables/_8_tables7and8.py`, `CreateTables/_9_port_stats_tables.py`
+- Discussed in Section V.C
+
+### Table IX. Does merging change employee misconduct at the combined firm?
+
+This table examines employee disclosures at the combined target and acquiring firm (*Merged*) following the merger, relative to a pseudo-merged control firm. The unit of observation is a real or pseudo target–acquirer pair from $`t=-3`$ to $`t=+3`$ around mergers completed between 2011 and 2020. Each pair must appear before the merger and at least one year after, and the real pair and its pseudo pair must both appear in the same event year. The pseudo-merged control combines a matched non-merging target–acquirer pair: in the year before the merger, we match each real target and acquirer exactly on line of business, employee-count decile, and indicators for an above-median employee disclosure rate in that year and in each of the three prior years. We select pseudo-merged matches among candidates never involved in a merger. For each real target and acquirer, we choose the pseudo target or pseudo acquirer with the closest disclosure-rate history. We then aggregate the matched pair’s outcomes exactly as we do for the true merged firm. *Employee Disclosure (All)*, the dependent variable in columns (1)–(2), is the count of new disclosure events initiated in years $`t-2`$ through $`t`$, across the 23 categories of disciplinary events in Egan et al. (2019), by advisers registered with either firm of the pair in year $`t`$ (including advisers hired after the merger), per 100 registered advisers. *Employee Misconduct (EMS)*, the dependent variable in columns (3)–(4), is constructed identically using only the 6 of the 23 categories that (Egan et al. 2019) classify as most indicative of misconduct . *Post* equals one from the merger year ($`t=0`$) onward. Coefficients are in percentage points. Continuous controls are standardized. We winsorize the dependent variables at the 1% and 99% levels. All other variables are defined in Appendix Table A.1. We cluster standard errors, which we report in parentheses, by cohort, where a cohort comprises a real target–acquirer pair and its matched pseudo pair. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+- `2023/tables/post_misc_regs.tex` from `CreateTables/post_merger_misconduct_real.do`, `CreateTables/post_merger_misconduct_pseudo.do`, `CreateTables/pseudo_real_merger_test.do`, `CreateTables/_9_port_tables.py`
+- Discussed in Section V.C, V.D
+
+### Table X. How does M&A discipline employees?
+
+This table examines the probability that an adviser separates from their firm around mergers. The unit of observation is an adviser-year. The sample includes all advisers employed at the target (Panel A) and/or the acquirer (Panel B) before the merger. The sample covers advisers employed by target firms before mergers completed between 2011 and 2020, over event years $`-3`$ to $`+3`$ relative to the merger at $`t=0`$. Each adviser exits the sample after a first separation. The dependent variable is *Separation*, an indicator equal to one if an adviser registered with the firm in year $`t`$ is no longer registered with the target, acquirer, or combined firm in year $`t+1`$, multiplied by 100. Post-merger moves between the merging firms do not count as separations. Coefficients are in percentage points. *Employee Disclosure (All)* is an indicator equal to one if the adviser has at least one new disclosure event initiated in year $`t`$ (a current-year flow, not a stock of past disclosures), in any of the 23 categories of disciplinary events in (Egan et al. 2019). *Employee Misconduct (EMS)* is the analogous indicator using only the 6 of the 23 categories that (Egan et al. 2019) classify as most indicative of misconduct . *Post* is an indicator equal to one in the merger year and the three years following the merger; its main effect is absorbed by the firm $`\times`$ year fixed effects. *Ln(Experience)* and *Ln(# Qualifications)* are standardized. All other variables are defined in Appendix Table A.1. We cluster standard errors, which we report in parentheses, by target firm in Panel A and by acquiring firm in Panel B. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+- `2023/tables/fired_post.tex` from `CreateTables/separations_target.do`, `CreateTables/separations_acquirer.do`, `CreateTables/_9_port_tables.py`
+- Discussed in Section V.D
+
+### Table XI. Do target advisers’ new disclosures change after mergers?
+
+This table examines new disciplinary disclosures of target-firm advisers (*Target*) relative to advisers of a matched pseudo-target firm around the merger. The unit of observation is an adviser-year. The sample covers mergers completed between 2011 and 2020, event years $`-3`$ to $`+3`$ around the merger year, and calendar years through 2022. We include advisers employed by the real or pseudo target at any point in the five years before the merger, exclude post-merger hires, keep advisers whose qualification exams identify them as brokers or investment advisers, and follow each adviser until his or her first separation. A move from the target to its acquirer does not count as a separation. The pseudo-merged control combines a matched non-merging target–acquirer pair: in the year before the merger, we match each real target and acquirer exactly on line of business, employee-count decile, and indicators for an above-median employee disclosure rate in that year and in each of the three prior years. We select pseudo-merged matches among candidates never involved in a merger. For each real target and acquirer, we choose the pseudo target or pseudo acquirer with the closest disclosure-rate history. We then aggregate the matched pair’s outcomes exactly as we do for the true merged firm. This table uses the target and pseudo target of each matched pair. *Flow Disclosure (All)*, the dependent variable in columns (1)–(2), is an indicator, multiplied by 100, equal to one if the adviser has at least one new disclosure event initiated in year $`t`$ in any of the 23 categories of disciplinary events in Egan et al. (2019); *Flow Misconduct (EMS)*, the dependent variable in columns (3)–(4), is the analogous indicator using only the 6 of the 23 categories that (Egan et al. 2019) classify as most indicative of misconduct . Coefficients are in percentage points. *Post* equals one in event years zero through three. *Ln(Experience)* and *Ln(# Qualifications)* are standardized. All other variables are defined in Appendix Table A.1. We cluster standard errors, which we report in parentheses, by cohort, where a cohort comprises a real target and its matched pseudo target. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+- `2023/tables/matching_counterfactual.tex` from `CreateTables/misconduct_drop_employee.do`, `CreateTables/_9_port_tables.py`
+- Discussed in Section V.D
+
+### Table XII. Is misconduct value-relevant in the investment advisory industry?
+
+This table examines the relationship between employee misconduct and two firm performance measures: assets under management (AUM) per employee (Panel A) and firm failure (Panel B). The unit of observation is an advisory firm-year. The sample includes investment advisory firms filing Form ADV for fiscal years 2010 to 2021, matched to the FINRA/IAPD employee panel, with non-missing employee counts and non-zero AUM. In Panel A, the dependent variable is Ln($`\frac{\text{AUM}}{\text{Employees}})_{t+1}`$, the natural logarithm of AUM per registered employee in year $`t+1`$. Coefficients are in log points. In Panel B, the dependent variable is $`\mathbb{1}(\textit{Failed})_{t+1}\times100`$, an indicator equal to one if the firm files a Form ADV-W with the SEC in year $`t+1`$ stating closure of the business or cessation of advisory activities as the reason, multiplied by 100. Coefficients are in percentage points. *Employee Disclosure (All)* is the number of disclosures across the 23 categories of disciplinary events in (Egan et al. 2019) reported by the firm’s registered employees over years $`t-2`$ through $`t`$ (a trailing three-year stock), divided by the number of registered employees in year $`t`$. *Employee Misconduct (EMS)* is constructed identically using only the 6 of the 23 categories that (Egan et al. 2019) classify as most indicative of misconduct . Both misconduct measures are winsorized at the 1% and 99% levels. They are standardized, as are *Ln(Firm Age)* and *Ln(Number of employees)*. The two panels are estimated on different samples because the outcomes are defined on different supports: Panel A’s dependent variable exists only for firms that still file a Form ADV in year $`t+1`$, whereas Panel B’s dependent variable identifies precisely the firms that do not. Panel A therefore covers 76,754 firm-years and Panel B 85,695; the two misconduct measures are winsorized and standardized separately within each panel’s estimation sample. *Line-of-business FE* are line-of-business indicators, as reported on Form ADV. All other variables are defined in Appendix Table A.1. We cluster standard errors, which we report in parentheses, by advisory firm. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+- Panel A, AUM per employee: `2023/tables/misc_reverts_regression_a.tex` from `CreateTables/aum_per_employee.do`, `CreateTables/_9_port_tables.py`
+- Panel B, firm failure: `2023/tables/aum_misc_change.tex` from `CreateTables/build_adv_withdrawal_failures.do`, `CreateTables/firm_closure.do`, `CreateTables/_9_port_tables.py`
+- Discussed in Section V.E
+
+### Figure A1. Aggregate damage amounts requested in employee disclosures
+
+This figure plots the aggregate dollar amount of damages requested in employee disclosures, in \$ Millions, by calendar year from 2001 to 2021. The underlying data pool all FINRA BrokerCheck and IAPD disclosure records for registered representatives nationwide, covering disclosures of any type. For customer disputes, the amount is the damage amount requested; for regulatory and civil actions, it is the monetary sanction. Amounts are taken from the disclosure records and summed to the advisory firm-year level; firm-years with a total above \$100 million are excluded as implausible. The figure sums the remaining firm-year amounts within each calendar year.
+
+- `2023/figures/misconduct_trends_employee.png` from `CreateFigures/fines_per_year.do`, `CreateFigures/_1_fines_per_year.py`
+- Discussed in Section V.E
+
+### Figure A2. Advisers, headcount and target registrations around mergers
+
+This figure plots the evolution of adviser registrations at merging firms in event time. The unit of observation is a merger. The sample is the 485 mergers completed between 2011 and 2020, with event time measured relative to the merger year ($`t=0`$). Panel A plots the distribution across mergers of the share of advisers registered with the target in $`t-1`$ who are registered with the acquirer in $`t+1`$, with the dashed line at the median. Panel B plots the combined headcount of the target and the acquirer indexed to its value in $`t-1`$, with the solid line the median across mergers and the shaded band the 25th to 75th percentile. Panel C plots the share of targets with no registered advisers in event year $`t+k`$. All other variables are defined in Appendix Table A.1.
+
+- Panel A, adviser transfer to the acquirer: `2023/figures/figA2_panelA_transfer.png` from `CreateFigures/_2_figA2_extract_employment.py`, `CreateFigures/_2_figA2_compute_metrics.py`, `CreateFigures/_2_figA2_panels.py`
+- Panel B, combined workforce: `2023/figures/figA2_panelB_headcount.png` from `CreateFigures/_2_figA2_extract_employment.py`, `CreateFigures/_2_figA2_compute_metrics.py`, `CreateFigures/_2_figA2_panels.py`
+- Panel C, target deregistration: `2023/figures/figA2_panelC_deregistration.png` from `CreateFigures/_2_figA2_extract_employment.py`, `CreateFigures/_2_figA2_compute_metrics.py`, `CreateFigures/_2_figA2_panels.py`
+- Discussed in Section III.B
+
+### Figure A3. Robustness of the post-merger decline in employee disclosures
+
+This figure plots difference-in-differences estimates of the post-merger change in employee disclosures under alternative samples and outcome definitions. The unit of observation is a merged or pseudo-merged target–acquirer pair in event year $`t`$, from $`t=-3`$ to $`t=+3`$ around mergers completed between 2011 and 2020. The pseudo-merged control combines a matched non-merging target–acquirer pair: in the year before the merger, we match each real target and acquirer exactly on line of business, employee-count decile, and indicators for an above-median employee disclosure rate in that year and in each of the three prior years. We select pseudo-merged matches among candidates never involved in a merger. For each real target and acquirer, we choose the pseudo target or pseudo acquirer with the closest disclosure-rate history. We then aggregate the matched pair’s outcomes exactly as we do for the true merged firm. All specifications include pair and matched-pair by calendar-year fixed effects. Panel A plots the coefficients on *Merged* interacted with event-year indicators, omitting $`t-1`$, for *Employee Disclosure (All)*, for all 423 matched pairs and for the 163 pairs in which no firm involved takes part in another merger within three years of the deal. Panel B plots the coefficient on *Merged X Post* for each measure under alternatives to the Table IX specification: counting each adviser once rather than once per registration, dropping disclosures for employment separations after allegations, and dating the event by the announcement year and by the closing year. We cluster standard errors by matched pair; bars show 95% confidence intervals. All other variables are defined in Appendix Table A.1.
+
+- Panel A, dynamic effect: `2023/figures/figA3_panelA_dynamic.png` from `CreateFigures/figA3_estimation/run_figA3.py`, `CreateFigures/_3_figA3_plot.py`
+- Panel B, alternative specifications: `2023/figures/figA3_panelB_alternatives.png` from `CreateFigures/figA3_estimation/run_figA3.py`, `CreateFigures/_3_figA3_plot.py`
+- Discussed in Section V.C
+
+### Table A.2. Is misconduct relevant in M&A? Predicting targets (line-of-business controls)
+
+This table reports the line-of-business estimates from the target-prediction model in Table III. The unit of observation is an advisory firm-year, for fiscal years 2010 through 2019; firm-years after a firm’s first acquisition are dropped. The dependent variable, *Target*, is an indicator, multiplied by 100, that equals one if the firm is acquired by another advisory firm in year $`t+1`$. Coefficients are in percentage points. *Employee Disclosure (All)* is the number of disclosures across the 23 categories of disciplinary events in (Egan et al. 2019) reported by the firm’s registered employees over years $`t-2`$ through $`t`$ (a trailing three-year stock), divided by the number of registered employees in year $`t`$. *Employee Misconduct (EMS)* is constructed identically using only the 6 of the 23 categories that (Egan et al. 2019) classify as most indicative of misconduct . Both measures are winsorized at the 1% and 99% levels and standardized. The line-of-business indicators reflect the firm’s lines of business as reported on Form ADV: *Financial Planning* (financial planning services); *Individuals and Small Businesses*, *Investment Companies*, and *Large Businesses* (portfolio management for individuals and small businesses, for investment companies, and for other institutional clients that are neither investment companies nor pooled investment vehicles, respectively); *Pension Consulting*; *Selection Advisers* (selection of other advisers, including private fund managers); *Publication Periodicals* (periodicals or newsletters); *Ratings and Pricing*; *Market Timing*; and *Other* (educational seminars or other lines of business). These indicators enter as regressors in every column. Year fixed effects are absorbed. *Other Controls* are the remaining controls from Table III: retail-client status and standardized logs of assets under management, firm age, and number of employees. All other variables are defined in Appendix Table A.1. We cluster standard errors, which we report in parentheses, by advisory firm. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+- `2023/tables/target_regressionind.tex` from `CreateTables/appendix_industry_controls.do`, `CreateTables/_9_port_tables.py`
+- Discussed in Section V.A
+
+### Table A.3. Is misconduct relevant in M&A? Predicting acquirers (line-of-business controls)
+
+This table reports the line-of-business estimates from the acquirer-prediction model in Table IV. The unit of observation is an advisory firm-year, for fiscal years 2010 through 2019. The dependent variable, *Acquirer*, is an indicator, multiplied by 100, that equals one if the firm acquires another advisory firm in year $`t+1`$. Coefficients are in percentage points. *Employee Disclosure (All)* is the number of disclosures across the 23 categories of disciplinary events in (Egan et al. 2019) reported by the firm’s registered employees over years $`t-2`$ through $`t`$ (a trailing three-year stock), divided by the number of registered employees in year $`t`$. *Employee Misconduct (EMS)* is constructed identically using only the 6 of the 23 categories that (Egan et al. 2019) classify as most indicative of misconduct . Both measures are winsorized at the 1% and 99% levels and standardized. The line-of-business indicators reflect the firm’s lines of business as reported on Form ADV: *Financial Planning* (financial planning services); *Individuals and Small Businesses*, *Investment Companies*, and *Large Businesses* (portfolio management for individuals and small businesses, for investment companies, and for other institutional clients that are neither investment companies nor pooled investment vehicles, respectively); *Pension Consulting*; *Selection Advisers* (selection of other advisers, including private fund managers); *Publication Periodicals* (periodicals or newsletters); *Ratings and Pricing*; *Market Timing*; and *Other* (educational seminars or other lines of business). These indicators enter as regressors in every column. Year fixed effects are absorbed. *Other Controls* are the remaining controls from Table III: retail-client status and standardized logs of assets under management, firm age, and number of employees. All other variables are defined in Appendix Table A.1. We cluster standard errors, which we report in parentheses, by advisory firm. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+- `2023/tables/acquirer_regressionind.tex` from `CreateTables/appendix_industry_controls.do`, `CreateTables/_9_port_tables.py`
+- Discussed in Section V.A
+
+### Table A.4. Do targets and acquirers match on misconduct? Line-of-business controls
+
+This table adds line-of-business controls to the matching regression in Table V, which predicts whether a candidate target–acquirer pair merges. The unit of observation is a candidate target–acquirer pair: for each merger year from 2011 to 2020, the sample contains the realized merger pair and every counterfactual pairing of that target with every other firm that acquired an advisory firm in that year. All columns use the common sample of 19,321 candidate pairs, and each pair receives equal weight. The dependent variable, $`\mathbb{1}(\text{Merged})\times100`$, equals 100 for the realized merger pair and zero otherwise. Coefficients are in percentage points. *Acq & Tar Employee Disclosure (All)*, in columns (1)–(2), equals one when the target and the acquirer each have at least one employee disclosure, across the 23 categories of disciplinary events in Egan et al. (2019), over the three fiscal years ending in the year before the merger; *Acq & Tar Employee Misconduct (EMS)*, in columns (3)–(4), is defined the same way using only the 6 of the 23 categories that (Egan et al. 2019) classify as most indicative of misconduct . The line-of-business indicators equal one when the target and acquirer report the same status for the corresponding Form ADV category: *Financial Planning*; *Individuals and Small Businesses*, *Investment Companies*, *Pooled Funds*, and *Large Businesses* (portfolio management for individuals and small businesses, for investment companies, for pooled investment vehicles other than investment companies, and for other institutional clients, respectively); *Pension Consulting*; *Selection Advisers*; *Publication Periodicals*; *Market Timing*; and *Other*. These indicators enter as regressors. Acquisition-year fixed effects are absorbed. *Other Controls*, added in columns (2) and (4), include retail-client status, the absolute differences in the natural logs of AUM, firm age, and number of employees, and same-state status; column (4) additionally includes *Target & Acquirer Small* (*Large*), which equal one when both the target’s and the acquirer’s AUM fall in the bottom (top) quintile of the within-year AUM distribution. All other variables are defined in Appendix Table A.1. We cluster standard errors, which we report in parentheses, by acquiring firm. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+- `2023/tables/matching_regressionindustry.tex` from `CreateTables/appendix_industry_controls.do`, `CreateTables/_9_port_tables.py`
+- Discussed in Section V.B
+
+### Table A.5. Acquirer CRDs with more than two acquisitions, 2011–2020
+
+This table lists all acquirer CRDs in our analysis sample that completed acquisitions of at least three distinct target CRDs between 2011 and 2020, ranked by the number of unique targets acquired. The unit of observation is an acquirer CRD. We identify acquirers at the registered-adviser entity level using CRD numbers; each distinct CRD is treated as a separate acquirer, including when multiple CRDs may belong to firms under the same parent company. For each CRD, we report the Form ADV business name associated with the acquirer’s latest merger year.
+
+- `2023/tables/frequent_acquirers_crd.tex` from `CreateTables/_8_frequent_acquirers.py`
+- Discussed in Section V.C
+
+### Table A.6. Does merging change employee misconduct? Frequent acquirers
+
+This table examines whether the post-merger change in employee disclosures at merged firms differs for frequent acquirers. The unit of observation is a real or pseudo target–acquirer pair in event year $`t`$, from $`t=-3`$ to $`t=+3`$ around mergers completed between 2011 and 2020; each pair must appear before and after the merger. The real pair and its pseudo pair must be observed in the same event year. The pseudo-merged control combines a matched non-merging target–acquirer pair: in the year before the merger, we match each real target and acquirer exactly on line of business, employee-count decile, and indicators for an above-median employee disclosure rate in that year and in each of the three prior years. We select pseudo-merged matches among candidates never involved in a merger. For each real target and acquirer, we choose the pseudo target or pseudo acquirer with the closest disclosure-rate history. We then aggregate the matched pair’s outcomes exactly as we do for the true merged firm. *Employee Disclosure (All)*, the dependent variable in columns (1)–(2), is the count of new disclosure events initiated in years $`t-2`$ through $`t`$, across the 23 categories of disciplinary events in Egan et al. (2019), by advisers registered with either firm of the pair in year $`t`$ (including advisers hired after the merger), per 100 registered advisers. *Employee Misconduct (EMS)*, the dependent variable in columns (3)–(4), is constructed identically using only the 6 of the 23 categories that (Egan et al. 2019) classify as most indicative of misconduct . Coefficients are in percentage points. *Merged* indicates a real target–acquirer pair. *Post* indicates event years $`t\geq0`$, beginning with the merger year. *Frequent* indicates acquisitions that follow the acquirer’s first acquisition in our sample. It equals zero for each acquirer’s first deal and for all pseudo pairs. We winsorize the dependent variables at the 1% and 99% levels. All other variables are defined in Appendix Table A.1. We cluster standard errors, which we report in parentheses, by cohort, where a cohort comprises a real target–acquirer pair and its matched pseudo pair. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+- `2023/tables/post_misc_regsfreq.tex` from `CreateTables/appendix_industry_controls.do`, `CreateTables/_9_port_tables.py`
+- Discussed in Section V.C
+
+### Table A.7. Does merging change employee misconduct? Advisers with broker qualifications
+
+This table repeats the specification of Table IX after restricting both the disclosure numerator and the adviser denominator to advisers with a broker qualification. The unit of observation is a real or pseudo target–acquirer pair in event year $`t`$, from $`t=-3`$ to $`t=+3`$ around mergers completed between 2011 and 2020, with the same pseudo-merged control, sample rules, controls, year fixed effects, and clustering as Table IX. Panel A reproduces that table. In Panels B–D we classify each adviser by the qualification exams recorded in BrokerCheck and IAPD, hold the classification fixed over the event window, and recompute the numerator and the denominator of the dependent variables from the advisers in the panel’s group. A broker-qualified representative passed the Series 6 or Series 7 examination in or before the year preceding the merger ($`t-1`$); an IAR-qualified representative passed the Series 65, or the Series 66 together with the Series 7, by the same year. Advisers with no qualifying exam by $`t-1`$, including post-merger hires new to the industry, are excluded from both numerator and denominator. *Employee Disclosure (All)* and *Employee Misconduct (EMS)* are defined as in Table IX, per 100 advisers in the panel’s group. The controls are those of Table IX and are unchanged across panels; in particular, the number of employees counts all registered advisers of the pair, not only the advisers in the panel’s group. The coefficients on *Merged*, *Post*, and the controls are not reported. *Mergers* is the number of real mergers retained and *Share of advisers retained* is the mean ratio of the panel’s denominator to the full-firm denominator. Coefficients are in percentage points. We winsorize the dependent variables at the 1% and 99% levels. We cluster standard errors, which we report in parentheses, by cohort. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+- `2023/tables/post_misc_regs_examqual.tex` from `CreateTables/BrokerRegistrationRobustness/run_all.do`, `CreateTables/BrokerRegistrationRobustness/05_appendix_exam_table.do`, `CreateTables/_9_port_tables.py`
+- Discussed in Section V.C
+
+### Table A.8. Labor market outcomes following mergers
+
+This table tabulates annual job transitions of advisers employed at target firms (Panel A) and acquiring firms (Panel B) around merger events. The unit of observation is an adviser-year. The sample follows advisers employed at the target or acquirer in the three years before the merger, from three years before to three years after mergers completed between 2011 and 2020, and includes only advisers whose qualification exams classify them as brokers or investment advisers; each adviser is followed until their first separation. *Pre* columns cover years before the merger year; *Post* columns cover the merger year and later years. *Misconduct* columns include adviser-years in which the adviser has at least one new disclosure event initiated in year $`t`$, in any of the 23 categories of disciplinary events in Egan et al. (2019); *No Misconduct* columns include the remaining adviser-years. *Leave Firm* is the percentage of adviser-years in which the adviser no longer works for the target, acquirer, or combined firm in year $`t+1`$; *Remain with Firm* is the complement, and an adviser who moves from the target to the acquirer following the merger is counted as remaining with the firm. Among advisers who leave, *Left Industry* is the percentage never again registered with any advisory firm in our employment data, and *Join a Different Firm* is the percentage that register with another firm in a subsequent year. All other variables are defined in Appendix Table A.1.
+
+em
+
+- `2023/tables/separationmerger.tex` from `CreateTables/labor_outcomes_table.do`, `CreateTables/_9_port_tables.py`
+- Discussed in Section V.D
+
+### Table A.9. Is misconduct value-relevant in the investment advisory industry? Massachusetts 2016 regulatory inquiries
+
+This table examines how a shock to the salience of employee misconduct disclosures—the 2016 Massachusetts regulatory inquiries—relates to assets under management (AUM) per employee. The unit of observation is an advisory firm-year. The sample includes investment advisory firms that filed Form ADV for fiscal years 2013 through 2018, with non-missing, non-zero AUM and registered-employee counts from BrokerCheck or IAPD. The dependent variable, *Ln($`\frac{\text{AUM}}{\text{Employees}}`$)*, is the natural logarithm of AUM per registered employee; coefficients are in log points. On June 6, 2016, the Massachusetts securities regulator sent letters of inquiry to 241 broker-dealer firms, each employing at least ten Massachusetts-registered agents and an above-average share of agents with at least one current misconduct disclosure, asking how the firms treat advisers with misconduct records. The inquiries were widely publicized. *Treated* equals one for firms with at least one employee on their 2015 roster whose Massachusetts registration dates to 2015 or earlier. *Post* is an indicator for fiscal years 2016 through 2018. Firm fixed effects in columns (3) and (4) absorb *Treated*. *Ln(Firm Age)* and *Ln(Number of employees)* are standardized. All other variables are defined in Appendix Table A.1. We cluster standard errors, which we report in parentheses, by advisory firm. $`^{***}`$, $`^{**}`$, and $`^{*}`$ indicate significance at the 1%, 5%, and 10% level, respectively.
+
+- `2023/tables/mathing.tex` from `CreateTables/ma_employee_misconduct.do`, `CreateTables/_9_port_tables.py`
+- Discussed in Section V.E
+
+## Table A.1. Variable Definitions
+
+Hand-written in the paper's Internet Appendix; no code produces it.
+
+### Misconduct Measures
+
+- ***Employee Disclosure (All)***: Count of disclosures across 23 FINRA categories for each adviser over the current year and previous two years, divided by total registered employees at the firm.
+
+- ***Employee Misconduct (EMS)***: Count of disclosures in the 6 categories that Egan et al. (2019) consider most indicative of misconduct, divided by total registered employees.
+
+- ***Any Employee Disclosure (All)***: Number of employees with any disclosure (regardless of when the disclosure occurred) in the 23 FINRA categories, divided by total registered employees.
+
+- ***Any Employee Misconduct (EMS)***: Number of employees with any disclosure in the 6 EMS categories (regardless of when the disclosure occurred), divided by total registered employees.
+
+- ***Disclosure Growth***: First difference between the total number of disclosures for all employees in the current year and the previous year, scaled by the current number of registered employees.
+
+- ***Misconduct Growth***: First difference between the total number of EMS disclosures in the current year and the previous year, scaled by the current number of registered employees.
+
+- ***Acq & Tar Employee Disclosure (All)***: Indicator equal to one when the acquirer and the target both have employees with recent disclosures or both have no employees with recent disclosures.
+
+- ***Acq & Tar Employee Misconduct (EMS)***: Indicator equal to one when both firms have employees with EMS misconduct or both have no employees with EMS misconduct.
+
+### Merger and Event Indicators
+
+- ***Target***: Indicator equal to one if an advisory firm is acquired during year $`t+1`$.
+
+- ***Acquirer***: Indicator equal to one if an advisory firm acquires another firm during year $`t+1`$.
+
+- ***Merged***: Indicator equal to one for the combined firm following a merger.
+
+- ***Post***: Indicator equal to one for the year of the merger and the years following.
+
+- ***Separation***: Indicator equal to one if an adviser employed at the target or acquirer in year $`t`$ no longer works for the combined firm in year $`t+1`$.
+
+- ***NM (No Managers)***: Indicator equal to one if none of the target firm’s managers or owners remain in their roles at the combined firm post-merger.
+
+- ***HDA (High Disclosures Acquirer)***: Indicator equal to one if the acquirer has above median employee disclosures in the year before the merger.
+
+- ***Frequent***: Indicator for acquiring firms that made more than one acquisition over our sample period.
+
+### Firm Characteristics
+
+- ***AUM***: Assets under management in dollars.
+
+- ***Ln(AUM)***: Natural log of assets under management.
+
+- ***\# Employees***: Number of registered advisers at the firm.
+
+- ***Ln(Number of Employees)***: Natural log of registered employees.
+
+- ***\# Clients***: Number of clients served by the advisory firm.
+
+- ***Client Growth***: Percentage growth in the number of clients.
+
+- ***AUM Growth***: Percentage growth in assets under management.
+
+- ***Firm Age***: Age of the advisory firm in years.
+
+- ***Ln(Firm Age)***: Natural log of firm age in years.
+
+- ***Retail Clients***: Indicator equal to one if the firm serves retail clients.
+
+- ***Same State***: Indicator equal to one if the target and acquirer are headquartered in the same state.
+
+- ***Failed***: Indicator equal to one if the advisory firm closes in the year following its Form ADV filing.
+
+### Employee Characteristics
+
+- ***Experience***: Number of years of experience in the advisory industry.
+
+- ***Ln(Experience)***: Natural log of years of experience.
+
+- ***\# Qualifications***: Total number of professional certifications held by the adviser.
+
+- ***Ln(# Qualifications)***: Natural log of the number of qualifications.
+
+### Regulatory and Legal Events
+
+- ***Regulatory Events Both***: Indicator equal to one if both the target and acquirer have been involved in a regulatory action with the SEC, CFTC, or FINRA.
+
+- ***Civil Events Both***: Indicator equal to one if both firms report civil actions over the past ten years.
+
+- ***Criminal Misdemeanor Both***: Indicator equal to one if both firms have been convicted of a misdemeanor in the past 10 years.
+
+- ***Criminal Felony Both***: Indicator equal to one if both firms have been convicted of a felony in the past 10 years.
+
+- ***Treated***: Indicator for advisory firms with at least one employee registered in Massachusetts prior to 2015 (Massachusetts regulatory inquiry analysis).
+
+- ***Discharge***: Indicator equal to one if the employee separation was classified as a discharge on Form U5.
+
+## References
+
+Agrawal, Anup, and Ralph A Walkling. 1994. “Executive Careers and Compensation Surrounding Takeover Bids.” *The Journal of Finance* 49 (3): 985–1014.
+
+Albuquerque, Rui, Luis Brandão-Marques, Miguel A Ferreira, and Pedro Matos. 2019. “International Corporate Governance Spillovers: Evidence from Cross-Border Mergers and Acquisitions.” *The Review of Financial Studies* 32 (2): 738–70.
+
+Ameritrade, TD. 2019. *Mergers & Acquisitions in the RIA Industry: Overcoming the Big Disconnect*. Available at <https://www.tdainstitutional.com/tdai-en_us/resources/document/wp_fa_overcoming_the_big_disconnect.pdf>https://www.tdainstitutional.com/tdai-en_us/resources/document/wp_fa_overcoming_the_big_disconnect.pdf (Last Accessed: 10/20/2020).
+
+Anagol, Santosh, Shawn Cole, and Shayak Sarkar. 2017. “Understanding the Advice of Commissions-Motivated Agents: Evidence from the Indian Life Insurance Market.” *Review of Economics and Statistics* 99 (1): 1–15.
+
+Arnold, David. 2021. “Mergers and Acquisitions, Local Labor Market Concentration, and Worker Outcomes.” *Working Paper*.
+
+Arnold, David, Kevin Milligan, Terry Moon, and Amirhossein Tavakoli. 2023. “Job Transitions and Employee Earnings After Acquisitions: Linking Corporate and Worker Outcomes.” *Working Paper*.
+
+Atalay, Enghin, Ali Hortaçsu, Nicole Kimmel, and Chad Syverson. 2025. “Why Is Manufacturing Productivity Growth so Low?” *National Bureau of Economic Research Working Paper 34264*.
+
+Atkin, David, Amit K Khandelwal, and Adam Osman. 2019. “Measuring Productivity: Lessons from Tailored Surveys and Productivity Benchmarking.” *AEA Papers and Proceedings* 109: 444–49.
+
+Bergstresser, Daniel, John MR Chalmers, and Peter Tufano. 2008. “Assessing the Costs and Benefits of Brokers in the Mutual Fund Industry.” *The Review of Financial Studies* 22 (10): 4129–56.
+
+Bhagat, Sanjai, Andrei Shleifer, Robert W Vishny, Gregg Jarrel, and Lawrence Summers. 1990. “Hostile Takeovers in the 1980s: The Return to Corporate Specialization.” *Brookings Papers on Economic Activity. Microeconomics* 1990: 1–84.
+
+Bris, Arturo, and Christos Cabolis. 2008. “The Value of Investor Protection: Firm Evidence from Cross-Border Mergers.” *The Review of Financial Studies* 21 (2): 605–48.
+
+Charoenwong, Ben, Alan Kwan, and Tarik Umar. 2019. “Does Regulatory Jurisdiction Affect the Quality of Investment-Adviser Regulation?” *American Economic Review* 109 (10): 3681–712.
+
+Christoffersen, Susan EK, Richard Evans, and David K Musto. 2013. “What Do Consumers’ Fund Flows Maximize? Evidence from Their Brokers’ Incentives.” *The Journal of Finance* 68 (1): 201–35.
+
+Datta, Deepak K. 1991. “Organizational Fit and Acquisition Performance: Effects of Post-Acquisition Integration.” *Strategic Management Journal* 12 (4): 281–97.
+
+Dimmock, Stephen G, William C Gerken, and Nathaniel P Graham. 2018. “Is Fraud Contagious? Coworker Influence on Misconduct by Financial Advisors.” *The Journal of Finance* 73 (3): 1417–50.
+
+Dyck, Alexander, Adair Morse, and Luigi Zingales. 2010. “Who Blows the Whistle on Corporate Fraud?” *The Journal of Finance* 65 (6): 2213–53.
+
+Easley, David, and Maureen O’Hara. 2023. “Financial Market Ethics.” *Review of Financial Studies* 36: 534–70.
+
+Egan, Mark, Gregor Matvos, and Amit Seru. 2019. “The Market for Financial Adviser Misconduct.” *Journal of Political Economy* 127 (1): 233–95.
+
+Egan, Mark, Gregor Matvos, and Amit Seru. 2022. “When Harry Fired Sally: The Double Standard in Punishing Misconduct.” *Journal of Political Economy* 130 (5): 1184–248.
+
+Federico, Giulio, Gregor Langus, and Tommaso Valletti. 2018. “Horizontal Mergers and Product Innovation.” *International Journal of Industrial Organization* 59: 1–23.
+
+Fulghieri, Paolo, and Merih Sevilir. 2021. *Human Capital Integration in Mergers and Acquisitions*. CEPR Discussion Paper No. DP15865.
+
+Garrett, Daniel G. 2020. “Conflicts of Interest in Municipal Bond Advising and Underwriting.” PhD thesis, Duke University.
+
+Gorton, Gary B, and Alexander K Zentefis. 2024. “Corporate Culture as a Theory of the Firm.” *Economica* 91 (364): 1391–423.
+
+Guercio, Diane Del, and Jonathan Reuter. 2014. “Mutual Fund Performance and the Incentive to Generate Alpha.” *The Journal of Finance* 69 (4): 1673–704.
+
+Guiso, Luigi, Andrea Pozzi, Anton Tsoy, Leonardo Gambacorta, and Paolo Emilio Mistrulli. 2018. “The Cost of Steering in Financial Markets: Evidence from the Mortgage Market.” Unpublished manuscript.
+
+Haleblian, Jerayr, Cynthia E Devers, Gerry McNamara, Mason A Carpenter, and Robert B Davison. 2009. “Taking Stock of What We Know about Mergers and Acquisitions: A Review and Research Agenda.” *Journal of Management* 35 (3): 469–502.
+
+Hartzell, Jay C, Eli Ofek, and David Yermack. 2004. “What’s in It for Me? CEOs Whose Firms Are Acquired.” *The Review of Financial Studies* 17 (1): 37–61.
+
+Huberman, Gur. 2007. “Is the Price of Money Managers Too Low?” *Rivista Bancaria* 1.1: 7–38.
+
+Jennings, Andrew K. 2023. “The Market for Corporate Criminals.” *Yale Journal on Regulation (Forthcoming)*.
+
+Jenter, Dirk, and Katharina Lewellen. 2015. “CEO Preferences and Acquisitions.” *The Journal of Finance* 70 (6): 2813–52.
+
+Joenvaara, Juha, and Bernd Scherer. 2017. “A Note on the Valuation of Asset Management Firms.” *Journal of Portfolio Management* 31: 180–99.
+
+Johnson, Justin P, and Andrew Rhodes. 2021. “Multiproduct Mergers and Quality Competition.” *The RAND Journal of Economics* 52 (3): 633–61.
+
+Lee, Kyeong Hun, David C Mauer, and Emma Qianying Xu. 2018. “Human Capital Relatedness and Mergers and Acquisitions.” *Journal of Financial Economics* 129 (1): 111–35.
+
+Mamaysky, Harry, and Yuqi Zhang. 2025. “Investment Advisors to Individual Investors.” *Available at SSRN 4567642*.
+
+Manne, Henry G. 1965. “Mergers and the Market for Corporate Control.” *Journal of Political Economy* 73 (2): 110–20.
+
+Martin, Kenneth J, and John J McConnell. 1991. “Corporate Performance, Corporate Takeovers, and Management Turnover.” *The Journal of Finance* 46 (2): 671–87.
+
+Martynova, Marina, and Luc Renneboog. 2008. “Spillover of Corporate Governance Standards in Cross-Border Mergers and Acquisitions.” *Journal of Corporate Finance* 14 (3): 200–223.
+
+Mullainathan, Sendhil, Markus Noeth, and Antoinette Schoar. 2012. *The Market for Financial Advice: An Audit Study*. National Bureau of Economic Research.
+
+Parsons, Christopher A, Johan Sulaeman, and Sheridan Titman. 2018. “The Geography of Financial Misconduct.” *The Journal of Finance* 73 (5): 2087–137.
+
+Prager, Elena, and Matt Schmitt. 2021. “Employer Consolidation and Wages: Evidence from Hospitals.” *American Economic Review* 111 (2): 397–427.
+
+Rhodes-Kropf, Matthew, and David T Robinson. 2008. “The Market for Mergers and the Boundaries of the Firm.” *The Journal of Finance* 63 (3): 1169–211.
+
+Robles-Garcia, Claudia. 2019. *Competition and Incentives in Mortgage Markets: The Role of Brokers*. Working paper.
+
+Souillard, Baptiste. 2024. “Unilateral Effects of Mergers with Price Regulation and Quality Competition.” *Economics Letters* 242: 111885.
+
+Teerikangas, Satu, and Philippe Very. 2006. “The Culture–Performance Relationship in m&a: From Yes/No to How.” *British Journal of Management* 17 (S1): S31–48.
+
+Thanassoulis, John. 2023. “Competition and Misconduct.” *Journal of Finance* forthcoming.
+
+Wang, Cong, and Fei Xie. 2009. “Corporate Governance Transfer and Synergistic Gains from Mergers and Acquisitions.” *The Review of Financial Studies* 22 (2): 829–58.
+
+Wu, Joanna Shuang, and Amy Y Zang. 2009. “What Determine Financial Analysts’ Career Outcomes During Mergers?” *Journal of Accounting and Economics* 47 (1-2): 59–86.
+
+Wulf, Julie, and Harbir Singh. 2011. “How Do Acquirers Retain Successful Target CEOs? The Role of Governance.” *Management Science* 57 (12): 2101–14.
+
+[^1]: E.g., Atkin et al. (2019) provide a useful intuition if we interpret “productive efficiency” more broadly to include quality productivity. They point out that there is a dimension of productivity that raises firm revenue by increasing quality, not quantity. Atalay et al. (2025) argue that traditional productivity measurements understate productivity growth because they fail to capture quality.
+
+[^2]: See the Appendix in Egan et al. (2019) for definitions of each disclosure category.
+
+[^3]: In Rhodes-Kropf and Robinson (2008), gains from M&A come from placing complementary assets under common control rather than substituting “bad” for “good,” as in the traditional view of mergers (Manne (1965)).
+
+[^4]: Thanassoulis (2023) also provides a theoretical framework to explain the prevalence of misconduct. He focuses on the link between misconduct and the competitive structure of the market and finds that the type of demand and type of moral issue can explain this relationship.
+
+[^5]: The data in Arnold et al. (2023) contain information on the reason for separation. They find that half of workers leave for unknown reasons. Among the other half, 75% of target firm worker departures are involuntary. This provides some empirical support for the assumption in our paper that separations following recent misconduct are indicative of a stronger disciplinary environment.
+
+[^6]: The data in Dimmock et al. (2018) are from 1999 through 2011, so the overlap between their sample and ours is only one year. Moreover, their identification strategy requires target firms to have multiple branches. They report overall increases in employee misconduct at the branch level (not the advisory firm level, which is the focus of our paper). It may be that increases in misconduct in their sample were concentrated in firms with a large number of branches.
+
+[^7]: Our finding that pre-merger misconduct of both targets and acquirers is lower than firms that do not engage in M&A suggests that high levels of misconduct are generally not optimal for this group of firms.
+
+[^8]: There is even evidence that these governance effects spill over to related non-target firms (Albuquerque et al. 2019).
+
+[^9]: The quality proxy is calculated as the number of disclosures per employee.
+
+[^10]: The idea that quality differences between firms can be an important factor in M&A is supported by the M&A literature, which has expanded to include the non-price impacts of mergers (Johnson and Rhodes (2021) and Rhodes-Kropf and Robinson (2008); Federico et al. (2018); Souillard (2024)).
+
+[^11]: We do not argue that providing high-quality financial advice is value-maximizing for all firms, only that providing high-quality advice increases the value of services to customers.
+
+[^12]: Our empirical predictions regarding complementarity rely on supermodularity, but we do not interpret $`z_i>1`$ as a specific bound for our quality proxy.
+
+[^13]: This threshold was changed to \$100 million in 2012, following the Dodd-Frank Act.
+
+[^14]: See <a href="www.adviserinfo.sec.gov." class="uri">www.adviserinfo.sec.gov.</a>
+
+[^15]: If an advisory firm makes more than one filing in a fiscal year, we keep the latest filing for that year.
+
+[^16]: <https://www.investmentnews.com/topic/mergers-acquisitions>
+
+[^17]: Unlike Form ADV, Form ADV-W was not available on the SEC’s website. We filed a FOIA request with the SEC to obtain historical Form ADV-Ws.
+
+[^18]: When more than 70 percent of employees move to another firm in the year following the ADV withdrawal, we use the post-closure employment records of target firm employees during the year of closure to generate a list of potential acquirers. We then manually search news articles. We keep only those Target/Acquirer pairs for which we can confirm the mergers.
+
+[^19]: We define an acquirer using its Central Registration Depository (CRD) number, as reported in Form ADV. Each CRD is treated as a separate acquirer, even when two CRDs may belong to firms under the same parent company. Table I counts distinct acquirer CRDs separately within each year. Its total of 375 adds these annual counts, so an acquirer active in multiple years may be counted more than once. Across the full 2011–2020 sample, there are 263 distinct acquirer CRDs. A target enters the sample once: when a target appears in more than one deal during the sample period, we keep its earliest merger year.
+
+[^20]: Individuals are not included in BrokerCheck if they have not been registered with FINRA, a securities exchange, or state regulator within the last 10 years and have not been subjects of regulatory, criminal, or civil complaints. We first downloaded the adviser-level data in December 2018, and we begin the sample period 10 years prior to the first download. We thank an anonymous referee for emphasizing this feature of the data.
+
+[^21]: Individual advisers can concurrently register with more than one advisory firm. Approximately 16.3% of adviser-years involve registration with more than one firm. This overlap is due to concurrent employment relationships (often with affiliated firms), as well as some turnover in employment within a given calendar year.
+
+[^22]: If a given adviser is registered with multiple firms, her misconduct will count in the totals for each of her employers.
+
+[^23]: Lines of businesses include: Financial planning services, Portfolio management for individuals and/or small businesses, Portfolio management for large businesses, Portfolio management for investment companies, Portfolio management for pension consulting services, Selection of other advisers, Publication of periodicals or newsletters, Security ratings or pricing services, Market timing services, and Other advisory services. In Appendix Table A.2 and Table A.3, we show the estimated coefficients on each industry fixed effect.
+
+[^24]: The finding that targets have fewer disclosures is in line with Jennings (2023) who argues that, in the case of potential criminal liability, criminal successor liability can put an acquirer at risk for the target’s pre-transaction acts. This might result in a lack of marketability of potential targets with any potential criminal exposure. More generally, low exposure to legal risk can be one way that high quality (captured by low misconduct) can enhance value.
+
+[^25]: Ameritrade (2019), an industry report discussing various motives for advisory firm mergers, notes that founder retirement is a key motivation for 30% of advisory firms considering a merger. Jenter and Lewellen (2015) also show that takeovers are more likely near CEO retirement age.
+
+[^26]: The specifications in Tables III and IV all control for the firms’ lines of business. However, the lines of business themselves are independently interesting. Appendix Tables A.2 and A.3 show the estimated coefficients on the individual line of business dummies. Focusing on the full specification (with controls) in columns 2 and 4, we find that firms offering financial planning services, portfolio management to individuals and small businesses, and stock selection services are more likely to be targets. Firms offering ratings and pricing services are less likely to be targets. The same patterns hold for acquirers.
+
+[^27]: The specifications in Table V control for dummies that indicate matches on lines of business. Appendix Table A.4 shows the estimated coefficients on the industry match dummies. We find that firms in financial planning, investment companies, and those offering pension consulting services are most likely to merge.
+
+[^28]: Disciplinary and monitoring systems governing misconduct might come from the target or acquirer.
+
+[^29]: Firms often operate in several lines of business. We use the frequency of line of business combinations within the full sample to construct five broad primary industry categories from which we select same-industry matches. These are: Financial planning and portfolio management services; Portfolio management services to individuals and small businesses (with no financial planning services); portfolio management services to pooled investment vehicles (with no financial planning services); Any other portfolio management services (with no financial planning); Other services (with no financial planning).
+
+[^30]: One potential concern is that the results might be driven by differences in the types of services that advisers provide. In Appendix Table A.7, we repeat the Table IX analysis on subsamples of broker-qualified advisers with and without investment advisor representative (IAR) qualifications. The results are robust to adviser-type.
+
+[^31]: It is possible that some acquirers specialize in implementing changes that result in misconduct reductions. Recall from Table I that the 485 mergers in our sample involve 263 distinct acquirer CRDs. Appendix Table A.5 lists the 29 acquirer CRDs that purchase more than two target firms during our sample period. Mercer Global Advisors is the most active, with 25 acquisitions. In Appendix Table A.6, we test whether the drop in misconduct is driven by frequent acquirers, but we do not find any evidence to support that hypothesis. If anything, the results are somewhat weaker among serial acquirers.
+
+[^32]: Appendix Figure A3 shows that the decline survives counting each adviser once rather than once per registration, dropping employment separations after allegations, and dating the event by the closing rather than the announcement year.
+
+[^33]: A disclosure in the category *Employment Separation After Allegations* is filed by the firm when an adviser leaves following an allegation, so it can coincide with the separation it records. We retain this category in our measures to follow the convention in the literature, as in Egan et al. (2019).
+
+[^34]: The rate of separation in Figure 5 is somewhat lower than the separations of very top managers that have been documented in the earlier literature on managerial turnover and corporate control (e.g., Hartzell et al. (2004) report that approximately half of target firm CEOs depart the combined firm) but qualitatively in line with the observation that target firm CEOs tend to lose their jobs during or shortly after a takeover (Martin and McConnell 1991; Agrawal and Walkling 1994; Hartzell et al. 2004; Wulf and Singh 2011).
+
+[^35]: We begin the separation analysis at year t-3 in order to distinguish the impact of separations in general versus employee separations that follow merger events. As in Table VII, we combine data on employees of the target and the acquirer for the pre-merger years.
+
+[^36]: The results in Figure 6 and Table XI reveal persistence in misconduct at the adviser level, suggesting that variation in misconduct across firms is driven by firm type and incentives, where some firms attract and retain advisers with low misconduct.
+
+[^37]: Joenvaara and Scherer (2017) also relate AUM to firm value through fees, relaxing Huberman’s unlimited capacity assumption.
+
+[^38]: Specifically, using the reasons for closure section of Form ADV-W, we define a firm as failed if it lists one of the following reasons for closure: “No longer conducting advisory activities,” “No longer in business or closing business,” “Ceased conducting advisory business,” “Termination of business,” “Going out of business,” and “Closed business.”
+
+[^39]: Changes in AUM per employee and misconduct might be driven by common unobservables. We address this in Appendix Table A.9 by exploiting the June 2016 Massachusetts regulatory shock, when the MA Registrations, Inspections, Compliance, and Examinations Section (RICE) sent notices to 241 broker-dealer firms with above-average misconduct rates. Following this scrutiny, treated firms experienced higher AUM per employee, consistent with reduced misconduct expectations improving labor productivity.
+
+[^40]: Consistent with our findings, recent work by Mamaysky and Zhang (2025) shows a negative relationship between misconduct variables and AUM growth.
