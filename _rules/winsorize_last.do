@@ -1,7 +1,7 @@
 ********************************************************************************
 * Winsorizes misconduct measures and absolute log differences once, at the 1% and 99% levels, pooled
 * over the final estimation sample of the exhibit being produced, then standardizes them.
-* Used by Tables II-IX, XII (Panels A and B), A.2, A.3, A.4, A.6, A.7 and Figures 4, 6 and A.3.
+* Used by Tables II-IX, XII (Panels A and B), A.2, A.3, A.4, A.7, A.8 and Figures 4, 6 and A.3.
 * Exceptions: Table II winsorizes without standardizing; the Table XII logs are not winsorized.
 ********************************************************************************
 * all_regression and adviser_event_panel are saved unwinsorized.

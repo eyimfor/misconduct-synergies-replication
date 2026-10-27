@@ -1,4 +1,4 @@
-# Figure 3: probability of a merger by target and acquirer disclosure status,
+# Figure 2, Panel B: probability of a merger by target and acquirer disclosure status,
 # matching within state (assortative_matching_emploc_robust.png).
 # Paths are relative to the package root
 import os

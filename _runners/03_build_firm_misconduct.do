@@ -1,6 +1,6 @@
 ********************************************************************************
 * Builds firm-level misconduct measures, AUM per employee (Table XII, Panel A),
-* annual settlements (Figure A.1) and the M&A employee sample (Table A.9).
+* annual settlements (Figure A.1) and the M&A employee sample (Table A.10).
 ********************************************************************************
 clear all
 set more off

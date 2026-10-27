@@ -1,6 +1,6 @@
 # Misconduct Synergies: replication package
 
-> Code that reproduces the 34 code-produced tables and figures in Tookes and Yimfor,
+> Code that reproduces the 37 code-produced tables and figures in Tookes and Yimfor,
 > "Misconduct Synergies", from the BrokerCheck and IAPD adviser records, the SEC Form ADV
 > filings and a hand-collected list of investment-adviser mergers.
 
@@ -21,8 +21,8 @@ exhibit map are, how the pipeline runs, and which mistakes are easy to make here
   them, and the input datasets (as `lineage.html` node ids).
 - `data_dictionary.md`: the main datasets, with rows, columns, and what writes and reads each.
 - `outline.txt`: every step from raw data to exhibits, in prose.
-- `lineage.html`: the same map as a clickable picture. Open it locally; GitHub shows HTML as
-  source.
+- `lineage.html`: the same map as a clickable picture. GitHub shows the file as source; the
+  rendered page is at https://claude.ai/artifact/BZEeuikwWihBzNhmLnh74G.
 
 ## How it runs
 
@@ -55,10 +55,14 @@ Paper number, the file the pipeline writes, and the scripts that produce it, in 
 ```
 Figure 1               2023/figures/DisclosuresAll.png
                        <- CreateFigures/figure_disclosures.do, CreateFigures/_0_figure1_disclosures.py
-Figure 2               2023/figures/assortative_matching.png
-                       <- CreateFigures/_0_figure2_assortative.py
-Figure 3               2023/figures/assortative_matching_emploc_robust.png
-                       <- CreateFigures/_0_figure3_matching_within_state.py
+Figure 2 (Panel A)     2023/figures/assortative_matching.png
+                       <- CreateFigures/_0_figure2_all_pairs.py
+Figure 2 (Panel B)     2023/figures/assortative_matching_emploc_robust.png
+                       <- CreateFigures/_0_figure2_within_state.py
+Figure 3 (Panel A)     2023/figures/matching_rank_panelA_all.png
+                       <- CreateFigures/_0_figure3_matching_rank.py
+Figure 3 (Panel B)     2023/figures/matching_rank_panelB_state.png
+                       <- CreateFigures/_0_figure3_matching_rank.py
 Figure 4               2023/figures/plottable11.png
                        <- CreateFigures/_1_figure4_combined_disclosures.py
 Figure 5 (Panel A)     2023/figures/Figure5_Target_DiD.png
@@ -111,15 +115,17 @@ Table A.3              2023/tables/acquirer_regressionind.tex
                        <- CreateTables/appendix_industry_controls.do, CreateTables/_9_port_tables.py
 Table A.4              2023/tables/matching_regressionindustry.tex
                        <- CreateTables/appendix_industry_controls.do, CreateTables/_9_port_tables.py
-Table A.5              2023/tables/frequent_acquirers_crd.tex
+Table A.5              2023/tables/matching_alt_measures.tex
+                       <- CreateTables/matching_alt_measures.do, CreateTables/_9_port_tables.py
+Table A.6              2023/tables/frequent_acquirers_crd.tex
                        <- CreateTables/_8_frequent_acquirers.py
-Table A.6              2023/tables/post_misc_regsfreq.tex
+Table A.7              2023/tables/post_misc_regsfreq.tex
                        <- CreateTables/appendix_industry_controls.do, CreateTables/_9_port_tables.py
-Table A.7              2023/tables/post_misc_regs_examqual.tex
+Table A.8              2023/tables/post_misc_regs_examqual.tex
                        <- CreateTables/BrokerRegistrationRobustness/run_all.do, CreateTables/BrokerRegistrationRobustness/05_appendix_exam_table.do, CreateTables/_9_port_tables.py
-Table A.8              2023/tables/separationmerger.tex
+Table A.9              2023/tables/separationmerger.tex
                        <- CreateTables/labor_outcomes_table.do, CreateTables/_9_port_tables.py
-Table A.9              2023/tables/mathing.tex
+Table A.10             2023/tables/mathing.tex
                        <- CreateTables/ma_employee_misconduct.do, CreateTables/_9_port_tables.py
 ```
 

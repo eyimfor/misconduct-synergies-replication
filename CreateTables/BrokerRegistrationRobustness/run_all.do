@@ -2,7 +2,7 @@
 * Master file for the broker-qualification robustness appendix. Re-estimates
 * the post-merger difference-in-differences table (Table IX) from the individual
 * adviser panels and then by pre-merger qualification group, and writes
-* Appendix Table A.7 (post_misc_regs_examqual.tex).
+* Appendix Table A.8 (post_misc_regs_examqual.tex).
 ********************************************************************************
 clear all
 cap log close runall
@@ -53,7 +53,7 @@ cap log close runall
     display "RC_BRR_04 = " `brr_rc'
     if `brr_rc' != 0 exit `brr_rc'
 
-* 05: Appendix Table A.7 in the paper's layout
+* 05: Appendix Table A.8 in the paper's layout
     capture noisily do "`wd'/05_appendix_exam_table.do"
     local brr_rc = _rc
     display "RC_BRR_05 = " `brr_rc'

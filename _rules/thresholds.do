@@ -25,7 +25,7 @@ if "`action'" == "candidates" {
 }
 
 * frequent: flag acquisitions that follow the acquirer's first acquisition in
-* the sample (Table A.6)
+* the sample (Table A.7)
 if "`action'" == "frequent" {
     bys `key': egen min_acquiredyear_real = min(`measure') if `option' == 1
     bys `key': egen min_acquiredyear = min(min_acquiredyear_real)

@@ -2,7 +2,7 @@
 * Aligns employee counts to the fiscal year in which the paper measures them.
 * Firm characteristics are measured in the fiscal year before the merger; AUM per
 * registered employee is measured in year t+1.
-* Exhibits: Tables V, VI, XII (Panels A and B) and A.4; Figures 2 and 3.
+* Exhibits: Tables V, VI, XII (Panels A and B), A.4 and A.5; Figures 2 and 3.
 ********************************************************************************
 * Usage: employee_timing.do pair <target_crd|acquirer_crd> | calendar | aum_lead | failure_load.
 args operation role

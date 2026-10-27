@@ -1,5 +1,5 @@
 ********************************************************************************
-* Builds the restricted samples behind Appendix Table A.7 (broker-qualified
+* Builds the restricted samples behind Appendix Table A.8 (broker-qualified
 * advisers). Each adviser gets one status in the year before the merger (t-1),
 * held fixed over the event window; the disclosure numerator and employee
 * denominator are rebuilt from the individual-level panels restricted by it.
@@ -15,7 +15,7 @@ di as text _n "Stata: " c(stata_version) " " c(edition_real) " born " c(born_dat
 *     scope) and currentIAEmployments / previousIAEmployments (IA scope),
 *     scrapes 2020/2022/2024.
 *   Exams ("exam"): cumulative exam qualifications at t-1 from
-*     exam_qualifications.dta. Appendix Table A.7 reports this basis.
+*     exam_qualifications.dta. Appendix Table A.8 reports this basis.
 * Inputs are read only; everything is written to $DATA / $WD.
 
 

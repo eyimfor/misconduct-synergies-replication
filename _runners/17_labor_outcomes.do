@@ -1,5 +1,5 @@
 ********************************************************************************
-* Builds the labor-outcome samples and Table A.8 (labor-market outcomes after the merger),
+* Builds the labor-outcome samples and Table A.9 (labor-market outcomes after the merger),
 * then checks that the target and acquirer samples equal regressionbrokerstarget and
 * regressionbrokersacq row for row.
 ********************************************************************************

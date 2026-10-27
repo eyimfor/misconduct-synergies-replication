@@ -2,7 +2,7 @@
 * Estimates the four columns of Table IX on the full sample and on every
 * status-restricted sample, and writes the panel tables, machine-readable
 * estimates, sample diagnostics and validation checks to $OUT.
-* 05_appendix_exam_table.do uses these results to write Table A.7.
+* 05_appendix_exam_table.do uses these results to write Table A.8.
 ********************************************************************************
 
 * Load settings, open the log and record the Stata version

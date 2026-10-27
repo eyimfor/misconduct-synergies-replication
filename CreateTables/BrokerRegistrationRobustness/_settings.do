@@ -1,6 +1,6 @@
 ********************************************************************************
 * _settings.do : shared paths and helper programs for the broker-qualification
-* robustness of Appendix Table A.7. All writes go to $WD (this folder) only.
+* robustness of Appendix Table A.8. All writes go to $WD (this folder) only.
 ********************************************************************************
 clear all
 set more off

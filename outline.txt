@@ -106,7 +106,8 @@
 ***Tables III, IV  target_regression_build.do and acquirer_regression_build.do build the samples;
 ***                target_regression_table.do and acquirer_regression_table.do estimate and
 ***                write the tables
-***Tables V, VI    matching_baseline.do and matching_time_window.do
+***Tables V, VI    matching_baseline.do and matching_time_window.do; each builds the Misconduct
+***                Distance Rank over its own estimation sample and saves that sample
 ***Tables VII,VIII _8_tables7and8.py
 ***Table IX        pseudo_real_merger_test.do, over the panels from post_merger_misconduct_real.do
 ***                and post_merger_misconduct_pseudo.do
@@ -116,14 +117,19 @@
 ***Table XII       aum_per_employee.do for Panel A, firm_closure.do for Panel B
 ***Tables A.2, A.3 appendix_industry_controls.do
 ***Table A.4       appendix_industry_controls.do
-***Table A.5       _8_frequent_acquirers.py
-***Table A.6       appendix_industry_controls.do
-***Table A.7       BrokerRegistrationRobustness/05_appendix_exam_table.do
-***Table A.8       labor_outcomes_table.do
-***Table A.9       ma_employee_misconduct.do
+***Table A.5       matching_alt_measures.do, over the estimation samples the Table V and VI
+***                producers save; also writes tables/matching_rank_numbers.txt, the descriptives
+***                and coefficients Section III.B quotes
+***Table A.6       _8_frequent_acquirers.py
+***Table A.7       appendix_industry_controls.do
+***Table A.8       BrokerRegistrationRobustness/05_appendix_exam_table.do
+***Table A.9       labor_outcomes_table.do
+***Table A.10      ma_employee_misconduct.do
 ***Figure 1        figure_disclosures.do, drawn by _0_figure1_disclosures.py
-***Figure 2        _0_figure2_assortative.py
-***Figure 3        _0_figure3_matching_within_state.py
+***Figure 2        _0_figure2_all_pairs.py (Panel A) and _0_figure2_within_state.py (Panel B)
+***Figure 3        _0_figure3_matching_rank.py, both panels; also writes
+***                figures/matching_rank_numbers.json, the slopes, correlations and permutation
+***                bands the text quotes
 ***Figure 4        _1_figure4_combined_disclosures.py
 ***Figure 5        separations_target.do (Panel A) and separations_acquirer.do (Panel B),
 ***                720 x 432 px
@@ -135,4 +141,4 @@
 ***Figure A.3      figA3_estimation/run_figA3.py estimates it, _3_figA3_plot.py draws it
 
 ** lineage.html is the same map as a picture: click any input and its whole path to the
-** exhibits lights up.
+** exhibits lights up. The rendered page is at https://claude.ai/artifact/BZEeuikwWihBzNhmLnh74G.

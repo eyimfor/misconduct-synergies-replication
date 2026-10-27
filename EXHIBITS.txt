@@ -1,6 +1,8 @@
 figures/DisclosuresAll.png
 figures/assortative_matching.png
 figures/assortative_matching_emploc_robust.png
+figures/matching_rank_panelA_all.png
+figures/matching_rank_panelB_state.png
 figures/plottable11.png
 figures/Figure5_Target_DiD.png
 figures/Figure5_Acquirer_DiD.png
@@ -27,6 +29,7 @@ figures/figA3_panelB_alternatives.png
 tables/target_regressionind.tex
 tables/acquirer_regressionind.tex
 tables/matching_regressionindustry.tex
+tables/matching_alt_measures.tex
 tables/frequent_acquirers_crd.tex
 tables/post_misc_regsfreq.tex
 tables/post_misc_regs_examqual.tex

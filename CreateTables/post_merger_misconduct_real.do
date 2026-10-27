@@ -2,7 +2,7 @@
 * Combined-firm misconduct around real mergers. Builds
 * data/output_robust/postmergercombinedfirm.dta, the combined-firm (target plus
 * acquirer) merger-year panel of employee disclosures per 100 employees used by
-* Tables VII, IX and A.6 and Figure 4.
+* Tables VII, IX and A.7 and Figure 4.
 ********************************************************************************
 clear
 

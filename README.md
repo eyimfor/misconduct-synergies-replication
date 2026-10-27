@@ -1,6 +1,6 @@
 # Replication package: Misconduct Synergies
 
-Code that reproduces the 34 tables and figures in the paper, from the
+Code that reproduces the 37 tables and figures in the paper, from the
 BrokerCheck and IAPD adviser records, the SEC Form ADV filings and a hand-collected
 merger list.
 
@@ -39,7 +39,8 @@ To use a different interpreter or Stata executable, set `PY` and `STATA`, for ex
 - `exhibits.json`: the same exhibit-to-code map as data.
 - `outline.txt`: the steps from raw data to exhibits, and which script makes each table
   and figure.
-- `lineage.html`: the same map as a clickable picture.
+- `lineage.html`: the same map as a clickable picture. GitHub shows the file as source; the
+  rendered page is at https://claude.ai/artifact/BZEeuikwWihBzNhmLnh74G.
 - `data_dictionary.md`: the main datasets, with what writes and reads each one.
 
 ## Using the package with an LLM

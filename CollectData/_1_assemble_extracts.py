@@ -47,7 +47,7 @@ for tag, (year, infix) in TAGS.items():
         join([f"{s}/{name}" for s in shards], f"{ddir}/{name}")
     print(f"assembled {tag}: {len(shards)} shard(s)")
 
-# The per-scrape employment extracts are also read directly by the Table A.7 scripts
+# The per-scrape employment extracts are also read directly by the Table A.8 scripts
 # in CreateTables/BrokerRegistrationRobustness, from $PKG/SecIAPD/output.
 PKG = os.environ.get("PKG", "")
 if PKG:

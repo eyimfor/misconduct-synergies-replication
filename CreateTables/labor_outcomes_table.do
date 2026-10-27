@@ -1,5 +1,5 @@
 ********************************************************************************
-* Builds Table A.8 (separationmerger.tex): labor-market outcomes of target and
+* Builds Table A.9 (separationmerger.tex): labor-market outcomes of target and
 * acquirer advisers around the merger. Uses the Table X target and acquirer
 * panels, so run it after those are saved. It tabulates shares, fits no
 * regressions and leaves the Table X panels unchanged.

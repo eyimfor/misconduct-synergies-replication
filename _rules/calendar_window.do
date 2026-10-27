@@ -1,7 +1,7 @@
 ********************************************************************************
 * Calendar coverage of the adviser and Form ADV panels. Exhibits: Figure A.1
 * (settlements); Table X and Figure 5, Panel A (target_did); Tables VII-IX and
-* A.6, Figures 4 and A.3 (adviser_event); every exhibit built on the filing data
+* A.7, Figures 4 and A.3 (adviser_event); every exhibit built on the filing data
 * (adv_fiscal). Usage: settlements | target_did | adviser_event | adv_fiscal.
 ********************************************************************************
 args action

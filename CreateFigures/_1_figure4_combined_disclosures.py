@@ -69,9 +69,9 @@ plt.scatter(2, 0, color='black', s = 100)
 
 # Configure plot
 plt.xticks(range(7), ['-3', '-2', '-1', '0', '1', '2', '3'])
-plt.xlabel('Years Relative to Merger',fontsize=30, fontweight='bold')
-plt.ylabel('Merged X t', fontsize=30, fontweight='bold')
-plt.legend()
+plt.xlabel('Years Relative to Merger', fontsize=20, fontweight='bold')
+plt.ylabel('Merged X t', fontsize=20, fontweight='bold')
+plt.tick_params(axis='both', labelsize=20)   # no legend: nothing is labelled, and plt.legend() drew an empty box
 sns.despine()
 
 # Save to the package's figure folder

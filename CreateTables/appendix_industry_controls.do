@@ -1,8 +1,8 @@
 ********************************************************************************
 * Appendix regressions: Tables A.2 (target_regressionind.tex), A.3
 * (acquirer_regressionind.tex), A.4 (matching_regressionind.tex, published as
-* matching_regressionindustry.tex) and A.6 (post_misc_regsfa.tex, published as
-* post_misc_regsfreq.tex).
+* matching_regressionindustry.tex; the Misconduct Distance Rank with line-of-business
+* controls) and A.7 (post_misc_regsfa.tex, published as post_misc_regsfreq.tex).
 ********************************************************************************
 
 
@@ -208,7 +208,6 @@
 
 * Label pair variables and define the cluster
     do "$PKG/_rules/winsorize_last.do" pair_labels_tex ""
-    la var dummy_two "Acq \& Tar Employees with misconduct (EMS)"
     la var combined_m_z "$|\text{Misconduct} \text{(Acq} - \text{Tar (All))}|$"
     la var combined_two_m_z "$|\text{Misconduct} \text{(Acq} - \text{Tar (Egan)}|$"
     la var aum_ratio_z "$|\text{Ln(AUM Acq)}- \text{Ln(AUM Tar)}|$"
@@ -218,7 +217,9 @@
     la var same_state "Same state"
     la var match1 "Target \& Acquirer Small"
     la var match5 "Target \& Acquirer Large"
-    egen clustervar = group(target_crd acquirer_crd)
+
+* Cluster on the acquirer, as in Table V
+    do "$PKG/_rules/cluster.do"
 
 * Label business lines
     la var financial_planning "Financial Planning"
@@ -232,38 +233,55 @@
     la var market_timing "Market Timing"
     la var port_mgmt_pif "Pooled Funds"
 
-* How does misconduct relate to which firms match?
+* How does misconduct relate to which firms match? The sample rule absorbs year effects; the
+* regressions absorb target-by-year effects, as in Table V
     local fe1  acquired_year
+    local fe_pair  target_crd#acquired_year
     local clustervar clustervar
     local indepvar1  real_match
-    local controls  dummy_one
-    local controls1  dummy_one    ///
+    local controls  relrank_a
+    local controls1  relrank_a    ///
                      retail_clients aum_ratio_z age_ratio_z employee_ratio_z same_state
-    local controls2  dummy_two
-    local controls3  dummy_two ///
+    local controls2  relrank_e
+    local controls3  relrank_e ///
                      retail_clients  aum_ratio_z age_ratio_z employee_ratio_z same_state ///
                      match1 match5
     local industry  financial_planning port_mgmt_indv_sb ///
                     port_mgmt_inv_c port_mgmt_bus_insc pension_cs selection_advisers publication_periodicals ratings_pricing market_timing other port_mgmt_pif
 
-* Winsorize and estimate the four specifications
+* Keep the estimation sample, winsorize and standardize
     do "$PKG/_rules/winsorize_last.do" a4_pair_final "aum_ratio age_ratio employee_ratio" "`industry'" "`fe1'" "`clustervar'"
+
+* Misconduct Distance Rank: the rank of the asinh distance in misconduct per employee between
+* the candidate acquirer and the target within the target's candidate set, scaled from 0
+* (closest) to 1 (farthest); tied candidates share the average rank. Computed over the
+* estimation sample
+    foreach m in a e {
+        gen adist_`m' = abs(asinh(acquirer_misc_`m') - asinh(target_misc_`m'))
+        bys target_crd acquired_year: egen double rk_`m' = rank(adist_`m')
+        bys target_crd acquired_year: gen double nset_`m' = _N
+        gen double relrank_`m' = (rk_`m' - 1) / (nset_`m' - 1)
+    }
+    la var relrank_a "Misconduct Distance Rank (All)"
+    la var relrank_e "Misconduct Distance Rank (EMS)"
+
+* Estimate the four specifications
     eststo clear
-    eststo:  reghdfe `indepvar1' `controls' `industry' if sample, absorb(`fe1') vce(cluster `clustervar')
-    eststo:  reghdfe `indepvar1' `controls1' `industry' if sample, absorb(`fe1') vce(cluster `clustervar')
-    eststo:  reghdfe `indepvar1' `controls2' `industry' if sample, absorb(`fe1') vce(cluster `clustervar')
-    eststo:  reghdfe `indepvar1' `controls3' `industry' if sample, absorb(`fe1') vce(cluster `clustervar')
+    eststo:  reghdfe `indepvar1' `controls' `industry' if sample, absorb(`fe_pair') vce(cluster `clustervar')
+    eststo:  reghdfe `indepvar1' `controls1' `industry' if sample, absorb(`fe_pair') vce(cluster `clustervar')
+    eststo:  reghdfe `indepvar1' `controls2' `industry' if sample, absorb(`fe_pair') vce(cluster `clustervar')
+    eststo:  reghdfe `indepvar1' `controls3' `industry' if sample, absorb(`fe_pair') vce(cluster `clustervar')
 
 * Write the table
     esttab _all using "tables/matching_regressionind.tex", replace label  ///
            star(* 0.10 ** 0.05 *** 0.01) se(3) b(3) ///
-           order(dummy_one dummy_two) ///
+           order(relrank_a relrank_e) ///
            ar2  noomitted  interaction(" $\times$ ") style(tex) ///
            compress nomtitles fragment noconst
 
 
 ********************************************************************************
-* Is the drop in misconduct larger for frequent acquirers? (Table A.6)
+* Is the drop in misconduct larger for frequent acquirers? (Table A.7)
 ********************************************************************************
 
 * Load the event panel, flag frequent acquirers and winsorize

@@ -1,8 +1,10 @@
 ********************************************************************************
 * Table VI: do targets and acquirers match on misconduct, within state and a one-year window?
 * Firms are located by the states where their employees work, not by headquarters.
-* A target is paired with any acquirer active within one year of its acquisition.
-* Writes tables/matching_regression_TimeWindow2023.tex.
+* A target is paired with any acquirer active within one year of its acquisition. The regressor
+* is the Misconduct Distance Rank within the target's candidate set, as in Table V.
+* Writes tables/matching_regression_TimeWindow2023.tex and saves matching_sample_timewin.dta,
+* the estimation sample with the rank, which matching_alt_measures.do (Table A.5) reads.
 ********************************************************************************
 clear
 
@@ -381,19 +383,22 @@ clear
 * Standardize the differences, label the regressors and build the acquirer cluster variable
     do "$PKG/_rules/winsorize_last.do" timewin_labels ""
 
-* Outcome, fixed effects, clustering and the control sets for the eight columns
+* Outcome, fixed effects, clustering and the control sets for the eight columns. The sample rule
+* absorbs year effects; the regressions absorb target-by-year effects, so the rank is compared
+* only across the candidates of the same target
     local fe1  acquired_year
+    local fe_pair  target_crd#acquired_year
     local clustervar clustervar
     local indepvar1  real_match
-    local controls  dummy_one
-    local controls1  dummy_one retail_clients aum_ratio_z age_ratio_z employee_ratio_z same_state
-    local controls2  dummy_one retail_clients aum_ratio_z age_ratio_z employee_ratio_z same_state match1 match5
-    local controls3  dummy_one retail_clients aum_ratio_z age_ratio_z employee_ratio_z same_state match1 match5 ///
+    local controls  relrank_a
+    local controls1  relrank_a retail_clients aum_ratio_z age_ratio_z employee_ratio_z same_state
+    local controls2  relrank_a retail_clients aum_ratio_z age_ratio_z employee_ratio_z same_state match1 match5
+    local controls3  relrank_a retail_clients aum_ratio_z age_ratio_z employee_ratio_z same_state match1 match5 ///
                      past_criminal_felony past_criminal_misdemeanor pastregulatory pastcivil
-    local controls4  dummy_two
-    local controls5  dummy_two retail_clients  aum_ratio_z age_ratio_z employee_ratio_z same_state
-    local controls6  dummy_two retail_clients  aum_ratio_z age_ratio_z employee_ratio_z same_state match1 match5
-    local controls7  dummy_two retail_clients  aum_ratio_z age_ratio_z employee_ratio_z same_state match1 match5 ///
+    local controls4  relrank_e
+    local controls5  relrank_e retail_clients  aum_ratio_z age_ratio_z employee_ratio_z same_state
+    local controls6  relrank_e retail_clients  aum_ratio_z age_ratio_z employee_ratio_z same_state match1 match5
+    local controls7  relrank_e retail_clients  aum_ratio_z age_ratio_z employee_ratio_z same_state match1 match5 ///
                      past_criminal_felony past_criminal_misdemeanor pastregulatory pastcivil
 
 * Industry fixed effects: same advisory services
@@ -403,21 +408,37 @@ clear
 * Restrict to the estimation sample, winsorize and restandardize the differences
     do "$PKG/_rules/winsorize_last.do" pair_final "aum_ratio age_ratio employee_ratio" "`industry'" "`fe1'" "`clustervar'"
 
+* Misconduct Distance Rank: the rank of the asinh distance in misconduct per employee between
+* the candidate acquirer and the target within the target's candidate set, scaled from 0
+* (closest) to 1 (farthest); tied candidates share the average rank. Computed over the
+* estimation sample
+    foreach m in a e {
+        gen adist_`m' = abs(asinh(acquirer_misc_`m') - asinh(target_misc_`m'))
+        bys target_crd acquired_year: egen double rk_`m' = rank(adist_`m')
+        bys target_crd acquired_year: gen double nset_`m' = _N
+        gen double relrank_`m' = (rk_`m' - 1) / (nset_`m' - 1)
+    }
+    la var relrank_a "Misconduct Distance Rank (All)"
+    la var relrank_e "Misconduct Distance Rank (EMS)"
+
+* Save the estimation sample for Table A.5 and the numbers the text quotes
+    save data/output/matching_sample_timewin, replace
+
 * Estimate the eight columns
     eststo clear
-    eststo:  reghdfe `indepvar1' `controls' if sample, absorb(`fe1' `industry') vce(cluster `clustervar')
-    eststo:  reghdfe `indepvar1' `controls1' if sample, absorb(`fe1' `industry') vce(cluster `clustervar')
-    eststo:  reghdfe `indepvar1' `controls2' if sample, absorb(`fe1' `industry') vce(cluster `clustervar')
-    eststo:  reghdfe `indepvar1' `controls3' if sample, absorb(`fe1' `industry') vce(cluster `clustervar')
-    eststo:  reghdfe `indepvar1' `controls4' if sample, absorb(`fe1' `industry') vce(cluster `clustervar')
-    eststo:  reghdfe `indepvar1' `controls5' if sample, absorb(`fe1' `industry') vce(cluster `clustervar')
-    eststo:  reghdfe `indepvar1' `controls6' if sample, absorb(`fe1' `industry') vce(cluster `clustervar')
-    eststo:  reghdfe `indepvar1' `controls7' if sample, absorb(`fe1' `industry') vce(cluster `clustervar')
+    eststo:  reghdfe `indepvar1' `controls' if sample, absorb(`fe_pair' `industry') vce(cluster `clustervar')
+    eststo:  reghdfe `indepvar1' `controls1' if sample, absorb(`fe_pair' `industry') vce(cluster `clustervar')
+    eststo:  reghdfe `indepvar1' `controls2' if sample, absorb(`fe_pair' `industry') vce(cluster `clustervar')
+    eststo:  reghdfe `indepvar1' `controls3' if sample, absorb(`fe_pair' `industry') vce(cluster `clustervar')
+    eststo:  reghdfe `indepvar1' `controls4' if sample, absorb(`fe_pair' `industry') vce(cluster `clustervar')
+    eststo:  reghdfe `indepvar1' `controls5' if sample, absorb(`fe_pair' `industry') vce(cluster `clustervar')
+    eststo:  reghdfe `indepvar1' `controls6' if sample, absorb(`fe_pair' `industry') vce(cluster `clustervar')
+    eststo:  reghdfe `indepvar1' `controls7' if sample, absorb(`fe_pair' `industry') vce(cluster `clustervar')
 
 * Write the table
     esttab _all using "tables/matching_regression_TimeWindow2023.tex", replace label  ///
            star(* 0.10 ** 0.05 *** 0.01) se(3) b(3) ///
-           order(dummy_one dummy_two pastregulatory pastcivil past_criminal_misdemeanor ///
+           order(relrank_a relrank_e pastregulatory pastcivil past_criminal_misdemeanor ///
            past_criminal_felony) ///
            ar2  noomitted  interaction(" $\times$ ") style(tex) ///
            compress nomtitles fragment noconst

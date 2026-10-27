@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Converts the producers' LaTeX output into the table fragments the paper inputs:
-Tables I, III-VI, IX-XII, A.2-A.4 and A.6-A.9. Relabels variables, swaps rules and
+Tables I, III-VI, IX-XII, A.2-A.5 and A.7-A.10. Relabels variables, swaps rules and
 adds the panel headers and fixed-effect rows the paper prints."""
 import io, os, re
 
@@ -39,9 +39,13 @@ def harmonize(text, extra=()):
     return "\n".join(commafy(l) for l in text.splitlines())
 
 
-def body(name, extra=(), rule=r"\toprule"):
-    """Producer fragment with its opening rule swapped for the paper's."""
+def body(name, extra=(), rule=r"\toprule", tight=False):
+    """Producer fragment with its opening rule swapped for the paper's. tight narrows the gap
+    between coefficient rows from esttab's 1em to the quarter em the paper prints in Tables V,
+    VI and A.2 to A.4."""
     raw = io.open(os.path.join(SRC_DIR, name), encoding="utf-8").read()
+    if tight:
+        raw = raw.replace("[1em]", "[0.25em]")
     lines = harmonize(raw, extra).rstrip().splitlines()
     assert lines[1].strip() == r"\hline", (name, lines[1])
     lines[1] = rule
@@ -87,9 +91,9 @@ write("target_regression_fraction_bad_three_z.tex",   body("target_regression.te
 write("acquirer_regression_fraction_bad_three_z.tex", body("acquirer_regression.tex") + BOT)
 
 # Table V / VI  (matching)
-write("matching_regression.tex", body("matching_regression_raw.tex") + BOT)
+write("matching_regression.tex", body("matching_regression_raw.tex", tight=True) + BOT)
 write("matching_regression_TimeWindow2023.tex",
-      body("matching_regression_TimeWindow2023.tex", rule=r"\midrule") + BOT)
+      body("matching_regression_TimeWindow2023.tex", rule=r"\midrule", tight=True) + BOT)
 
 # Table IX  (post-merger misconduct)
 write("post_misc_regs.tex",
@@ -131,17 +135,19 @@ write("aum_misc_change.tex", body("failed.tex") + BOT)
 
 # ---- Appendix tables and Table I ----
 
-# Tables A.2, A.3, A.4, A.6 and A.9
-write("target_regressionind.tex",        body("target_regressionind.tex") + BOT)
-write("acquirer_regressionind.tex",      body("acquirer_regressionind.tex") + BOT)
-write("matching_regressionindustry.tex", body("matching_regressionind.tex") + BOT)
+# Tables A.2, A.3, A.4, A.7 and A.10
+write("target_regressionind.tex",        body("target_regressionind.tex", tight=True) + BOT)
+write("acquirer_regressionind.tex",      body("acquirer_regressionind.tex", tight=True) + BOT)
+write("matching_regressionindustry.tex", body("matching_regressionind.tex", tight=True) + BOT)
 write("post_misc_regsfreq.tex",
       SPAN_DISC + body("post_misc_regsfa.tex", rule=r"\hline") + BOT)
 write("mathing.tex",
       body("mathing.tex").replace(HLINE_OBS,
                                   ADDL_HLINE_OBS) + BOT)
 
-# Table A.7: the producer already writes the paper's labels, so copy it as is
+# Tables A.5 and A.8: the producers already write the paper's layout, so copy them as they are
+write("matching_alt_measures.tex",
+      io.open(os.path.join(SRC_DIR, "matching_alt_measures.tex"), encoding="utf-8").read())
 write("post_misc_regs_examqual.tex",
       io.open(os.path.join(SRC_DIR, "post_misc_regs_examqual.tex"), encoding="utf-8").read())
 
@@ -159,7 +165,7 @@ if _t.endswith(r"\end{tabular}"):
     _t += "}"
 write("count_mergers.tex", _t)
 
-# Table A.8: drop the comment lines the producer writes at the top of the fragment.
+# Table A.9: drop the comment lines the producer writes at the top of the fragment.
 _src = os.path.join(SRC_DIR, "separationmerger.tex")
 _t = io.open(_src, encoding="utf-8").read()
 _t = "\n".join(l for l in _t.splitlines() if not l.lstrip().startswith("%"))

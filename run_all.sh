@@ -78,14 +78,15 @@ if [ ! -f "$BRR/logs/run_all.log" ] || grep -qE 'RC_BRR_0[1-5] = [1-9]' "$BRR/lo
 cp "$BRR/post_misc_regs_examqual.tex" "$PKG/2023/tables/" 2>/dev/null
 echo "=== 10. figures and tables built in Python ======================="
 cd "$PKG"
-py_step figure2_assortative     env MPLBACKEND=Agg "$PY" "$PKG/CreateFigures/_0_figure2_assortative.py"
-py_step figure3_within_state    env MPLBACKEND=Agg "$PY" "$PKG/CreateFigures/_0_figure3_matching_within_state.py"
+py_step figure2_all_pairs       env MPLBACKEND=Agg "$PY" "$PKG/CreateFigures/_0_figure2_all_pairs.py"
+py_step figure2_within_state    env MPLBACKEND=Agg "$PY" "$PKG/CreateFigures/_0_figure2_within_state.py"
+py_step figure3_matching_rank   env MPLBACKEND=Agg "$PY" "$PKG/CreateFigures/_0_figure3_matching_rank.py"
 py_step figureA1_fines_per_year env MPLBACKEND=Agg "$PY" "$PKG/CreateFigures/_1_fines_per_year.py"
 py_step summary_statistics_table env MPLBACKEND=Agg "$PY" "$PKG/CreateTables/_8_summary_statistics.py"
 py_step tables7and8             env MPLBACKEND=Agg "$PY" "$PKG/CreateTables/_8_tables7and8.py"
 py_step figure4_combined_firm   env MPLBACKEND=Agg "$PY" "$PKG/CreateFigures/_1_figure4_combined_disclosures.py"
 py_step make_figure1            env MPLBACKEND=Agg "$PY" "$PKG/CreateFigures/_0_figure1_disclosures.py"
-py_step tableA5                 env MPLBACKEND=Agg "$PY" "$PKG/CreateTables/_8_frequent_acquirers.py"
+py_step frequent_acquirers      env MPLBACKEND=Agg "$PY" "$PKG/CreateTables/_8_frequent_acquirers.py"
 # WORK holds the intermediate files; OUT is where the three panels are written. Without
 # them the scripts write to fig_work/ under the current directory, so set both.
 FIGA2_WORK=${FIGA2_WORK:-$PKG/figA2_work}
@@ -113,7 +114,7 @@ echo "=== 12. exhibit accounting ======================================"
 # The steps above report whether a SCRIPT ran. This reports whether the paper's
 # EXHIBITS actually arrived. They are not the same thing: a producer can succeed
 # and write outside the package, and the driver would still say ok.
-# EXHIBITS.txt, in the package root, lists the 34 code-produced exhibits the paper uses.
+# EXHIBITS.txt, in the package root, lists the 37 code-produced exhibits the paper uses.
 missing=0; present=0
 if [ ! -f "$PKG/EXHIBITS.txt" ]; then
   echo "  exhibit accounting                 FAIL  EXHIBITS.txt not found"

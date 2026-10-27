@@ -49,12 +49,14 @@ fig, ax = plt.subplots(figsize=(12, 10))
 sns.set(font_scale=2, style="white", rc=None)
 sns.barplot(data=df, x="year_group", y="all_misconduct_all", hue="target",
             palette=["black", "lightgrey", "darkgrey"], capsize=0.1, seed=0, n_boot=10000)
-plt.xlabel("Year", fontsize=25, fontweight="bold")
-plt.ylabel("Employees with any disclosure (%)", fontsize=25, fontweight="bold")
+# Axis labels smaller and tick labels larger, so the two read at the same scale
+plt.xlabel("Year", fontsize=20, fontweight="bold")
+plt.ylabel("Employees with any disclosure (%)", fontsize=20, fontweight="bold")
+ax.tick_params(axis="both", labelsize=20)
 
 # Place the legend above the axes in one row with no frame, so it cannot collide with the bars
 plt.legend(title="", loc="lower center", bbox_to_anchor=(0.5, 1.005),
-           ncol=3, frameon=False, fontsize=24)
+           ncol=3, frameon=False, fontsize=20)
 sns.despine()
 
 # Save the figure

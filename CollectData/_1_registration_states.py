@@ -2,7 +2,7 @@
 # Adviser state registrations from the scrapes -> registration_states_all.csv
 #
 # One row per adviser, state and registration scope, with the registration date.
-# Read by ma_employee_misconduct.do for Table A.9.
+# Read by ma_employee_misconduct.do for Table A.10.
 #
 # Reads the registeredStates node of each adviser JSON in the 2020, 2022 and 2024
 # scrapes, streamed in archive order from the raw/ .tar.zst archives, then stacks

@@ -1,5 +1,6 @@
 ********************************************************************************
-* Runs appendix_industry_controls.do: Tables A.2, A.3, A.4 and A.6.
+* Runs appendix_industry_controls.do (Tables A.2, A.3, A.4 and A.7) and
+* matching_alt_measures.do (Table A.5 and the numbers Section III.B quotes).
 ********************************************************************************
 clear all
 set more off
@@ -29,7 +30,7 @@ set processors 4
     which reghdfe
 
 * Report which inputs are present
-    foreach f in target_regression acquirer_regression_sample acquirer_regression target_regression_sample matching_frame_full firm_adv_controls adviser_event_panel {
+    foreach f in target_regression acquirer_regression_sample acquirer_regression target_regression_sample matching_frame_full firm_adv_controls adviser_event_panel matching_sample_full matching_sample_timewin {
         capture confirm file data/output/`f'.dta
         display "INPUT `f' rc = " _rc
     }
@@ -39,8 +40,13 @@ set processors 4
     capture noisily do ../CreateTables/appendix_industry_controls.do
     display "RC_APPENDIX_INDUSTRY_CONTROLS = " _rc
 
+* Run matching_alt_measures.do (Table A.5) and record its return code
+    display "=== matching_alt_measures.do ==="
+    capture noisily do ../CreateTables/matching_alt_measures.do
+    display "RC_MATCHING_ALT_MEASURES = " _rc
+
 * Report which tables were written
-    foreach t in target_regressionind acquirer_regressionind matching_regressionind post_misc_regsfa {
+    foreach t in target_regressionind acquirer_regressionind matching_regressionind post_misc_regsfa matching_alt_measures {
         capture confirm file tables/`t'.tex
         display "TEX `t'.tex rc = " _rc
     }

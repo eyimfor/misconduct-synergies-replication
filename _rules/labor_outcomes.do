@@ -1,5 +1,5 @@
 ********************************************************************************
-* Labor-market outcomes after a separation for Table A.8, built from the saved
+* Labor-market outcomes after a separation for Table A.9, built from the saved
 * Table X panels. A separated adviser leaves the industry if never again
 * registered with any advisory firm in the employment data, and joins a
 * different firm if registered with another firm in a subsequent year.

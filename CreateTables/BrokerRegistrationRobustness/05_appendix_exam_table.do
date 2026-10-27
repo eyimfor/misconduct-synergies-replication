@@ -1,5 +1,5 @@
 ********************************************************************************
-* Produces Table A.7 (post-merger misconduct for broker-qualified advisers) in four
+* Produces Table A.8 (post-merger misconduct for broker-qualified advisers) in four
 * panels: full sample, any broker qualification, broker-qualified only, dual qualified.
 * Writes post_misc_regs_examqual.tex (table body, same layout as Tables IX and X)
 * and post_misc_regs_examqual_wrapper.tex (LaTeX table environment with notes).
@@ -139,7 +139,7 @@
 
 
 ********************************************************************************
-* LaTeX table environment in the same style as Table A.6
+* LaTeX table environment in the same style as Table A.7
 ********************************************************************************
 
 * Write the wrapper with caption, notes and the Controls and Year FE rows

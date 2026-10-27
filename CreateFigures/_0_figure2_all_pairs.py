@@ -1,5 +1,5 @@
-# Figure 2: probability of a merger by whether the acquirer and the target have
-# employee disclosures. Writes figures/assortative_matching.png.
+# Figure 2, Panel A: probability of a merger by whether the acquirer and the target have
+# employee disclosures, over all candidate pairs. Writes figures/assortative_matching.png.
 import os
 
 # Work from the package's 2023/ folder; paths below are relative to it

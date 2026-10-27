@@ -28,8 +28,9 @@ ax.set_xlabel("", fontsize=25, fontweight = 'bold')
 plot_years = sorted(settlements_by_year["year"].astype(int).unique())
 ax.set_xticks(plot_years)
 xlabels = [str(x) for x in plot_years]
-ax.set_xticklabels(xlabels, rotation=40)
-ax.set_ylabel("Misconduct Fines ($ Millions)" , fontsize=25, fontweight = 'bold')
+ax.set_xticklabels(xlabels, rotation=40, fontsize=20)
+ax.tick_params(axis='y', labelsize=20)
+ax.set_ylabel("Misconduct Fines ($ Millions)" , fontsize=20, fontweight = 'bold')
 
 # Remove the top and right spines and save the figure
 sns.despine();

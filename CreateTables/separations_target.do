@@ -271,7 +271,7 @@ clear
     coefplot, keep(pre_* current post_*) levels(95) vertical lcolor(black) mcolor(black) ///
               coeflabels(pre_3 = "-3" pre_2 = "-2" pre_1 = "-1" current = "0" post_1= "1" post_2= "2" post_3= "3") ///
               omitted msymbol(line) recast(connect) ///
-              ytitle("Has Misconduct X t", size(medium)) ///
+              ytitle("Has Misconduct (EMS) X t", size(medium)) ///
               ylabel(, labsize(small) angle(horizontal) nogrid format(%3.1f)) ///
               yline(0, lwidth(vthin) lpattern(solid) lcolor(black)) ///
               xtitle("Years Relative to Merger", size(medium)) ///

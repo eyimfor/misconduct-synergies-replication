@@ -1,6 +1,6 @@
 ********************************************************************************
 * Builds the pseudo-merger panels used for Table VIII and as the control group
-* in Tables IX and A.6 and Figure 4: adviser-level event_panel_pseudo.dta and
+* in Tables IX and A.7 and Figure 4: adviser-level event_panel_pseudo.dta and
 * pair-year postmergercombinedfirmcf.dta.
 ********************************************************************************
 clear

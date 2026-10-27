@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the CRD-based frequent-acquirer table (Appendix Table A.5).
+"""Build the CRD-based frequent-acquirer table (Appendix Table A.6).
 
 Uses only the Python standard library. Reads merger_sample.dta and
 firm_adv_controls.dta (Stata release 118) and writes

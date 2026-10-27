@@ -6,7 +6,7 @@ panels, which are written to `2023/data/output_robust/`, and the merger entry li
 written to `2023/data/input/` alongside the raw merger list it is derived from.
 
 The build writes about 120 datasets in all. Most of them are working files that one script
-saves and the next script immediately reads back. The thirty-one datasets below are
+saves and the next script immediately reads back. The thirty-four datasets below are
 either a stage's finished product or an input that several downstream scripts share. They
 are listed in the order the pipeline creates them: the adviser panels first, then the firm-level controls and misconduct measures, then the
 merger sample, then the matching frames that pair each real merger with a counterfactual,
@@ -72,7 +72,9 @@ finds a counterfactual (pseudo) target and acquirer for each real deal, matching
 year, a binary misconduct split, three lagged misconduct splits and an employee decile.
 `matching_baseline.do` and `matching_time_window.do` build a different object: for each
 target, the set of all acquirers active in the same year, which is what the assortative-matching
-regressions treat as the choice set.
+regressions treat as the choice set. Each of the two also saves its estimation sample with the
+Misconduct Distance Rank, the regressor of Tables V and VI, for the appendix table of
+alternative measures.
 
 | File | Rows × Columns | One row is | Written by | Read by |
 |---|---|---|---|---|
@@ -85,9 +87,12 @@ regressions treat as the choice set.
 | `pseudo_merger_pairs.dta` | 437 × 6 | One pseudo merger: the real target and real acquirer on one side, the pseudo target and pseudo acquirer standing in for them on the other, and the deal year. | `build_matching_pairs.do` | `build_matching_pairs.do`, `pseudo_real_merger_test.do`. |
 | `merger_pairs_long.dta` | 1,748 × 4 | One firm in one role within one matched set (real target, pseudo target, pseudo acquirer or real acquirer, numbered 0 to 3), so each matched set contributes four rows. This is the long-form key the event panels are built from. | `build_matching_pairs.do` | `post_merger_misconduct_real.do`, `post_merger_misconduct_pseudo.do`, `pseudo_real_merger_test.do`, `counterfactual_no_separation.do`, `misconduct_drop_employee.do`, `02_rebuild_baseline_outcomes.do`, `03_build_status_robustness.do`, the Figure A.3 scripts in `figA3_estimation/`, and the shared routine `merge_semantics.do`. |
 | `merger_pairs_unique.dta` | 1,196 × 2 | One distinct firm-year appearing anywhere in the matched sets, real or pseudo. | `build_matching_pairs.do` | `misconduct_drop_employee.do`. |
-| `matching_frame.dta` | 19,829 × 38 | One candidate target-acquirer pairing in one deal year (every acquirer active that year crossed with every target), flagged for whether it is the pairing that actually happened, with both sides' misconduct and headcount and the combined misconduct measures. | `matching_baseline.do` | `matching_baseline.do`, `_0_figure2_assortative.py`. |
+| `matching_frame.dta` | 19,829 × 38 | One candidate target-acquirer pairing in one deal year (every acquirer active that year crossed with every target), flagged for whether it is the pairing that actually happened, with both sides' misconduct and headcount and the combined misconduct measures. | `matching_baseline.do` | `matching_baseline.do`, `_0_figure2_all_pairs.py`, `_0_figure3_matching_rank.py`. |
 | `matching_frame_full.dta` | 19,829 × 94 | The same candidate pairings, with each side's Form ADV characteristics attached: state, disciplinary history, business lines, compensation arrangements, AUM, clients and firm age, suffixed `_a` for the acquirer and `_t` for the target. | `matching_baseline.do` | `matching_baseline.do`, `appendix_industry_controls.do`. |
+| `matching_frame_tw.dta` | 15,408 × 45 | One candidate pairing under the within-state, one-year window: every acquirer with employees in one of the target's states and a deal within a year, with both sides' misconduct and headcount but before the Form ADV characteristics are attached. | `matching_time_window.do` | `matching_time_window.do`, `_0_figure2_within_state.py`, `_0_figure3_matching_rank.py`. |
 | `matching_frame_timewin.dta` | 15,408 × 99 | The same object built under the tighter time window, and additionally carrying the two firms' employee counts by state and how many states they share. | `matching_time_window.do` | Only `matching_time_window.do`. |
+| `matching_sample_full.dta` | 19,321 × 137 | The Table V estimation sample: the candidate pairings of `matching_frame_full.dta` that survive the sample rule in `_rules/winsorize_last.do`, with the pair controls standardized over that sample and, for each candidate acquirer, its Misconduct Distance Rank (All and EMS) within the target's candidate set. | `matching_baseline.do` | `matching_alt_measures.do`. |
+| `matching_sample_timewin.dta` | 14,833 × 141 | The Table VI estimation sample, built the same way from `matching_frame_timewin.dta`. | `matching_time_window.do` | `matching_alt_measures.do`. |
 
 ## Event panels
 

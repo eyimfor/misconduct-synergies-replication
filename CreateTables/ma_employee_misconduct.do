@@ -1,6 +1,6 @@
 ********************************************************************************
 * Massachusetts 2016 inquiries: flags firms with Massachusetts-registered advisers
-* and estimates Appendix Table A.9 (tables/mathing.tex).
+* and estimates Appendix Table A.10 (tables/mathing.tex).
 ********************************************************************************
 clear
 
