@@ -16,7 +16,6 @@
 **   replication_pipeline/
 **     run_all.sh            one-pass driver: foundational datasets -> every exhibit
 **     outline.txt           this file
-**     lineage.html          the same map as a clickable picture
 **     data_dictionary.md    every dataset: rows, columns, what writes it, what reads it
 **     exhibits.json         every exhibit: its files, the scripts and steps that make them
 **     EXHIBITS.txt          the exhibit files run_all.sh checks for at the end
@@ -140,5 +139,5 @@
 ***                _2_figA2_panels.py, over adviser_firm_year
 ***Figure A.3      figA3_estimation/run_figA3.py estimates it, _3_figA3_plot.py draws it
 
-** lineage.html is the same map as a picture: click any input and its whole path to the
-** exhibits lights up. The rendered page is at https://claude.ai/artifact/BZEeuikwWihBzNhmLnh74G.
+** The lineage page, https://claude.ai/artifact/BZEeuikwWihBzNhmLnh74G, is the same map as a
+** picture: click any input and its whole path to the exhibits lights up.

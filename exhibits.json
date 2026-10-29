@@ -1,5 +1,5 @@
 {
-  "about": "The 37 code-produced exhibit files in the paper, in paper order. For each exhibit: its number and title as the paper prints them and its LaTeX label; for each of its files (parts): the path the pipeline writes, the scripts that produce it in order, the run_all.sh steps that run those scripts, and the datasets it is built from, as lineage.html node ids. EXHIBITS.txt, AGENTS.md, llms.txt and the exhibit column of lineage.html are all drawn from this file.",
+  "about": "The 37 code-produced exhibit files in the paper, in paper order. For each exhibit: its number and title as the paper prints them and its LaTeX label; for each of its files (parts): the path the pipeline writes, the scripts that produce it in order, the run_all.sh steps that run those scripts, and the datasets it is built from, as the node ids of the lineage page (https://claude.ai/artifact/BZEeuikwWihBzNhmLnh74G). EXHIBITS.txt, AGENTS.md, llms.txt and the exhibit column of the lineage page are all drawn from this file.",
   "exhibits": [
     {"number": "Figure 1", "label": "misconduct_trendsany", "title": "Employee disclosure events and advisory firm mergers",
      "parts": [{"id": "f_1", "file": "2023/figures/DisclosuresAll.png",

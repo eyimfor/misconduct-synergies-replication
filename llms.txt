@@ -18,11 +18,11 @@ exhibit map are, how the pipeline runs, and which mistakes are easy to make here
   definitions are in the glossary; use them before reading code.
 - `exhibits.json`: the same exhibit map as data. For each exhibit: number, title and LaTeX
   label; for each of its files: the path, the producing scripts, the `run_all.sh` steps that run
-  them, and the input datasets (as `lineage.html` node ids).
+  them, and the input datasets (as the node ids of the lineage page).
 - `data_dictionary.md`: the main datasets, with rows, columns, and what writes and reads each.
 - `outline.txt`: every step from raw data to exhibits, in prose.
-- `lineage.html`: the same map as a clickable picture. GitHub shows the file as source; the
-  rendered page is at https://claude.ai/artifact/BZEeuikwWihBzNhmLnh74G.
+- The lineage page, https://claude.ai/artifact/BZEeuikwWihBzNhmLnh74G: the same map as a
+  clickable picture.
 
 ## How it runs
 
