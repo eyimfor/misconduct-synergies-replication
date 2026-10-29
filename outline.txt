@@ -139,5 +139,5 @@
 ***                _2_figA2_panels.py, over adviser_firm_year
 ***Figure A.3      figA3_estimation/run_figA3.py estimates it, _3_figA3_plot.py draws it
 
-** The lineage page, https://claude.ai/artifact/BZEeuikwWihBzNhmLnh74G, is the same map as a
-** picture: click any input and its whole path to the exhibits lights up.
+** The lineage page, https://eyimfor.github.io/misconduct-synergies-replication/, is the same map
+** as a picture: click any input and its whole path to the exhibits lights up.

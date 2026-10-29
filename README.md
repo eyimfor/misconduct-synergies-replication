@@ -39,7 +39,7 @@ To use a different interpreter or Stata executable, set `PY` and `STATA`, for ex
 - `exhibits.json`: the same exhibit-to-code map as data.
 - `outline.txt`: the steps from raw data to exhibits, and which script makes each table
   and figure.
-- The lineage page, https://claude.ai/artifact/BZEeuikwWihBzNhmLnh74G: the same map as a
+- The lineage page, https://eyimfor.github.io/misconduct-synergies-replication/: the same map as a
   clickable picture.
 - `data_dictionary.md`: the main datasets, with what writes and reads each one.
 

@@ -21,7 +21,7 @@ exhibit map are, how the pipeline runs, and which mistakes are easy to make here
   them, and the input datasets (as the node ids of the lineage page).
 - `data_dictionary.md`: the main datasets, with rows, columns, and what writes and reads each.
 - `outline.txt`: every step from raw data to exhibits, in prose.
-- The lineage page, https://claude.ai/artifact/BZEeuikwWihBzNhmLnh74G: the same map as a
+- The lineage page, https://eyimfor.github.io/misconduct-synergies-replication/: the same map as a
   clickable picture.
 
 ## How it runs
