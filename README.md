@@ -54,3 +54,9 @@ package folder in the assistant and start with a prompt such as:
     Table IX, what sample it uses, and where that sample is defined.
 
 For a chat assistant without file access, attach `llms.txt` and the paper Markdown.
+
+## License
+
+The code is released under the MIT License (`LICENSE`). The hand-collected merger list,
+`2023/data/input/new_mergers_raw.csv`, is released under CC BY 4.0; cite the paper when you
+use it. The Stata packages in `environment/` keep their own licenses and authorship.
