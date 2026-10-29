@@ -118,7 +118,7 @@
 ***Table A.4       appendix_industry_controls.do
 ***Table A.5       matching_alt_measures.do, over the estimation samples the Table V and VI
 ***                producers save; also writes tables/matching_rank_numbers.txt, the descriptives
-***                and coefficients Section III.B quotes
+***                and coefficients Section V.B quotes
 ***Table A.6       _8_frequent_acquirers.py
 ***Table A.7       appendix_industry_controls.do
 ***Table A.8       BrokerRegistrationRobustness/05_appendix_exam_table.do
